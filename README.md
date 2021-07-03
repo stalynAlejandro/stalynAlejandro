@@ -53,11 +53,7 @@
 | Translation                | :alien: `:alien:`                             |
 | Text                       | :pencil: `:pencil:`                           |
 | Deploying stuff            | :rocket: `:rocket:`                           |
-| Work in progress           | :construction:  `:construction:`              |
-| Configuration files        | :wrench: `:wrench:`                           |
 | Package.json in JS         | :package: `:package:`                         |
-| Bad code / need improv.    | :hankey: `:hankey:`                           |
-| Reverting changes          | :rewind: `:rewind:`                           |
 | Breaking changes           | :boom: `:boom:`                               |
 | Code review changes        | :ok_hand: `:ok_hand:`                         |
 | Other                      | [Be creative](http://www.emoji-cheat-sheet.com/)  |
