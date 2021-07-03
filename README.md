@@ -44,10 +44,8 @@
 | New feature                | :sparkles: `:sparkles:`                       |
 | Bugfix                     | :bug: `:bug:`                                 |
 | Documentation              | :books: `:books:`                             |
-| Performance                | :racehorse: `:racehorse:`                     |
 | Tests                      | :rotating_light: `:rotating_light:`           |
 | Adding a test              | :white_check_mark: `:white_check_mark:`       |
-| Make a test pass           | :heavy_check_mark: `:heavy_check_mark:`       |
 | Refactor code              | :hammer: `:hammer:`                           |
 | Removing code/files        | :fire: `:fire:`                               |
 | Security                   | :lock: `:lock:`                               |
@@ -62,7 +60,6 @@
 | Reverting changes          | :rewind: `:rewind:`                           |
 | Breaking changes           | :boom: `:boom:`                               |
 | Code review changes        | :ok_hand: `:ok_hand:`                         |
-| Move/rename repository     | :truck: `:truck:`                             |
 | Other                      | [Be creative](http://www.emoji-cheat-sheet.com/)  |
 
 
