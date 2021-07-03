@@ -40,7 +40,6 @@
 
 |   Commit type              | Emoji                                         |
 |:---------------------------|:----------------------------------------------|
-| Version tag                | :bookmark: `:bookmark:`                       |
 | New feature                | :sparkles: `:sparkles:`                       |
 | Bugfix                     | :bug: `:bug:`                                 |
 | Documentation              | :books: `:books:`                             |
