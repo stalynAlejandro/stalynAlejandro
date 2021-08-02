@@ -348,3 +348,60 @@ eureka.client.service-url.default-zone=http://localhost:8761/eureka
 El componente Films será el encargado de gestionar las películas. Lo crearemos con *Spring Intializr* añadiendo las dependencias de *Spring Web*, *Eureka Discovery Client*, *MySql Driver* que nos permitirá conectarnos con la base de datos **Films** (que tenemos que haber creado y que contega la información de las películas) y *Spring Data JPA* que nos permitirá acceder a la base de datos y recuperar los datos, conviertiéndolos para que Java pueda reconocerlos y operar con ellos. 
 
 Tras crear el proyecto, creamos las capas de **Contorller**, **Service**, **DAO** y **Modelo** junto con algunas clases, que nos permiten estructurar la aplicación con el patrón MVC y dao, para que cada capa se encargue de una sola función. 
+
+```
+src/main/java
+    |---------- controller
+    |---------- model
+    |---------- service
+
+```
+Para empezar con el desarrollo, debemos definir qué es una pelicula, lo que significa que debemos definir sus campos en el modelo. 
+
+El *modelo* se encarga de declarar estos campos y gracias a la información recogida en las **Historias de Usuario** serán los siguientes: 
+
+- idFilm (Integer) primary key
+- duration (Integer) 
+- genre (String) 
+- year (Integer)
+- director (String)
+- rating (String)
+- summary (String)
+- urlimg (URL)
+- urltrailer (URL)
+- reviews ()
+
+Como punto más importante, en la capa **Model** es donde debemos anotar la clase **Film.java** con **@Entity**, lo que nos permite que las películas puedan ser manejadas por **JPA** y podamos recuperarlas de la base de datos, como persistirlas. 
+
+Una vez definidos los campos, nuestro siguiente paso es la creación de los endpoints en la **capa controller** y los métodos de la **capa service**.
+
+En la **capa Controller** definiremos 4 endpoints que nos permitirán acceder a todos los datos que necesitamos para que nuestro servicio de películas funcione según lo definido en las **Historias de Usuario**:
+
+- 1. Para recuperar las películas.
+- 2. Recuperar una película por su nombre.
+- 3. Recuperar una película por su Id.
+- 4. Recuperar las películas en función de su género. 
+
+Es **muy importante** qye anotemos el controller con **@RestController** para que pueda usar los métodos REST.
+
+```java
+package controller;
+
+import java.utils.*;
+
+@CrossOrigin(origins="*")
+@RestController
+public class FilmController{
+
+    @Autowired
+    ServiceFilms service;
+
+    @GetMapping(value = "films", products = MediaType.APPLICATION_JSON_VALUE)
+    public List<Film> getFilms(){
+        return service.getFilms();
+    }
+
+    @GetMapping(value="films/name/{filname}", products = MediaType.APPLICATION_JSON_VALUE)
+    public Film getFilmByName()
+}
+```
