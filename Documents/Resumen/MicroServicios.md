@@ -396,12 +396,149 @@ public class FilmController{
     @Autowired
     ServiceFilms service;
 
-    @GetMapping(value = "films", products = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value="films", produces=MediaType.APPLICATION_JSON_VALUE)
     public List<Film> getFilms(){
         return service.getFilms();
     }
 
-    @GetMapping(value="films/name/{filname}", products = MediaType.APPLICATION_JSON_VALUE)
-    public Film getFilmByName()
+    @GetMapping(value="films/name/{filname}", produces=MediaType.APPLICATION_JSON_VALUE)
+    public Film getFilmByName(@PathVariable("filmname") String name){
+        return service.getFilmByName(name);
+    }
+
+    @GetMapping(value="films/{filmid}", produces=MediaType.APPLICATION_JSON_VALUE)
+    public Film getFilmById(@PathVariable("filmid") Integer id){
+        return service.getFilmById(id);
+    }
+
+    @GetMapping(value="films/genre/{genrename}", produces=MediaType.APPLICATION_JSON_VALUE)
+    public List<Film> getFilmsByGenre(@PathVariable("genrename") String genre){
+        return service.getFilmsByGenre(genre);
+    }
 }
+```
+
+En la **Capa Service** es importante que anotemos la clase de implementación con **@Service**, para que Spring sepa manejar este **BEAN**. 
+
+Es importante que nos fijemos en el *Modelo* y el **RESTTemplate** que definimos. Los dos los anotaremos con **@Autowired** para implementar el patrón *DI*. 
+
+En la **capa de Servicio** definiremos la lógica de negocio, es decir, determinaremos que  transformaciones debemos hacer a los datos recibidos de la consulta a la base de datos. 
+
+Para recuperar *la lista de películas por nombre* recuperamos de la **capa de Modelo** las películas que coincidan con el criterio de búsqueda. En el método para recuperar *las películas por género*, recuperamos todas las películas y las filtramos por género, para poder encontrar coincidencias en las películas que tengan más de un género. (También lo podríamos hacer directamente en la consulta a la BBDD). 
+
+```java
+package service;
+
+import java.util.*;
+
+@Service
+public class ServiceFilmsImpl implements ServiceFilms{
+
+    @Autowired
+    FilmDao dao;
+
+    @Autowired
+    RestTemplate template;
+
+    String urlReviews = "http://review-service/review/";
+
+    @Override
+    public List<Film> getFilms(){
+        List<Film> films = dao.getFilms();
+        return films;
+    }
+
+    @Override
+    public Film getFilmByName(String name){
+        Film film = dao.getFilmByName(name);
+        String reviews = template.getForObject(urlReviews + film.getName(), String.class);
+        film.setReviews(review);
+        return film;
+    }
+
+   @Override
+   public List<Film> getFilmsByGenre(String genre){
+       List<Film> films = dao.getFilms();
+       films = films.stream().filter(film -> film.getGenre().contains(genre)).collect(Collectors.toList());
+
+       Collections.shuffle(films, new Random(System.nanoTime()));
+       return films;
+   } 
+
+   @Override
+   public Film geFilmById(Integer id){
+       Film film = dao.getFilmById(id);
+       String reviews = template.getForObject(urlReviews + film.getName(), String.class);
+       film.setReviews(reviews);
+       return film;
+   }
+
+}
+```
+
+En la *capa Modelo* debemos definir la manera en la que nos comunicamos con la base de datos. 
+
+Es importante que la clase dao la anotemos con **@Repository** para que Spring sepa identificar esta **Bean** y la clase **FilmJpaSpring** debe extender de **JpaRepository**.
+
+```java
+package dao;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FilmJpaSpring extends JpaRepository<Film, Integer>{
+    Film findByIdFilm(Integer idfilm);
+    Film findByName(String name);
+}
+```
+
+```java
+package dao;
+
+import java.utils.*;
+
+@Repository
+public class FilmDaoImpl implements FilmDao{
+    @Autowired
+    FilmJpaSpring films;
+
+    @Override
+    public List<Film> getFilms(){
+        return films.findAll();
+    }
+
+    @Override 
+    public Film getFilmByName(String name){
+        return film.findByName(name);
+    }
+
+    @Override
+    public Film getFilmById(Integer id){
+        return films.findByIdFilm(id);
+    }
+}
+```
+
+Por último, para la configuración del servicio debemos definir cómo se conectará con la BBDD, la estrategia para la identificación de las entidades de la base de datos, el nombre del servicio, su puerto y su conexión con **Eureka**.
+
+```
+spring:
+    application:
+        name: films-service
+    datasource:
+        driver-class-name: com.mysql.cj.jdb.Driver
+        url: jdbc:mysql://localhost:3306/films?serverTimezone=UTC
+        username: root
+        password: 62216221
+    jpa:
+        hibernate:
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicaNamingStrategyStandardImpl
+server:
+    port: 8001
+
+eureka:
+    client:
+        serviceUrl:
+            # Dirección a la que se conecta el microservicio con eureka
+            defaultZone: http://localhost:8761/eureka
 ```
