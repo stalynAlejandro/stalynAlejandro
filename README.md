@@ -75,3 +75,7 @@ Here are some ideas to get you started:
 portal-developerenv.go-aigua.com
 smartmetering-developerenv.go-aigua.com
 leaks-developerenv.go-aigua.com
+http://plataforma.pages.go-aigua.com/urls/
+https://a3gt.wolterskluwer.es/gt#/clockings/74869
+https://jira.go-aigua.com/secure/Dashboard.jspa?selectPageId=11132
+https://projects.invisionapp.com/d/main#/projects
