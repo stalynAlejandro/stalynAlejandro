@@ -72,3 +72,6 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+portal-developerenv.go-aigua.com
+smartmetering-developerenv.go-aigua.com
+leaks-developerenv.go-aigua.com
