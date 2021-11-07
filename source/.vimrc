@@ -5,29 +5,7 @@ let mapleader = "." 		"Mapleaderkey to .
 
 filetype plugin indent on
 
-augroup vimrcEx
-  autocmd!
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-"    autocmd BufReadPost *
-"    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-"    \   exe "normal g`\"" |
-"    \ endif
-"
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
-  autocmd BufRead,BufNewFile
-    \ aliases.local,
-    \zshenv.local,zlogin.local,zlogout.local,zshrc.local,zprofile.local,
-    \*/zsh/configs/*
-    \ set filetype=sh
-  autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
-  autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
-  autocmd BufRead,BufNewFile vimrc.local set filetype=vim
-augroup END
-
+autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 
 " Start NERDTree and leave the cursor in it.
 " autocmd VimEnter * NERDTree
@@ -42,7 +20,6 @@ autocmd InsertLeave * set nocul
 " set complete+=kspell
 
 set scrolloff=4
-
 set smartindent
 set tabstop=2
 set shiftwidth=2
@@ -53,15 +30,15 @@ set splitbelow
 set splitright
 
 " Basic Settings
+set encoding=utf-8
 set number	
 set ruler
-set encoding=utf-8
+set hidden
 
 " Search Bindings
 set hlsearch			
 set incsearch
 set ignorecase
-"set showmatch
 
 " Key Bindings REMAPS
 " Open terminal with current directory
@@ -94,9 +71,22 @@ call plug#begin('~/.vim/plugged')
 Plug 'elzr/vim-json'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'MaxMEllon/vim-jsx-pretty'
+"Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'patstockwell/vim-monokai-tasty'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
+
+" Snippet and Additional Text Editing Support
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+" Browse Files
+Plug 'Shougo/defx.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
 
 " NerdTree Plugins
 Plug 'preservim/nerdtree'
