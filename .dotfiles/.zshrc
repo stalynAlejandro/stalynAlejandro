@@ -100,6 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #echo 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
+echo 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
 stty -ixon
 
 export EDITOR=/usr/bin/vim  
