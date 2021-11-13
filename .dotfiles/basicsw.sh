@@ -33,6 +33,10 @@ echo "\n\nINSTALLING VIM EDITORS ..."
 sudo apt-get install vim -y
 sudo apt-get install neovim -y
 
+echo "\n\nINSTALLING VIMPLUG ... "
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 echo "\n\n INSTALLING MICRO EDITOR .. "
 sudo snap install micro --classic 
 
@@ -72,10 +76,13 @@ sudo apt-get install zsh -y
 zsh --version
 chsh -s $(which zsh)
 
+echo "\n\nINSTALLING OH-MY-ZSH ... "
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
 echo "\n\nINSTALLING HTOP AND NEOFETCH"
 sudo apt-get install neofetch -y
 sudo apt-get install htop -y
-
 
 echo "\n\nAUTOREMOVE .. "
 sudo apt autoremove
