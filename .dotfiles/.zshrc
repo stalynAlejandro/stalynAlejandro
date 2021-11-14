@@ -98,8 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#echo 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
-echo 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
 stty -ixon
 
 export EDITOR=/usr/bin/vim  
