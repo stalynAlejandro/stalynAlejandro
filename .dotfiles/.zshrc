@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 if [[ `uname` == "Darwin" ]]; then
-  export ZSH="/home/csaav/.oh-my-zsh"
+  export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
 fi
@@ -73,12 +73,7 @@ ZSH_THEME="bira"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-if [[ `uname` == "Darwin" ]]; then
-  source $ZSH
-else
-  export ZSH="/home/saav/.oh-my-zsh"
-  source $ZSH/oh-my-zsh.sh
-fi
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
