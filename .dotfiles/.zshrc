@@ -1,8 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
-export ZSH="/home/saav/.oh-my-zsh"
-
+if [[ `uname` == "Darwin" ]]; then
+  export ZSH="/home/csaav/.oh-my-zsh"
+else
+  export ZSH="/home/saav/.oh-my-zsh"
+fi
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -70,12 +73,7 @@ ZSH_THEME="bira"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
-if [[ `uname` == "Darwin" ]]; then
-  source /Users/csaav/.oh-my-zsh/oh-my-zsh.sh 
-else
-  source $ZSH/oh-my-zsh.sh
-fi
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
