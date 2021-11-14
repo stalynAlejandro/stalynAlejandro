@@ -71,10 +71,10 @@ ZSH_THEME="bira"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-if ["$(uname)" == "Linux"]; then
-  source $ZSH/oh-my-zsh.sh
-else
+if [[ `uname` == "Darwin" ]]; then
   source /Users/csaav/.oh-my-zsh/oh-my-zsh.sh 
+else
+  source $ZSH/oh-my-zsh.sh
 fi
 
 # User configuration
