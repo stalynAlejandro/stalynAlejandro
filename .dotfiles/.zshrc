@@ -74,7 +74,7 @@ ZSH_THEME="bira"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 if [[ `uname` == "Darwin" ]]; then
-  export ZSH="/home/csaav/.oh-my-zsh"
+  source $ZSH
 else
   export ZSH="/home/saav/.oh-my-zsh"
   source $ZSH/oh-my-zsh.sh
