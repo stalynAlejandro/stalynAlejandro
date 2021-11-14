@@ -71,7 +71,10 @@ ZSH_THEME="bira"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+if[["$OSTYPE" == "linux-gnu"]];then
+  source $ZSH/oh-my-zsh.sh
+else
+  source /Users/csaav/.oh-my-zsh/oh-my-zsh.sh 
 
 # User configuration
 
