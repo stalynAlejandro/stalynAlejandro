@@ -2,6 +2,8 @@ set nocompatible " Not compatible wiht vi
 filetype off			"Helps force plugins to load  
 filetype plugin indent on	"For plugins to load correctly
 let mapleader = "." 		"Mapleaderkey to .
+set encoding=UTF-8
+set belloff=all
 
 filetype plugin indent on
 
@@ -65,39 +67,61 @@ inoremap jj <Esc>
 inoremap <leader>w <Esc>:w<CR> 
 inoremap <leader>qq <Esc>:q!<CR>
 
+" Find Files 
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
+
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>/ :BLines<CR>
+nnoremap <silent> <Leader>' :Marks<CR>
+nnoremap <silent> <Leader>g :Commits<CR>
+nnoremap <silent> <Leader>H :Helptags<CR>
+nnoremap <silent> <Leader>hh :History<CR>
+nnoremap <silent> <Leader>h: :History:<CR>
+nnoremap <silent> <Leader>h/ :History/<CR> 
+
 "::::: PLUGINS :::: 
 
 call plug#begin('~/.vim/plugged')
+
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
+
 Plug 'elzr/vim-json'
 Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
-"Plug 'MaxMEllon/vim-jsx-pretty'
+
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'patstockwell/vim-monokai-tasty'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'kristijanhusak/defx-icons'
+
 Plug 'kristijanhusak/defx-git'
+
+" Search Files
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Snippet and Additional Text Editing Support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-" Browse Files
-Plug 'Shougo/defx.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-
-
 " NerdTree Plugins
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin' "showing git status flags
+
+" Themes
+Plug 'patstockwell/vim-monokai-tasty'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 call plug#end()
 
-" Allow italics
-let g:vim_monokai_tasty_italic = 1                    " allow italics, set this before the colorscheme
 
 " Set ColorScheme
-colorscheme vim-monokai-tasty                         " set the colorscheme
+colorscheme dracula
 
 " Set Background Transparent
 hi Normal ctermbg=NONE
+
+"#if type rg &> /dev/null; then
+"#  export FZF_DEFAULT_COMMAND='rg --files'
+"#  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+"#fi

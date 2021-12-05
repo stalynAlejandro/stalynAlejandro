@@ -9,6 +9,13 @@ if [[ `uname` == "Darwin" ]]; then
 else
   export ZSH="/home/saav/.oh-my-zsh"
   alias fopen="xdg-open ."
+  alias lvim="sh ~/.local/bin/lvim"
+fi
+
+export FZF_DEFAULT_COMMAND='rg'
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
 ZSH_THEME="bira"
@@ -18,6 +25,11 @@ plugins=(git)
 
 export EDITOR=/usr/bin/vim  
 export VISUAL=/usr/bin/vim
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 
 # Set name of the theme to load --- if set to "random", it will
