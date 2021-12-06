@@ -68,8 +68,8 @@ inoremap <leader>w <Esc>:w<CR>
 inoremap <leader>qq <Esc>:q!<CR>
 
 " Find Files 
-nnoremap <silent> <C-f> :Files<CR>
-nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <C-f> :Rg<CR>
+nnoremap <silent> <Leader>f :Files<CR>
 
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>

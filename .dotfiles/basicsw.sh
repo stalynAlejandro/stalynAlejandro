@@ -80,6 +80,10 @@ echo "\n\nINSTALLING HTOP AND NEOFETCH"
 sudo apt-get install neofetch -y
 sudo apt-get install htop -y
 
+echo "MAKE THE TERMINAL WITHOUT HEADBAR"
+gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
+gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+
 echo "\n\nAUTOREMOVE .. "
 sudo apt autoremove
 
