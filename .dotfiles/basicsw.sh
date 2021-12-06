@@ -8,7 +8,7 @@
 echo "\n\tUPDATE THE APT ... "
 sudo apt-get update -y
 
-# sudo apt-get install git -y
+sudo apt-get install git -y
 # echo "Git Configuration"
 # echo "Enter global user name for git"
 # read GITUSER;
@@ -37,9 +37,6 @@ echo "\n\nINSTALLING VIMPLUG ... "
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "\n\n INSTALLING MICRO EDITOR .. "
-sudo snap install micro --classic 
-
 echo "\n\n INSTALLING INTELLIJ EDITOR ... "
 sudo snap install intellij-idea-community --classic 
 
@@ -61,7 +58,7 @@ sudo apt-get install docker.io -y
 echo "\n\n INSTALLING INSOMINA REST API ... "
 sudo snap install insomnia 
 
-echo "\n\n INSTALLING LIGHT SPOTIFY ... "
+echo "\n\n INSTALLING SPOTIFY ... "
 sudo snap install spotify
 
 echo "\n\nINSTALLING POP SHELL ... "
@@ -78,7 +75,6 @@ chsh -s $(which zsh)
 
 echo "\n\nINSTALLING OH-MY-ZSH ... "
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 
 echo "\n\nINSTALLING HTOP AND NEOFETCH"
 sudo apt-get install neofetch -y
