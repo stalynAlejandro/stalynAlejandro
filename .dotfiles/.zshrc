@@ -8,8 +8,11 @@ if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
-  alias fopen="xdg-open ."
   alias lvim="sh ~/.local/bin/lvim"
+  alias nf="neofetch"
+  alias ht="htop"
+  alias fo="xdg-open ."
+  alias to="gnome-terminal"
 fi
 
 export FZF_DEFAULT_COMMAND='rg'
@@ -30,7 +33,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
