@@ -18,7 +18,8 @@ set shiftwidth=2
 set encoding=UTF-8
 set expandtab
 set termguicolors
-      
+set showcmd " extra info at end of command line
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -45,6 +46,10 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>r :NERDTree<CR>
 
+" Copy And Paste
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -65,7 +70,6 @@ inoremap <leader>qa :qa!<CR>
 " Find Files 
 nnoremap <silent> <C-f> :Rg<CR>
 nnoremap <silent> <Leader>f :Files<CR>
-
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
 nnoremap <silent> <Leader>' :Marks<CR>
@@ -75,38 +79,34 @@ nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR> 
 
+" Git
+map <silent> <C-g>s :Gdiffsplit<CR>
+map <silent> <C-g>w :Gwrite<CR>
+map <silent> <C-g>r :Gread<CR>
+
 "::::: PLUGINS :::: 
-
 call plug#begin('~/.vim/plugged')
-
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-
-Plug 'elzr/vim-json'
-Plug 'itchyny/lightline.vim'
-Plug 'vim-airline/vim-airline'
-
-" GITHUB
-"Plug 'tpope/vim-fugitive'
-
-"Plug 'kristijanhusak/defx-git'
-
-" Colors
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-" Search Files
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-" Snippet and Additional Text Editing Support
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
-" NerdTree Plugins
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin' "showing git status flags
-
-" Themes
-Plug 'dracula/vim', { 'as': 'dracula' }
-
+  " WelcomePage
+  Plug 'mhinz/vim-startify'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+  "Plug 'elzr/vim-json'
+  Plug 'itchyny/lightline.vim'
+  Plug 'vim-airline/vim-airline'
+  " GITHUB
+  Plug 'tpope/vim-fugitive'
+  "Plug 'kristijanhusak/defx-git'
+  " Colors
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+  " Search Files
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  " Snippet and Additional Text Editing Support
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  " NerdTree Plugins
+  Plug 'preservim/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin' "showing git status flags
+  " Themes
+  Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 " Set ColorScheme
@@ -114,3 +114,9 @@ let g:dracula_colorterm = 0
 colorscheme dracula 
 
 let g:Hexokinase_highlighters = ['backgroundfull']
+
+"let g:startify_custom_header = startify#pad(split(system('fortune -s | figlet -w 100 -l -f slant'), '\n'))
+"let g:startify_custom_header = startify#pad(split(system('fortune -l'), '\n'))
+"let g:startify_custom_header = startify#pad(split(system('date'), '\n'))
+
+let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))

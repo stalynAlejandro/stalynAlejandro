@@ -13,6 +13,8 @@ else
   alias ht="htop"
   alias fo="xdg-open ."
   alias to="gnome-terminal"
+  alias pw="poweroff"
+  alias rb="reboot"
 fi
 
 export FZF_DEFAULT_COMMAND='rg'
