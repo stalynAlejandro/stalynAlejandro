@@ -21,6 +21,10 @@ echo "\n\nINSTALLGIN JAVA ...  "
 sudo apt-get install default-jre -y
 java --version
 
+echo "\n\nINSTALLING MAVEN .. "
+sudo apt-get install maven -y
+mvn -version
+
 echo "\n\nINSTALLING NODE 16.13.0 LTS ... "
 curl -fsSL https://deb.nodesource.com/setup_16.13.0 | sudo -E bash -
 sudo apt-get install -y nodejs
