@@ -1,4 +1,7 @@
 let mapleader = "." 		"Mapleaderkey to .
+:syntax sync fromstart
+autocmd BufEnter * :syntax sync fromstart
+
 " Stop Recording (Temporary)
 map q <Nop>
 
@@ -58,6 +61,7 @@ nnoremap <C-l> <C-w>l
 
 " Save and Exit
 noremap <leader>w :w<CR> 		
+noremap <leader>x :x<CR> 		
 noremap <leader>qq :q!<CR> 
 noremap <leader>qa :qa!<CR> 
 noremap <leader>l :let @/=''<CR>
@@ -84,6 +88,9 @@ map <silent> <C-g>s :Gdiffsplit<CR>
 map <silent> <C-g>w :Gwrite<CR>
 map <silent> <C-g>r :Gread<CR>
 
+" Prettier
+nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
+ 
 "::::: PLUGINS :::: 
 call plug#begin('~/.vim/plugged')
   " WelcomePage
@@ -115,7 +122,7 @@ call plug#end()
  let g:dracula_colorterm = 0
  colorscheme dracula 
 
-" let g:Hexokinase_highlighters = ['backgroundfull']
+"let g:Hexokinase_highlighters = ['backgroundfull']
 
 "let g:startify_custom_header = startify#pad(split(system('fortune -s | figlet -w 100 -l -f slant'), '\n'))
 "let g:startify_custom_header = startify#pad(split(system('fortune -l'), '\n'))
