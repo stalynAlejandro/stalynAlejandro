@@ -30,8 +30,8 @@ curl -fsSL https://deb.nodesource.com/setup_16.13.0 | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo apt install npm -y
 
-echo "\n\nINSTALLING SNAP ... "
-sudo apt-get install snapd 
+#echo "\n\nINSTALLING SNAP ... "
+#sudo apt-get install snapd 
 
 echo "\n\nINSTALLING VIM EDITORS ..."
 sudo apt-get install vim -y
@@ -41,17 +41,17 @@ echo "\n\nINSTALLING VIMPLUG ... "
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "\n\n INSTALLING INTELLIJ EDITOR ... "
-sudo snap install intellij-idea-community --classic 
+#echo "\n\n INSTALLING INTELLIJ EDITOR ... "
+#sudo snap install intellij-idea-community --classic 
 
-echo "\n\n INSTALLING SNAP ANDROID STUDIO ... "
-sudo snap install android-studio --classic 
+#echo "\n\n INSTALLING SNAP ANDROID STUDIO ... "
+#sudo snap install android-studio --classic 
 
-echo "\n\n INSTALLING SNAP GNU IMAGE EDITOR ... "
-sudo snap install gimp 
+#echo "\n\n INSTALLING SNAP GNU IMAGE EDITOR ... "
+#sudo snap install gimp 
 
 echo "\n\n INSTALLING SNAP BLENDER .. "
-sudo snap install blender --classic 
+#sudo snap install blender --classic 
 
 echo "\n\n INSTALLING DOCKER ENGINE ... "
 sudo apt-get install ca-certificates curl gnupg lsb-release -y
@@ -60,7 +60,7 @@ sudo apt-get update -y
 sudo apt-get install docker.io -y 
 
 echo "\n\n INSTALLING INSOMINA REST API ... "
-sudo snap install insomnia 
+#sudo snap install insomnia 
 
 echo "\n\n INSTALLING SPOTIFY ... "
 sudo snap install spotify
