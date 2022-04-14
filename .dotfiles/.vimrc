@@ -47,8 +47,8 @@ nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>r :NERDTree<CR>
 
 " Copy And Paste
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+noremap <leader>Y "+y
+noremap <leader>P "+p
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -107,16 +107,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'Xuyuanp/nerdtree-git-plugin' "showing git status flags
   " Themes
   Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " Set ColorScheme
-let g:dracula_colorterm = 0
-colorscheme dracula 
+ let g:dracula_colorterm = 0
+ colorscheme dracula 
 
-let g:Hexokinase_highlighters = ['backgroundfull']
+" let g:Hexokinase_highlighters = ['backgroundfull']
 
 "let g:startify_custom_header = startify#pad(split(system('fortune -s | figlet -w 100 -l -f slant'), '\n'))
 "let g:startify_custom_header = startify#pad(split(system('fortune -l'), '\n'))
 "let g:startify_custom_header = startify#pad(split(system('date'), '\n'))
-
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))
