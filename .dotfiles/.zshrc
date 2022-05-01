@@ -15,6 +15,12 @@ else
   alias to="gnome-terminal"
   alias pw="poweroff"
   alias rb="reboot"
+  alias gst="git st"
+  alias gci="git ci"
+  alias gbr="git br"
+  alias gadd="git add"
+  alias gpull="git pull"
+  alias gpush="git push"
 fi
 
 export FZF_DEFAULT_COMMAND='rg'
