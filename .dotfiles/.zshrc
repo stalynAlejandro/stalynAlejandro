@@ -18,6 +18,7 @@ else
   alias gst="git st"
   alias gci="git ci"
   alias gbr="git br"
+  alias grst="git rst"
   alias gadd="git add"
   alias gpull="git pull"
   alias gpush="git push"
@@ -41,6 +42,9 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
