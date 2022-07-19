@@ -25,6 +25,10 @@ else
   alias gadd="git add"
   alias gpull="git pull"
   alias gpush="git push"
+  alias gssh="ssh-add ~/.ssh/gitkey"
+  alias nrdev="npm run dev"
+  alias nrstart="npm run start"
+  alias nrstory="npm run storybook"
 fi
 
 export FZF_DEFAULT_COMMAND='rg'
