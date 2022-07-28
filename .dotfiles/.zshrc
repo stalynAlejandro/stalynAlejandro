@@ -14,6 +14,8 @@ else
   alias fo="xdg-open ."
   alias to="gnome-terminal"
   alias pw="poweroff"
+  alias spw="sudo poweroff"
+  alias srb="sudo reboot"
   alias rb="reboot"
   alias gst="git st"
   alias gci="git ci"
