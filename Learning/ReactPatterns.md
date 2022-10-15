@@ -11,12 +11,19 @@ Designing for React actually rewards you for thinking in a modular way. It allow
 ### Terminology
 
 > ReactDOM : The package for DOM and server rendering
+
 > JSX : Syntax extension to JavaScript
+
 > Redux : Centralized state container
+
 > Hooks : A new way to use React features without writing classes
+
 > React Native : The library to develop cross-platform native apps with JavaScript
+
 > Webpack : Javascript module bundler, popular in React community.
+
 > NextJS : A React framework with many best-in-class features including SSR, Code-splitting, optimized for performance.
+
 
 ### Rendering with JSX
 
