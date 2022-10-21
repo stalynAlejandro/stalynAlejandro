@@ -13,6 +13,7 @@ else
   alias ht="htop"
   alias fo="xdg-open ."
   alias to="gnome-terminal"
+  alias gc="google-chrome"
   alias pw="poweroff"
   alias spw="sudo poweroff"
   alias srb="sudo reboot"
@@ -51,6 +52,8 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export HOSTALIASES=~/.hosts
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
