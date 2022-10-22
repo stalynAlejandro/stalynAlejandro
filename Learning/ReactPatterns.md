@@ -395,3 +395,203 @@ export default function ListItem(){
 }
 
 ```
+
+# Prototype Pattern
+
+Share properties among many objects of the same type
+
+The prototype pattern is a useful way to share properties among many objects of the same type. The prototpe is an object that's native to JavaScript, and can be accessed by objects through the prototype chain.
+
+In our applications, we often have to create many objects of the same type. A useful way of doing this is by creating multiple instances.
+
+The prototype pattern is very powerful when working with objects that should have access to the same properties. Instead of creating a duplicate of the property each time, we can simply add the property to the prototype, since all instances have acess to the prototype object.
+
+Since _all insntances have access to the prototype_, it's easy to add properties to the prototype even after creating instances.
+
+```javascript
+
+class Dog{
+
+  constructor(name){
+    this.name = name;
+  }
+
+  bark(){
+    return 'woof!';
+  }
+
+}
+
+
+const dog1 = new Dog('Daisy');
+
+Dog.prototype.play() => console.log('Playing now!')
+
+
+dog1.play(); // Playing now!
+
+
+```
+
+The term _prototype chain_ indicates that there could be more than one step. We've only seen how we ca access properties that are directly available on the first object that _**proto**_ has a reference to. However, prototypes themselves also have a _**proto**_ object.
+
+Let's create a super dog.
+
+```javascript
+class SuperDog extends Dog {
+  constructor(name) {
+    super(name);
+  }
+
+  fly() {
+    return "flying!";
+  }
+}
+
+const dog1 = new SuperDog("Daisy");
+
+dog1.bark();
+dog1.fly();
+```
+
+### Object.create
+
+The _Object.create_ method let us create a new object, to which we can explicitly pass the value of its prototype.
+
+```javascript
+const dog = {
+  bark() {
+    console.log("Woof!");
+  },
+};
+
+const pet1 = Object.create(dog);
+
+pet1.bark(); // Woof!
+
+console.log('Direct properties on pet1: ', Object.keys(pet1))
+console.log('Properties on pet1's prototype: ', Object.keys(pet1.__proto__));
+```
+
+_Object.crate_ is a simple way to let objects directly inherit properties from other objects, by specifying the newly created object's prototype. The new object can access the new properties by walking down the prototype chain.
+
+The **Prototype Pattern** allows us to easily let objects acess and inherit properties from other objects. Since the prototype chain allows us to access properties that aren't directly defined on the object itself, we can avoid duplication of methods and properties, thus reducing the amount of memory used.
+
+# Container / Presentational Pattern
+
+Enforce separation of concerns by separating the view from the application logic.
+
+Ideally, we want to enforce separation of concerns by separating this process into two parts:
+
+1. Presentational Components: Components that care about how data is shown to the user. Example, that's rendering the list of images.
+
+2. Container Components: Components that care about what data is shown to the user. Example fetching the dog images.
+
+_Fetching_ the dog images deals with application _logic_, whereas **displaying** the images only deals with the **view**.
+
+## Presentational Component
+
+A presentational component receives its data through props. Its primary function is to simply display the data it receives the way we want them to, including styles, without modifying that data.
+
+Let's take a look at the example that displays the images. When rendering the images, we simply want to map over each dog image that was fetched from the API, and render those images.
+
+We can create a functional component that receives the data through props, and renders the data it received.
+
+```javascript
+export const DogImages = ({ dogs }) => {
+  return dogs.map((dog, i) => <img key={i} src={dog} alt="Dog" />);
+};
+```
+
+The _DogsImages_ component is _presentational component_. Presentational Components are usually stateless: **they do not contain their own State**, unless they need a state for UI purposes. The data they receive, is not altered by the representational components themselves.
+
+Presentational components receive their data from container components.
+
+## Container Components
+
+The primary function container components is to pass data to presentational components, which they contain. Container components themselves usually don't render any other components besides the presentational components that care about their data. They usually don't contain any styling either.
+
+We need to create a container that fetches this data, and passes to the presentational component in order to display it on the screen.
+
+```javascript
+export const DogImagesContainer = () => {
+  const [dogs, setDogs] = useState([]);
+
+  const fetchData = () => {
+    fetch("https://dog.ceo/api/bread/labrador/images/random/6")
+      .then((res) => res.json())
+      .then(({ message }) => setDogs({ dogs: message }));
+  };
+
+  return <DogImages dogs={dogs} />;
+};
+```
+
+Combining these two components together makes it possible to separate handling application logic with the view.
+
+## Hooks
+
+In many cases, the Container/Presentational can be replaced with React hooks. The introduction of hooks made it easy for developers to add satefulness without needing a container to provide that state.
+
+Instead of having the data fetching in the _Container_ component, we can create a custom hook that fetches the images and returns the array of dogs.
+
+```javascript
+export function useDogImages() {
+  const [dogs, setDogs] = useSate([]);
+
+  useEffect(() => {
+    fetch("https://dog.ceo/api/bread/labrador/images/random/6")
+      .then((res) => res.json())
+      .then(({ message }) => setDogs(message));
+  }, []);
+
+  return dogs;
+}
+```
+
+By using this hook, we no longer need the wrapping Container component to fetch the data, and send this to the presentational component.
+
+**We use this hook directly in our presentational component**.
+
+```javacript
+import {useState, useEffect} from 'react'
+
+export function useDogImages(){
+  const [dogs, setDogs] = useState([]);
+
+  useEffect(() => {
+    asyn function fetchDogs(){
+      const res = await fetch('https://dog.ceo/random/6');
+      const {message} = await res.json();
+      setDogs(message)
+    }
+
+    fetchDogs();
+  },[])
+
+  return dogs;
+}
+
+```
+
+```javascript
+import { useDogImages } from "./useDogImages";
+
+export const DogImages = () => {
+  const dogs = useDogImages();
+
+  return dogs.map((dog, i) => <img key={i} src={dog} alt="Dog" />);
+};
+```
+
+By using the _useDogImages_ hook, we still separated the application logic from the view. We're simply using the returned data from the _useDogImages_ hook, without modifying that data.
+
+Hooks make it easy to separete logic and view in a component, just like the Container/Presentational pattern. It saves us the extra layer that was necessary in order to wrap the presentational component within the container component.
+
+### Pros
+
+This makes it easy to enforce the separation of concerns.
+
+Presentational components are easly made reusable, as they simply display data without altering this data.
+
+Testing presentational components is easy, as they are usually pure functions.
