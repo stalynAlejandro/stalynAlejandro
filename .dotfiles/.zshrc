@@ -13,7 +13,7 @@ else
   alias ht="htop"
   alias fo="xdg-open ."
   alias to="gnome-terminal"
-  alias gc="google-chrome"
+  alias ch="google-chrome"
   alias pw="poweroff"
   alias spw="sudo poweroff"
   alias srb="sudo reboot"
