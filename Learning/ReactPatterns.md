@@ -595,3 +595,165 @@ This makes it easy to enforce the separation of concerns.
 Presentational components are easly made reusable, as they simply display data without altering this data.
 
 Testing presentational components is easy, as they are usually pure functions.
+
+# Observer Pattern
+
+Use observables to notify subscribers when an event occurs.
+
+With the observer pattern, we can subscribe certain objects. the observers, to another object, called the observable. Whenever an event occurs, the observable notifies all its observers!
+
+An observable object usually contains 3 important parts:
+
+- observers: an array of observers that will get notified whenever a specific event occurs.
+  }
+- subscribe(): a method in order to add observers to the observers list.
+
+- unsubscribe(): a method in order to remove observers from the observers list.
+
+- notify(): a method to notify all observers whenever a specific event occurs.
+
+```javascript
+class Observable {
+  constructor() {
+    this.observers = [];
+  }
+
+  subscribe(func) {
+    this.observers.push(func);
+  }
+
+  unsubscribe(func) {
+    this.observers = this.observers.filter((observer) => observer !== func);
+  }
+
+  notify(data) {
+    this.observers.forEach((observer) => observer(data));
+  }
+}
+```
+
+Let's build something observable. We have a very basic app that only consists of two components: a _Button_ and a _Swtich_.
+
+```javascript
+export default function App() {
+  return (
+    <div className="App">
+      <Button>Click me!</Button>
+      <FormControlLable control={<Switch />} />
+    </div>
+  );
+}
+```
+
+We want to keep track of the user interaction with the application. Whenever a user clicks the button or toggles the swtich, we want to log this event with the timestamp. Besides loggin it, we also want to create a toast notification that shows up whenever an event occurs!
+
+Whenever the user invokes the _handleClick_ or _handleToggle_ function, the functions invoke the notify method on the observer. The notify method notifies all subscribers with the data that was passed by the _handleClick_ or _handleToggle_ functions!
+
+First, let's create the _logger_ and _tastily_ functions. This functions will eventually receive data from the notify method.
+
+```javascript
+import { ToastContainer, toast } from "react-toastify";
+
+function logger(data) {
+  console.log(`${Date.now()} ${data}`);
+}
+
+function toastify(data) {
+  toast(data);
+}
+
+observable.subscribe(logger);
+observable.subscribe(toastify);
+
+export default function App() {
+  return (
+    <div className="App">
+      <Button>Click me!</Button>
+      <FormControlLable control={<Switch />} />
+    </div>
+  );
+}
+```
+
+Whenever an event occurs, the _logger_ and _toastify_ functions will get notified. Now we just need to implement the functions that actually notify the observable: the _handleClick_ and _handleToggle_ functions! These functions should invoke the notify mehtod on the observable, and pass the data to the observers should receive.
+
+```javascript
+import { ToastContainer, toast } from "react-toastify";
+
+function logger(data) {
+  console.log(`${Date.now()} ${data}`);
+}
+
+function toastify(data) {
+  toast(data, {
+    position: toast.POSITION.BOTTOM_RIGHT,
+    closeButton: flase,
+    autoClose: 2000,
+  });
+}
+
+observable.subscribe(logger);
+observable.subscribe(toastify);
+
+export default function App() {
+  function handleClick() {
+    observable.notify("User clicked button!");
+  }
+
+  function handleToggle() {
+    observable.notify("User toggled switch!");
+  }
+
+  return (
+    <div className="App">
+      <Button onClick={handleClick}>Click me!</Button>
+      <FormControlLable control={<Switch onChange={handleToggle} />} />
+    </div>
+  );
+}
+```
+
+We just finished the entire flow: _handleClick_ and _handleToggle_ invoke the notify method on the observer with the data, after which the observer notifies the subscribers: the _logger_ and _toastify_ functions in this case.
+
+Whenever a user interacts with either of the components, both the logger and the toastify functions will get notified with the data that we passed to the notify method!
+
+## Pros
+
+Using the observer pattern is a great way to enforce separation of concerns and the single-responsability principle. The observer objects aren't tightly coupled to the observer object, and can be (de)coupled at any time.
+
+The observable object is responsible for monitoring the events, while the observers simply handle the received data.
+
+## Cons
+
+If an observer becomes too complex, it may cause performance issues when notifying all subscribers.
+
+## Case Study
+
+A popular library that uses the observable pattern is _RxJs_.
+
+_ReactiveX combines the Observer pattern with the Iterator pattern and functional programming with collections to fill the need for an ideal way of managing sequences of events. - RxJS_
+
+With RxJS we can create observables and subscribe to certain events! Let's look at an example that's covered in their documentation, which logs whether a user was dragging in the document or not.
+
+```javascript
+import { fromEvent, merge } from "rxjs";
+import { sample, mapTo } from "rxjs/operatos";
+import "./styles.css";
+
+merge(
+  fromEvent(document, "mousedown").pipe(mapTo(false)),
+  fromEvent(document, "mousemove").pipe(mapTo(true))
+)
+  .pipe(sample(fromEvent(document, "mouseup")))
+  .subscribe((isDraggin) => {
+    console.log("Were you draggin?", isDraggin);
+  });
+
+  ReactDOM.render(
+    <div className='App'>
+      Click or drag anywhere and check the console!
+    </div>
+    document.getElementById('root')
+  )
+
+```
