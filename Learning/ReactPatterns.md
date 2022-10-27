@@ -2,11 +2,11 @@
 
 Design patterns are a fundamental part of software development, as they provide typical solutions to commonly recurring problems in software design.
 
-[Terminology](#-terminology)
+[Terminology](#terminology)
 
-[Lifecycle](#-lifecycle)
+[Lifecycle](#lifecycle)
 
-[Proxy Pattern](#-proxy-pattern)
+[Proxy Pattern](#proxy-pattern)
 
 
 ## Overview of ReactJs
