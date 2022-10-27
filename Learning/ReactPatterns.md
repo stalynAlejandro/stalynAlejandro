@@ -2,6 +2,11 @@
 
 Design patterns are a fundamental part of software development, as they provide typical solutions to commonly recurring problems in software design.
 
+[Terminology](### Terminology)
+[Lifecycle](### Lifecycle)
+[Proxy Pattern](# Proxy Pattern)
+
+
 ## Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -241,7 +246,7 @@ const personProxy = new Proxy(person, {
 
 Overusing the _Proxy_ object or perfoming heavy operations on each handler method invocation can easily affect the performance of your application negatively. It's best to **not** use proxies for performance-critical code.
 
-# Proxy Pattern
+# Provider Pattern
 
 Make data available to multiple child components
 
@@ -757,3 +762,125 @@ merge(
   )
 
 ```
+
+# Module Pattern
+
+Split up your code into smaller, reusable pieces.
+
+Besides being able to split your code into smaller reusable pieces, _modules_ allow you to keep certain values within your file private.
+
+Declarations within a _module_ are scoped (encapsulated) to that module, by default. If we don't explicitly export certain value, that value is not available outside that module.
+
+This reduces the risk of name collisions for values declared in other parts of your codebase, since the values are not available on the global scope.
+
+## ES2015 Modules
+
+A module is a file containing JavaScript code, with some difference in behaviour compared to a normal script.
+
+example: _math.js_
+
+```javascript
+// math.js
+
+export function add(x, y) {
+  return x + y;
+}
+
+export function multiply(x) {
+  return x * 2;
+}
+
+export function substract(x, y) {
+  return x - y;
+}
+
+export function square(x) {
+  return x * x;
+}
+```
+
+We have a _math.js_ file containing some simple mathematical logic.
+
+However, we don't just want to use these functions in the _math.js_ file, we want to be able to refernce them in the _index.js_ file. That's why every functions has an _export_ key work in front of them.
+
+Let's use these functions now!
+
+```javascript
+//  index.js
+
+import { add, multiply, substract, sqare } from "./math";
+
+console.log(add(2, 3));
+console.log(multiply(2));
+console.log(substract(2, 3));
+console.log(square(2));
+```
+
+Besides named exports, which are exports defined with just the export keyword, you can also use a defult export. You can only have one default per module.
+
+The difference between named exports and default exports, is the way the value is exported from the module, effectively changing the way we have to import the value.
+
+In this case, we're importing all exports from a module. Be careful when doing this, since you may end up unnecessarily importing values. Using the \* only imports all exported values. Values private to the module are still not available in the file that imports the module, unless you explicitly exported them.
+
+# React
+
+When building applications with React, you often have to deal with a large amount of components. Instead of writing all of these components in one file, we can separate the components in their own files, essentially creating a module for each component.
+
+```javascript
+//Button.js
+
+import React from "react";
+import Button from "@material-ui/core/Button";
+
+export default function CustomButton(props){
+  return(
+    <Button {..props}>
+      {props.children}
+    </Button>
+  )
+}
+
+```
+
+```javascript
+// Input.js
+
+import React from "react";
+import Input from "@material-ui/core/Input";
+
+export default function CustomInput(props, { variant = "standard" }) {
+  return (
+    <Input {...props} variant={variant} placeholder="Type" />;
+  )
+}
+```
+
+Throughout the app, we don't want to use the default _Button_ and _Input_ component, imported from the material-ui library. Instead, we want to use our custom version of the components, by adding custom styles to it defined in the styles object in their files.
+
+Rather than importing the default _Button_ and _Input_ component each time in our application and adding custom styles to it over and over, we can now simply import the default _Button_ and _Input_ component once, add styles, and export our custom component.
+
+# Dynamic Import
+
+When importing all modules on the top of a file, all modules get loaded before the rest of the file. In some cases, we only need to import a module based on a certain condition. With a dynamic import, we can import modules on demand.
+
+Let's dynamically import the _math.js_ example used in the previous paragraphs. The module only gets loaded, if the user clicks on the button.
+
+```javascript
+const button = document.getElementById("btn");
+
+button.addEventListener("click", () => {
+  import("./math.js").then((module) => {
+    console.log("Add: ", module.add(1, 2));
+    console.log("Multiply: ", module.multiply(3, 2));
+
+    const button = document.getElementById("btn");
+    button.innerHTML = "Check the console";
+  });
+});
+```
+
+By dynamically importing modules, we can reduce the page load time. We only have to load, parse, and compile the code that the user really needs, when the user needs it. 
+
+With the module pattern, we can encapsulate parts of our code that should not be publicy exposed. This prevents accidental name collisions and global scope pollution, which makes working with multiple dependencies and namespace less risky. 
+
+
