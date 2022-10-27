@@ -3,7 +3,9 @@
 Design patterns are a fundamental part of software development, as they provide typical solutions to commonly recurring problems in software design.
 
 [Terminology](### Terminology)
+
 [Lifecycle](### Lifecycle)
+
 [Proxy Pattern](# Proxy Pattern)
 
 
