@@ -3,14 +3,23 @@
 Design patterns are a fundamental part of software development, as they provide typical solutions to commonly recurring problems in software design.
 
 [Overview of ReactJs](#overview-of-reactjs)
+
 [Ohter concepts](#other-concepts-in-react)
+
 [Singleton Pattern](#singleton-pattern)
+
 [Proxy Pattern](#proxy-pattern)
+
 [Provider Pattern](#provider-pattern)
+
 [Prototype Pattern](#prototype-pattern)
+
 [Container / Presentational Pattern](#container-/-presentational-pattern)
+
 [Observer Pattern](#observer-pattern)
+
 [Module Pattern](#module-pattern)
+
 [Dynamic Import](#dynamic-import)
 
 # Overview of ReactJs
