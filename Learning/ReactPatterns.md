@@ -22,6 +22,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Dynamic Import](#dynamic-import)
 
+[Mediator / Middleware Pattern](#mediator-/-middleware-pattern)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -898,3 +900,117 @@ By dynamically importing modules, we can reduce the page load time. We only have
 
 With the module pattern, we can encapsulate parts of our code that should not be publicy exposed. This prevents accidental name collisions and global scope pollution, which makes working with multiple dependencies and namespace less risky.
 
+# Mediator / Middleware Pattern
+
+Use central mediator object to handle communication between components.
+}
+The mediator pattern makes it possible for components to interact with each other through a central point: _the mediator_. Instead of directly talking to each other, the mediator receives the requests, and sends them forward! In Javascript, the mediator is often nothing more than an object litral or a function.
+
+Instead of letting every object talk directly to the other objects, resulting in a many-to-many relationships, the object's requests get handled by the mediator. The mediator processes this request, and sends it forward to where it needs to be.
+
+A good use case for the mediator pattern is a chatroom.
+
+```javascript
+class ChatRoom {
+  logMessage(user, message) {
+    const time = new Date();
+    const sender = user.getName();
+
+    console.log(`${time} [${sender}]: ${message}`);
+  }
+}
+
+class User {
+  constructor(name, chatroom) {
+    this.name = name;
+    this.chatroom = chatroom;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  send(meesage) {
+    this.chatroom.logMessage(this, message);
+  }
+}
+```
+
+We can create new users that are connected to the chat room. Each user instance has send method which we can use in order to send messages.
+
+```javascript
+const chatroom = new ChatRoom();
+
+const user1 = new User("John", chatroom);
+const user2 = new User("Doe", chatroom);
+
+user1.send("Hi there!");
+```
+
+## Case Study
+
+**Expres.js** is a popular web application server framework. We can add callbacks to certain routes that the user can access.
+
+Say we want to add a header to the request if the user hits the root '/'. We can add this header in the middleware callback.
+
+```javascript
+const app = require('express');
+
+app.use('/', (req, res, next) => {
+  req.headers('test-header') = 1234;
+  next();
+})
+
+```
+
+The _next_ method calls the next callback in the request-response cycle. We'd be creating a chain of middleware functions that sit between the request and the response, or vice versa.
+
+```
+request => next (middleware) => next (middleware) => response
+```
+
+Let's add another middleware function that checks whether the test-header was added correctly.
+
+```javascript
+const app = require("express");
+
+app.use("/", (req, res, next) => {
+  req.headers('test-header') = 1234;
+  next();
+},
+(req,res,next) => {
+  console.log(`Request has test header: ${!!req.headers["test-headers"]}`);
+next();
+}
+);
+```
+
+We can track and modify the request object all the way to the response through one or multiple middleware functions.
+
+```javascript
+const app = require('express')
+const html = require(./data)
+
+app.use("/", (req, res, next) => {
+  req.headers('test-header') = 1234;
+  next();
+},
+(req,res,next) => {
+  console.log(`Request has test header: ${!!req.headers["test-headers"]}`);
+next();
+}
+);
+
+app.get('/', (req, res) => {
+  res.set("Content-Type", "text/html");
+  res.send(Buffer.from(html))
+})
+
+app.listen(8080, function(){
+  console.log('Server is running on 8080..')
+})
+```
+
+Every time the user hits a root endpoint '/' the two middleware callbacks will be invoked.
+
+The middleware pattern makes it easy for us to simply many-to-many relationships between objects, by leeting all comunication flow through one central point.
