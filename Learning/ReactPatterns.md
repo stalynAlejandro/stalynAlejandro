@@ -14,7 +14,7 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Prototype Pattern](#prototype-pattern)
 
-[Container / Presentational Pattern](#container-/-presentational-pattern)
+[Container / Presentational Pattern](#container--presentational-pattern)
 
 [Observer Pattern](#observer-pattern)
 
@@ -22,7 +22,7 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Dynamic Import](#dynamic-import)
 
-[Mediator / Middleware Pattern](#mediator-/-middleware-pattern)
+[Mediator / Middleware Pattern](#mediator--middleware-pattern)
 
 # Overview of ReactJs
 
