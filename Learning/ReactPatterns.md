@@ -2,14 +2,18 @@
 
 Design patterns are a fundamental part of software development, as they provide typical solutions to commonly recurring problems in software design.
 
-[Terminology](#terminology)
-
-[Lifecycle](#lifecycle)
-
+[Overview of ReactJs](#overview-of-reactjs)
+[Ohter concepts](#other-concepts-in-react)
+[Singleton Pattern](#singleton-pattern)
 [Proxy Pattern](#proxy-pattern)
+[Provider Pattern](#provider-pattern)
+[Prototype Pattern](#prototype-pattern)
+[Container / Presentational Pattern](#container-/-presentational-pattern)
+[Observer Pattern](#observer-pattern)
+[Module Pattern](#module-pattern)
+[Dynamic Import](#dynamic-import)
 
-
-## Overview of ReactJs
+# Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
 
@@ -111,7 +115,7 @@ Redux implements a centralized state machine driven by actions.
 - The data in state can be modified using _setState_.
 - State is managed within the component.
 
-## Other concepts in React
+# Other concepts in React
 
 ### Lifecycle
 
@@ -824,7 +828,7 @@ The difference between named exports and default exports, is the way the value i
 
 In this case, we're importing all exports from a module. Be careful when doing this, since you may end up unnecessarily importing values. Using the \* only imports all exported values. Values private to the module are still not available in the file that imports the module, unless you explicitly exported them.
 
-# React
+## React
 
 When building applications with React, you often have to deal with a large amount of components. Instead of writing all of these components in one file, we can separate the components in their own files, essentially creating a module for each component.
 
@@ -881,8 +885,7 @@ button.addEventListener("click", () => {
 });
 ```
 
-By dynamically importing modules, we can reduce the page load time. We only have to load, parse, and compile the code that the user really needs, when the user needs it. 
+By dynamically importing modules, we can reduce the page load time. We only have to load, parse, and compile the code that the user really needs, when the user needs it.
 
-With the module pattern, we can encapsulate parts of our code that should not be publicy exposed. This prevents accidental name collisions and global scope pollution, which makes working with multiple dependencies and namespace less risky. 
-
+With the module pattern, we can encapsulate parts of our code that should not be publicy exposed. This prevents accidental name collisions and global scope pollution, which makes working with multiple dependencies and namespace less risky.
 
