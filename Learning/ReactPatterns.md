@@ -24,6 +24,10 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Mediator / Middleware Pattern](#mediator--middleware-pattern)
 
+[Render Props Pattern](#render-props-pattern)
+
+[Hooks Pattern](#hooks-pattern)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -1014,3 +1018,488 @@ app.listen(8080, function(){
 Every time the user hits a root endpoint '/' the two middleware callbacks will be invoked.
 
 The middleware pattern makes it easy for us to simply many-to-many relationships between objects, by leeting all comunication flow through one central point.
+
+# Render Props Pattern
+
+Pass JSX elements to components through props.
+
+In the section on Higher Order Components, we saw that being able to reuse component logic can be very convenient if multiple components needs access to the same data, or contain the same logic.
+
+Another way of making components very reusable, is by using the render prop pattern. A render prop is a prop component, which value is a function that return a JSX element.
+
+The component itself does not render anything besides the render prop. Instead, the component simply calls the render prop, instead of implementing its own render logic.
+
+Imagine that we have a _Title_ component. In this case, the _Title_ component shouldn't do anything besides rendering the value that we pass.
+
+Let's pass the value that we want the _Title_ component to render the render prop.
+
+```javascript
+<Title render={() => <h1>I am a render prop</h1>} />
+```
+
+Within the _Title_ component, we can render this data by returning the invoked render prop!
+
+```javascript
+const Title = (props) => props.render();
+```
+
+The cool thing about render props, is that the component that receives the prop is very reusable. We can use it multipel times, passing different values to the render prop each time.
+
+```javascript
+import React from "react";
+import { render } from "react-dom";
+import "./styles.css";
+
+const Title = (props) => props.render();
+
+render(
+  <div className="App">
+    <Title render={() => <h1>"First render"</h1>} />
+    <Title render={() => <h1>"Second render"</h1>} />
+  </div>,
+  document.getElementById("root")
+);
+```
+
+Great! We've just seen that we can use render props in order to make a component reusable, as we can pass different data to the render prop each time. But, why would you want to use this?
+
+A component that takes a render prop usually does a lot more than simply invoking the render prop. Instead, we usually want to pass data from the component that takes the render prop, to the element that we pass as a render prop!
+
+```javascript
+function component(props){
+  const data = {...}
+  return props.render(data)
+}
+```
+
+The render prop can now receive this value that we passed as its argument.
+
+```javascript
+<Component render={data => <ChildComponent data={data}>} />
+```
+
+Let's look at an example. The app shows the value of this temperature in Fahrenheit and Kelvin.
+
+```javascript
+
+function Input({value, handleChange}) => {
+  return <input value={value} onChange={e => handleChange(e.targe.value)} />;
+}
+
+export default function App() {
+  const [value, setValue] = useState("");
+
+  return (
+    <div className="App">
+      <h1>Temperature Converter</h1>
+      <Input value={value} handleChange={setValue} />
+      <Kelvin value={value} />
+      <Fahrenheit value={value} />
+    </div>
+  );
+}
+```
+
+Although this is a valid solution, it can be tricky to lift state in larger applications with components that handle many children. Each state change could cause a re-render of all the children, even the ones that don't handle the data, which could negatively affect the performance of your app.
+Let's change the _Input_ component in a way that it can receive render props.
+
+```javascript
+function Input(props) {
+  const [value, setValue] = useState("");
+  return (
+    <>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder={"Temp"}
+      />
+      {props.render(value)}
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Temperature Converter</h1>
+      <Input
+        render={(value) => (
+          <>
+            <Kelvin value={value} />
+            <Fahrenheit value={value} />
+          </>
+        )}
+      />
+    </div>
+  );
+}
+```
+
+The _Kelvin_ and _Fahrenheit_ components now have access to the value of the user's input.
+
+Besides regular JXS components, we can pass functions as children to React components. This function is available to us through the children prop, which is technically also a render prop.
+
+Let's change the _Input_ component. Instead of explicitly passing the render prop, we'll just pass a function as child for the _Input_ component.
+
+```javascript
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Temperature Converter</h1>
+      <Input
+        {value => (
+          <>
+            <Kelvin value={value} />
+            <Fahrenheit value={value} />
+          </>
+        )}
+      />
+    </div>
+  );
+}
+```
+
+We have access to this function, through the _props.children_ prop that's available on the _Input_ component. Instead of calling _props.render_ with the value of the user input, we'll call _props.children_ with the value of the user input.
+
+```javascript
+
+function Input(props){
+  const [value, setValue] = useState("");
+
+  return(
+    <>
+      <input type="text" value={value} onChange={e => setValue(e.target.value) placeholder="Temp"} />
+      {props.children(value)}
+    </>
+  )
+}
+
+```
+
+## Hooks
+
+In some cases, we can replace render props with Hooks. A good example of this Apollo Client.
+
+After the release of Hooks, Apollo added Hooks support to the Apollo Client library. Instead of using the _Mutation_ and _Query_ render props, developers can now directly access the data through the hooks that the library provides.
+
+Let's look at an example that uses the exact same data as we previously saw in the exmple with the _Query_ render prop.
+
+This time we'll provide the data to the component by using the _useQuery_ hook that Apollo Client provided for us.
+
+```javascript
+import React, { useState } from "react";
+import "./styles.css";
+
+import { useMutation } from "@apollo/react-hooks";
+import { ADD_MESSAGE } from "./resolver";
+
+export default function Input() {
+  const [message, setMessage] = useState("");
+  const [addMessage] = useMutation(ADD_MESSAGE, { variables: { message } });
+
+  return (
+    <div className="input-row">
+      <input
+        onChange={(e) => setMessage(e.target.value)}
+        type="text"
+        placeholder="Type something ..."
+      />
+      <button onClick={addMessage}>Add</button>
+    </div>
+  );
+}
+```
+
+By using the _useQuery_ hook, we reduced the amount of code that was needed in order to provide the data to the component.
+
+## Pros
+
+Sharing logic and data among several component is easy with the render pros pattern. Components can be made very reusable, by using a render of children prop. Although the _Higher Order Component_ pattern mainly solves the same issues, namely reusability and sharing data, the render props pattern solves some of the issues we could ecounter by using the HOC pattern.
+
+The issue of naming collisions that we can run into by using the HOC pattern no longer applies by using the render props pattern, since we don't automatically merge props.
+
+We explicitly pass the props down to the child components, with the value provided by the parent component.
+
+Since we explicitly pass props, we solve the HOC's implicitly prop issue. The props that should get passed down to the element, are all visible in the render prop's arguments list. This way, we know exactly where certain props come from.
+
+We can separate our app's logic from rendering components through render props. The stateful component that receives a render prop can pass the data onto stateless components, which merely render the data.
+
+## Cons
+
+The issues that we tried to solve with render props, have largely been replaced by React Hooks. As hooks changed the way we can add reusability and data sharing to components, they can replace the render props pattern in many cases.
+
+Since we can't add lifecycle mehtods to a render prop, we can only use it on components that don't need to alter the data they recive.
+
+# Hooks Pattern
+
+Use functions to reuse stateful logic among multiple components throught the app
+
+React 16.8 introduced a new feature called Hooks. Hooks make it possible to use React state and lifecycle methods, withouth having to use a class component.
+
+Hooks play a very important role in your application design. Meny traditional design patterns can bre replaced by Hooks.
+
+React Hooks are functions that you can use to manage a component state and lifecycle methods. React Hooks make it possible to:
+
+- Add state to a functional component
+
+- Manage a component's lifecycle without having to use lifecycle methods such as _componentDidMount_ and _componentWillUnmount_
+
+- Reuse the same stateful logic among multiple components throughout the app
+
+First, let's take a look at how we can add state to a functional component, using React Hooks.
+
+## State Hooks
+
+React provides a hook that manages state within a functional component, called _useState_.
+
+We can refactor the _Input_ into a stateful functional component.
+
+```javascript
+function input() {
+  const [input, setInput] = useState("");
+
+  return (
+    <input
+      onChange={(e) => setInput(e.target.value)}
+      value={input}
+      placeholder="Type something ..."
+    />
+  );
+}
+```
+
+## Effect Hook
+
+We've seen we can use the _useState_ component to handle state within a functional component, but another benefit of class components was the possibility to add lifecycle methods to a component.
+
+With the _useEffect_ hook, we can "hook into" a components lifecycle. The _useEffect_ hook effectively combines the _componentDidMount_, _componentDidUpdate_ and _componentWillUnmount_ lifecycle methods.
+
+```javascript
+componentDidMount(){ ... }
+useEffect(() => { ... }, [])
+
+componentWillUnmount(){ ... }
+useEffect(() => {return () => { ... }})
+
+componentDidUpdate(){ ... }
+useEffect(() => { ... })
+```
+
+We can add input dependency array to the _useEffect_ hook.
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+export function Input() {
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    console.log(`The user typed ${input}`);
+  }, [input]);
+
+  return (
+    <input
+      onChange={(e) => setInput(e.target.value)}
+      value={input}
+      placeholder="Type something "
+    />
+  );
+}
+```
+
+The value of the input gets logged to the console whenever the user types a value.
+
+## Custom Hooks
+
+Besides the built-in hooks that React provides:
+
+- useState
+
+- useEffect
+
+- useReducer
+
+- useRef
+
+- useContext
+
+- useMemo
+
+- useContext
+
+- useImperativeHandle
+
+- useLayoutEffect
+
+- useDebugValue
+
+- useCallback
+
+You may have noticed that all hooks start with _use_. It's important to start your hooks with _use_ in order for React to check if it violates the rules of Hooks.
+
+Let's say we want to keep track of certain keys that the user may press when writing the input. Our custom hooks sould be able to receive the key we want to target as its argument.
+
+We want to add a keydown and keyup event listener to the key that the user passed as an argument. If the user pressed that key, meaning the keydown event gets triggered, the state within the hook should toggle to true. Else, when the user stops pressing that button, the keyup event gets triggered and the state toggles to false.
+
+```javascript
+// useKeyPress.js
+
+function useKeyPress(targetKey) {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  function handleDown() {
+    if (key === targetKey) setKeyPressed(true);
+  }
+
+  function handleUp({ key }) {
+    if (key === targetKey) setKeyPressed(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleDown);
+    window.addEventListener("keyup", handleUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleDown);
+      window.removeEventListener("keyup", handleUp);
+    };
+  }, []);
+
+  return keyPressed;
+}
+```
+
+```javascript
+// Input.js
+import useKeyPress from "./useKeyPress";
+
+export function Input() {
+  const [input, setInput] = useState("");
+  const pressQ = useKeyPress("q");
+  const pressW = useKeyPress("w");
+  const pressL = useKeyPress("l");
+
+  useEffect(() => {
+    console.log(`The user pressed Q!`);
+  }, [pressQ]);
+
+  return (
+    <input
+      onChange={(e) => setInput(e.target.value)}
+      value={input}
+      placeholder="Type something ..."
+    />
+  );
+}
+```
+
+Instead of keeping the _key pressed_ logic local to the input component, we can now reuse the _useKeyPress_ hook throughout multiple components, without having to rewrite the same logic over and over.
+
+Let's rewrite the counter and width example shown in the previous section.
+
+```javascript
+function useCounter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+
+  return { count, increment, decrement };
+}
+
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.addEventListener("resize", handleResize);
+  }, []);
+
+  return width;
+}
+
+export function App() {
+  const counter = useCounter();
+  const width = useWindowWidth();
+
+  return (
+    <div className="App">
+      <Count
+        count={counter.count}
+        increment={counter.increment}
+        decrement={counter.decrement}
+      />
+      <div id="divider" />
+      <Width width={width} />
+    </div>
+  );
+}
+```
+
+We broke the logic of the _App_ function into several pieces:
+
+- useCounter: A custom hook that returns the current value of count, an increment method, and a decrement method.
+
+- useWindowWidth: A custom hook that returns the window's current width.
+
+- App: A functional, stateful component that returns the _Counter_ and _Width_ component.
+
+By using Hooks instead of a class component, we were able to break the logic into smaller, reusable pieces that separate the logic.
+
+Using hooks just made it much clearer to separate the logic of our component into several smaller pieces. Reusing the same stateful logic just became much easier, and we no longer have to rewrite functional components into class components if we want to make the component stateful.
+
+Having reusable stateful logic increases the testatibily, flexibility and readability of components.
+
+## Adding Hooks
+
+Like other components, there are special functions that are used when you want to add Hooks to the code you have written. Here's a brief of overview of some common Hooks functions.
+
+- useState. Enables developers to update and manipulate state inside functions components without needing to convert it to a class component. One advantage of this hook is that is simple and does not require as much complexity as other react hooks.
+
+- useEffect. Is used to run code during major lifecycle events in a function component. The main body of a function component does not allow mutations, subscriptions, timers, loggins and other side effects. If they are allowed, it could lead to confusing bugs and inconsistencies within the UI. The useEffect hook prevents all of these "side effects" and allows the UI to run smoothly. It is a combination of _comopnentDidMount_, _componentDidUpdate_, and _componentWillUnmount_ all in one place.
+
+- useContext. Accepts a context object, which is the value returned from React.createContext, and returns the current context value for that context. The useContext hooks also works with the React Context API in order to share data through various levels.
+  It should be noted that the argument passed to the _useContext_ hook must be the context object itself and any component calling the _useContext_ always re-render whenever the context value changes.
+
+- useReducer. Gives an alternative to _useState_ and is specially preferable to it when you have complex state logic that involves multiple subvalues or when the next state depends on the previous one. It takes on a reducer function and an initial state input and returns the current state and a dispatch function as output by means of array destructuring. useReducer also optimizes the performance of components that trigger deep updates.
+
+## Pros and Cons of using hooks.
+
+Here are some benefits of making use of Hooks:
+
+Fewer lines of code Hooks allows you group code by concern and functionality, and not by lifecycle. This makes the code not only cleaner and concise but also shorter. Below is a comparision of a simple stateless component of a searchable product data table using React, and how it looks in Hooks after using the _useState_ keyword.
+
+```javascript
+// Component with hooks
+
+const TweetSearchResults = ({ tweets }) => {
+  const [filterText, setFilterText] = useState("");
+  const [inThisLocation, setInThisLocation] = useState("");
+
+  return (
+    <div>
+      <SearchBar
+        filterText={filterText}
+        inThisLocation={inThisLocation}
+        setFilterText={setFilterText}
+        setInThisLocation={setInThisLocation}
+      />
+      <TweetList
+        tweets={tweets}
+        filterText={filterText}
+        inThisLocation={inThisLocation}
+      />
+    </div>
+  );
+};
+```
+
+# HOC Pattern
+
+Pass reusable logic down as props to components throughout your application
+
+Within our application, we often want to use the same logic in multiple components. This logic con include applying a certain styling to components, requiring authorization, or adding a global state.
+
+One way of being able to reuse the same logic in multiple components, is by using the higher order component pattern. This pattern allows us to reuse component
