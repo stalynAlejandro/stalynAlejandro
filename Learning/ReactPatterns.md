@@ -28,6 +28,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Hooks Pattern](#hooks-pattern)
 
+[HOC Pattern](#hoc-pattern)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -1502,4 +1504,193 @@ Pass reusable logic down as props to components throughout your application
 
 Within our application, we often want to use the same logic in multiple components. This logic con include applying a certain styling to components, requiring authorization, or adding a global state.
 
-One way of being able to reuse the same logic in multiple components, is by using the higher order component pattern. This pattern allows us to reuse component
+One way of being able to reuse the same logic in multiple components, is by using the higher order component pattern. This pattern allows us to reuse component logic throughout our application.
+
+A HOC is component that receives another component. The HOC contains certain logic that we want to apply to the component that we pass a parameter. After applying that logic, the HOC returns the element with the additional logic.
+
+Say that we always wanted to add a certain styling to multiple components in our application. Instead of creating a style object locally each time, we can symply create a HOC that adds the style objects to the component that we pass to it.
+
+```javascript
+function withStyles(Component) {
+  return (props) => {
+    const styles = { padding: "0.2rem", margin: "1rem" };
+    return <Component style={style} {...props} />;
+  };
+}
+
+const Button = () => <button>Click Me!</button>;
+const Text = () => <p>Hello World!</p>;
+
+const StyledButton = withStyles(Button);
+const StyledText = withStyles(Text);
+```
+
+They now both contain the style that got added in the _withStyles_ HOC.
+
+Let's create a HOC called _withLoader_. A HOC should receive an component, and return that component. In this case, the withLoader HOC should receive the element which should display _Loading..._ until the data is fetched.
+
+Let's create the bare minimum version of the withLoader HOC that we want to use!
+
+A HOC returns an element, a functional componet to which we want to add the logic that allows us to display a text with _Loading..._ as the data is still being fetched. Once the data has been fetched, the component should pass the fetched data as a props.
+
+```javascript
+import React, { useEffect, useState } from "react";
+
+function withLoader(Element, url) {
+  return (props) => {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+      async function getData() {
+        const res = await fetch(url);
+        const data = await res.json();
+        setData(data);
+      }
+      getData();
+    }, []);
+
+    if (!data) return <div>Loading...</div>;
+
+    return <Element {...props} data={data} />;
+  };
+}
+```
+
+We just created a HOC that can receive any component and url.
+
+In the _useEffect_ hook, with _withLoader_ HOC fetches the data from the API endpoint that we pass as the value of url. While the data hasn't returned yet, we return the element containing the _Loading..._ text.
+
+Once the data has been fetched, we set data equal to the data that has been fetched. Since data is no longer null, we can display the element that we passed to the HOC.
+
+```javascript
+export default withLoader(
+  DogImages,
+  "https://dog.ceo/api/bread/labrador/images/random/6"
+);
+```
+
+Since the _withLoader_ returned the element with an extra data prop, _DogImages_ in this case, we can access the data prop in the DogImages component.
+
+```javascript
+import React from "react";
+import withLoader from "./withLoader";
+
+function DogImages(props) {
+  return props.data.message.map((dog, index) => {
+    <img src={dog} alt="Dog" key={index} />;
+  });
+}
+
+export default withLoader(DogImages, "http://dog.ceo/api/bread/random/6");
+```
+
+We now see a _Loading_ screen while the data is being fetched.
+
+The HOC pattern allows us to provide the same logic to multiple components, while keeping all the logic in one single place.
+
+The _withLoader_ HOC doesn't care about the component or url it receives: as long as it's valid component and a valid API endpoint, it'll simply pass the data from that API endpoint to the component that we pass.
+
+## Composing
+
+We can also compose multiple Higher Order Components. Let's say that we also want to add functionality that shows a _Hovering_ the box when the user hovers the _DogImages_ list.
+
+We need to create a HOC that provides a hovering prop to the element that we pass. Bassed on that prop, we can conditionally render the text box based on whether the user is hovering the _DogImages_.
+
+```javascript
+import withLoader from './withLoader';
+import withHover from './withHover';
+
+function DogImages(props){
+  return(
+    <div {..props}>
+      {props.hovering && <div id="hover">Hovering!</div>}
+      <div id="list">
+        {props.data.message.map((dog, index) => (
+          <img src={dog} alt="Dog" key={index} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default withHover(
+  withLoader(
+    DogImages,
+    'http://dog.ceo/api/bread/labrador/ramdom/6'
+  )
+)
+
+```
+
+We can now wrap the _withHover_ around _withLoader_.
+
+_A well-known library used for composing HOCs is recompose. Since HOCs can largely be replaced by Hooks, the recompose library is no longer maintained, thus won't be covered in this article._
+
+## Hooks
+
+In some cases, we can replace the HOC pattern with React Hooks.
+
+Let's replace the _withHover_ with a _useHover_ hook. Instead of having a HOC, we export a hook that adds a _mouseOver_ and _mouseLeave_ event listener to the element.
+
+We cannot pass the element anymore like we did with the HOC. Instead, we'll return a ref from the hook for that should get the _mouseOver_ and _mouseLeave_ events.
+
+```javascript
+import { useState, useRef, useEffect } from "react";
+
+export function useHover() {
+  const [hovering, setHover] = useState(false);
+  const ref = useRef(null);
+
+  const handleMouseOver = () => setHover(true);
+  const handleMouseOut = () => setHover(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (node) {
+      node.addEventListener("mouseover", handleMouseOver);
+      node.addEventListener("mouseout", handleMouseOut);
+
+      return () => {
+        node.addEventListener("mouseover", handleMouseOver);
+        node.addEventListener("mouseout", handleMouseOut);
+      };
+    }
+  }, [ref.current]);
+
+  return [ref, hovering];
+}
+```
+
+The _useEffect_ hook adds an event listener to the component, and sets the value hovering to true or false, depending on whether the user is currently hovering over the element. Both the _ref_ and _hovering_ values need to be returned from the hook: _ref_ to add a ref to the component that should receive the _mouseOver_ and _mouseLeave_ events, and hovering in order to be able to conditionally render the Hovering!
+
+We can use the _useHover_ hook right inside the _DogImages_ component.
+
+```javascript
+import useHover from "./useHover";
+import withLoader from "./withLoader";
+
+function DogImages(props) {
+  const [hoverRef, hovering] = useHover();
+
+  return (
+    <div ref={hoverRef} {...props}>
+      {hovering && <div id="hover">Hovering!</div>}
+      <div id="list">
+        {props.data.message.map((dog, index) => (
+          <img src={dog} alt={Dog} key={index} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default withLoader(DogImages, "http://dog.ceo/api/labrador/random/6");
+```
+
+Instead of wrapping the DogImages component with the _withHover_ component, we can simply use the _useHover_ hook within the component directly.
+
+Generally speaking, hooks don't replace the HOC pattern. As the React docs tells us, using Hooks can reduce the depth of the component tree. Using the HOC pattern, it's easy to end up with a deeply nested component tree.
+
+By adding a hook to the component directly, we no longer have to wrap components, while keeping that logic all in one single place.
+
+Hooks allows us to add custom behaviour from within the component, which could potentially increase the risk of introducing bugs compared to the HOC pattern if multiple components rely on this behaviour.
