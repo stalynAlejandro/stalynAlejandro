@@ -8,11 +8,11 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Singleton Pattern](#singleton-pattern)
 
-[Proxy Pattern](#proxy-pattern) :fire:
+[Proxy Pattern](#proxy-pattern)
 
 [Provider Pattern](#provider-pattern) :fire:
 
-[Prototype Pattern](#prototype-pattern) :fire:
+[Prototype Pattern](#prototype-pattern)
 
 [Container / Presentational Pattern](#container--presentational-pattern) :fire:
 
