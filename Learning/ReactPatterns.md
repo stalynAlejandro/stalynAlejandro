@@ -30,6 +30,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [HOC Pattern](#hoc-pattern)
 
+[Flyweight Pattern](#flyweight-pattern)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -1694,3 +1696,76 @@ Generally speaking, hooks don't replace the HOC pattern. As the React docs tells
 By adding a hook to the component directly, we no longer have to wrap components, while keeping that logic all in one single place.
 
 Hooks allows us to add custom behaviour from within the component, which could potentially increase the risk of introducing bugs compared to the HOC pattern if multiple components rely on this behaviour.
+
+# Flyweight Pattern
+
+Reuse existing intances when working with identical objects.
+
+The flyweight pattern is a useful way to conserve memory when we're creating a large number of simliar objects.
+
+In our application, we want users to be able to add books. All books have a title, an author, and an isbn number! However, a library usually doesn't have just one copy of a book: it usually has multiple copies of the same book.
+
+It wouldn't be very useful to create a new book instance each time if there are multiple copies of the exact same book. Instead, we want to create multiple instances of the Book constructor, that represent a single book.
+
+```js
+class Book {
+  constructor(title, author, isbn) {
+    this.title = title;
+    this.author = author;
+    this.isbn = isbn;
+  }
+}
+```
+
+Let's create the functionality to add new books to the list. If a book has the same ISBM number, thus is the exact same book type, we don't want to create an entirely new Book instance. Instead, we would should first check whether this book already exists.
+
+```js
+const books = new Map();
+
+const createBook = (title, author, isbn) => {
+  const existingBook = books.has(isbn);
+
+  if (existingBook) return books.get(isbn);
+
+  const book = new Book(title, author, isbn);
+  book.set(isbn, book);
+
+  return book;
+};
+```
+
+The _createBook_ function helps us create new instances of ne type of book.
+
+However, a library usually contains multiple copies of the same book! Let's create a _addBook_ function, which allows us to add multiple copies of the same book. It should invoke the _createBook_ function, which returns either a newly created Book instance, or returns the already existing instance.
+
+In order to keep track of the total amount of copies, let's create a _bookList_ array that contains the total amount of books in the library.
+
+```js
+const bookList = [];
+
+const addBook = (title, author, isbn, availability, sales) => {
+  const book = {
+    ...createBook(title, author, isbn),
+    sales,
+    availability,
+    isbn,
+  };
+
+  bookList.push(book);
+  return book;
+};
+```
+
+Instead of creating a new Book instance each time we add a copy, we can effectively use the already existing Book instance for that particular copy.
+
+```js
+addBook("HarryPotter", "JK Rowling", "AB123", false, 100);
+addBook("HarryPotter", "JK Rowling", "AB123", true, 50);
+
+addBook("To Kill", "HarperLee", "CD345", true, 10);
+addBook("To Kill", "HarperLee", "CD345", false, 30);
+
+addBook("The Great Gatsby", "Scott", "EF567", false, 20);
+```
+
+Although there are 5 copies, we only have 3 Books instances
