@@ -8,29 +8,31 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Singleton Pattern](#singleton-pattern)
 
-[Proxy Pattern](#proxy-pattern)
+[Proxy Pattern](#proxy-pattern) :fire:
 
-[Provider Pattern](#provider-pattern)
+[Provider Pattern](#provider-pattern) :fire:
 
-[Prototype Pattern](#prototype-pattern)
+[Prototype Pattern](#prototype-pattern) :fire:
 
-[Container / Presentational Pattern](#container--presentational-pattern)
+[Container / Presentational Pattern](#container--presentational-pattern) :fire:
 
-[Observer Pattern](#observer-pattern)
+[Observer Pattern](#observer-pattern) :fire:
 
 [Module Pattern](#module-pattern)
 
-[Dynamic Import](#dynamic-import)
+[Dynamic Import](#dynamic-import) :fire:
 
-[Mediator / Middleware Pattern](#mediator--middleware-pattern)
+[Mediator / Middleware Pattern](#mediator--middleware-pattern) :fire:
 
 [Render Props Pattern](#render-props-pattern)
 
-[Hooks Pattern](#hooks-pattern)
+[Hooks Pattern](#hooks-pattern) :fire:
 
-[HOC Pattern](#hoc-pattern)
+[HOC Pattern](#hoc-pattern) :fire:
 
 [Flyweight Pattern](#flyweight-pattern)
+
+[Factory Pattern](#factory-pattern)
 
 # Overview of ReactJs
 
@@ -1769,3 +1771,24 @@ addBook("The Great Gatsby", "Scott", "EF567", false, 20);
 ```
 
 Although there are 5 copies, we only have 3 Books instances
+
+# Factory Pattern
+
+Use a factory function in order to create objects
+
+With the factory pattern we can use factory functions in order to create new objects. A function is factory function when it returns a new object without the use f the new keyword!
+
+Say that we need many users for our application. We can create new users with a _firstName_, _lastName_, and _emailProperty_. The factory function adds a _fullName_ property to the newly created object as well, which returns the _firstName_ and the _lastName_.
+
+```js
+const createUser = ({ firstName, lastName, email }) => ({
+  firstName,
+  lastName,
+  email,
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+});
+```
+
+We can now create multiple users by invoking the _createUser function_
