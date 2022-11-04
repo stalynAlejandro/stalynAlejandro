@@ -36,6 +36,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Rendering](#rendering)
 
+[Overview of Nextjs](#overview-of-nextjs)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -2019,5 +2021,69 @@ We will explore each of these patterns in detail. Before that, however, let us t
 ```
 
 Depending on the type of the application or the page type, some of the patterns may be more suitable than the others.
+
+# Overview of Nextjs
+
+Vercel's framework for hybrid Rect applications.
+
+It is often difficult to understand all the different ways you might load content. NextJs abstracts this to make it as easy as possible.
+
+## Basic Features
+
+### Pre-rendering
+
+By default, NextJs generates the HTML for each page in advance and not on the client-side. This process is called _pre-rendering_. NextJs ensures that js code required to make the page fully interactive gets associated with generated HTML. This js code runs once the page loads.
+
+At this point, Reactjs works in a shadow DOM to ensure that the rendered content matches with what the React application would render without actually manipulating it. This process is called **hydration**.
+
+Each page is a React component exported from `.js, .jsx, .ts, or .tsx` file in the pages directory. The route is determined based on the file named `pages/about.js` corresponds to `/about`.
+
+Nextjs supports pre-rendering through both _Server-Side rendering_ and _Static Generation_. You can also mix different renderings methods in the same app where some pages are generated using _SSR and others using Static Generation_.
+
+_Client-Side_ rendering may also be used to render certain sections of these pages.
+
+### Data Fetching
+
+Nextjs supports data fetching with both _SSR_ and _Static Generation_.
+
+NextJs functions:
+
+- _getStaticProps_: Used with static generation to render data.
+
+- _getStaticPaths_: Used with static generation to render dynamic routes.
+
+- _getServerSideProps_: Applicable to SSR.
+
+### Static File Serving
+
+Static files like images can be served under a folder called `public` in the root directory. The same image may the be refered in the `<img>` tag code on diferent pages using the root url `src=/logo.png`
+
+### Automatic Image Optimization
+
+Allows for resizing, optimizing, and serving images in modern formats when the browser supports it. Thus, larger images are resized for smaller viewports when required.
+
+This functionality is implemented by importing the Nextjs _Image_ component which is an extension of the HTML `<img>`.
+
+```js
+import Image from "next/Image";
+
+<Image src="/logo.png" alt="logo" width={300} height={300} />;
+```
+
+### Routing
+
+Supports routing through the `pages` directory. 
+
+Also supports the creation of *dynamic routes* using named parameters where the actual document displayed is determined by the value of the parameter. 
+
+For example, a page `pages/products/[pid].js` will get matched to routes like `post/1` with `pid=1` as one of the query parameters. 
+
+### Code Splitting
+
+Code splitting ensures that only the required js is sent to the client which helps to improve performance. Nextjs supports two types of code splitting. 
+
+- Route-based. This is implemented by default in Nextjs. When a user visits a route, Nextjs only sends the code needed for the initial route. The other chunks are downloaded as required when the user navigates around the application. This limits the amount of code that needs to be parsed and compiled at once thereby improving the page load times. 
+
+- Component-based. This type of code splitting allows splitting large components into separate chunks that can be lazy-load when required. Nextjs supports component based code splitting through **dynamic import**. This allows you to import js modules dynamically and load each import as a separate chunk.
 
 
