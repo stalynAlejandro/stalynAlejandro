@@ -34,6 +34,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Factory Pattern](#factory-pattern)
 
+[Rendering](#rendering)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -1792,3 +1794,230 @@ const createUser = ({ firstName, lastName, email }) => ({
 ```
 
 We can now create multiple users by invoking the _createUser function_
+
+# Compound Pattern
+
+Crate multiple components that work together to perform a single task.
+
+In our application, we often have components that belong to each other. They're dependent on each through the shared state, and share logic together. Yout often see this with components like select, dropdown, components or menu items.
+
+The compound component pattern allows you to create components that all work together to perform a task.
+
+## Context API
+
+We have a list of squirrel images, besides just showing squirrel images, we want to add a button that makes it possible for the user to edit or delete the image. We can implement a _FlyOut_ component that shows a list when the user toggles the component.
+
+We essentially have three things:
+
+- The _FlyOut_ wrapper, which contains the toggle button and list.
+
+- The _Toggle_ button, which toggles the list.
+
+- The _List_ which contains the list of menu items.
+
+Using the Compound Pattern with React Context API is perfect.
+
+```js
+const FlyOutContext = createContext();
+
+function FlyOut(props) {
+  const [open, toggle] = useState(false);
+
+  const providerValue = { open, toggle };
+
+  return (
+    <FlyOutContext.Provider value={providerValue}>
+      {props.children}
+    </FlyOutContext.Provider>
+  );
+}
+
+function Toggle() {
+  const { open, toggle } = useContext(FlyOutContext);
+
+  return (
+    <div onClick={() => toggle(!open)}>
+      <Icon />
+    </div>
+  );
+}
+
+FlyOut.Toggle = Toggle;
+```
+
+In order to actually give _Toggle_ access to the _FlyOutContext_ provider, we need to render it as child component of _FlyOut_.
+
+We could just simply render this as a child component. However we can also make the _Toggle_ component a property of the _FlyOut_ component!
+
+```js
+FlyOut.Toggle = Toggle;
+```
+
+# Rendering
+
+Before we talk about drawbakcs, let us understand how we could mesure the performance of rendering mechanism.
+
+- A large js could increase how long page takes to reach FCP and LCP. The user will be required to wait for some time to go from a mostly blank page
+
+The available frameworks and libraries can be used to implement different rendering patterns like _Client-Side Rendering_, _Static Rendering_, _Hydration_, _Progressive Rendering_ and _Server-Side Rendering_. It is important to understand the implications of each of these patterns before we can decide which is best suited for our applications.
+
+## A brief history of web rendering
+
+Web technologies have been continuously evolving to support changing application requirements. The building blocks for all websites HTML, CSS and Js have also evolve over time to support changing requirements and utilize browser advancements.
+
+In the early 2000's we had sites where HTML content was render completely by the server. Developers relied on _server-side_ scripting languages like PHP and ASP to render HTML. Page reloads were required for all key navigations and javascript was used by clients minimally to hide/show or enable/disable HTML elements.
+
+In 2006, Ajax introduced the possiblilty os _Single-Page Applications (SPA)_, Gmail being the most popular example.
+
+Ajax allowed developers to make dynamic requests to the server without landing a new page. Thus, SPAs could be built to resemble desktop applications. Soon developers started using Js to fetch and render data. Js libraries and frameworks were created that could be used to build the view layer functionality in the MVC framework. _Client-Side framework_ like jQuery, Backbone.js and Angularjs made it easier for developers to build core features using js.
+
+React was introduced in 2013 as a flexible framework for building user interfaces UI components and provided a base for developing both single-page web and mobile applications.
+
+From 2015 to 2020 the React ecosystems has evolved to include supporting data-flow architecture libraries (Redux), Css frameworks (React-Boostrap), routing libraries and mobile application frameworks (React Native).
+
+However, there are some drawbakcs of a pure Client-Side rendering. As a result, developers have started exploring new ways to get the best of both the Client-Side and Server-Side rendering worlds.
+
+## Rendering - Key Performance Indicators.
+
+Before we talk about drawbakcs, let us understand how we could mesure the performance of rendering mechanism.
+
+A basic understanding of the following terms will helps us to compare the different patterns discussed here.
+
+- TTFB. Time to First Byte: the time between clicking a link and the first bit of content comming in.
+
+- FP. First Paint: First time any content becomes visible to the user or the time when the first few pixels are painted on the screen.
+
+- FCP. Fist Contentful Paint: Time when all the requested content becomes visible.
+
+- LCP. Largest Content Paint: Time when the main page content becomes visible. This refers to the largest image or text block visible within the viewport.
+
+- TTI. Time to Interactive: Time when the page becomes interactive. E.g. events are wired up, etc.
+
+- TBT. Total Blocking Time: The total amount of time between FCP and TTI.
+
+Some important notes about these performance parameters are as follows.
+
+- A large js could increase how long page takes to reach FCP and LCP. The user will be required to wait for some time to go from a mostly blank page to a page with content loaded.
+
+- Larger js bundles also affect TTI and TBT as the page can only become interactive once the minimal required js is loaded and events are wired.
+
+- The time required for the first byte content to reach the browser (TTFB) is dependent on time taken by the server to process the request.
+
+- Techniques such as preload, prefetch and script attributes can affect the above parameters as different browsers interpet them differently. It is helpful to understand the loading and execution priorities assigned by the browser for such attributes before using them.
+
+## Patterns - A Quick Look
+
+_Client-Side Rendering (CSR)_ and _Server-Side Rendering (SSR)_ from the two extremes of the spectrum of choices available for rendering. The other patterns listed in the following illustration use different approaches to provide some combination of features borrowed from both _CSR_ and _SSR_.
+
+### Server Rendering
+
+- Overview: An application where input is navigation requests and the outputs is HTML response on them.
+
+- Authoring: Entirely server-side.
+
+- Rendering: Dynamic HTML.
+
+- Sever Role: Controls all aspects.
+
+- Pros: TTI = FCP. Full Streaming.
+
+- Cons: Slow TTFB. Inflexible.
+
+- Scales via: Infra size / cost.
+
+- Examples: Gmail HTML, Hacker News.
+
+### Static SSR
+
+- Overview: Built as a Single Page App, but all pages pretended to static HTML as a build step, and then js is removed.
+
+- Authoring: Built as if client-side.
+
+- Rendering: Static HTML.
+
+- Sever Role: Delivers static HTML.
+
+- Pros: Fast TTFB. TTI = FCP.
+
+- Cons: Inflexible. Leads to hydration.
+
+- Scales via: build/deploy size.
+
+- Examples: Docusaurus, Netflix.
+
+### SSR with Re(hydration)
+
+- Overview: Build as a Single Page App. The server prerenders pages, but the full app is also booted on the client.
+
+- Authoring: Built as client-side.
+
+- Rendering: Dynamic HTML and js/dom.
+
+- Sever Role: Renders pages (navigation requests).
+
+- Pros: Flexible.
+
+- Cons: Slow TTFB. TTI >>> FCP. Usually buffered.
+
+- Scales via: Infra size && js size.
+
+- Examples: Nextjs, Razzle.
+
+### CSR with Prerendering
+
+- Overview: A Single Page App, where the initial shell/skeleton is prerendered to static HTML at build time.
+
+- Authoring: Client-Side.
+
+- Rendering: Partial static HTML then js/dom.
+
+- Sever Role: Delivers static HTML.
+
+- Pros: Flexible. Fast TTFB.
+
+- Cons: TTI > FCP. Limited streaming.
+
+- Scales via: js size.
+
+- Examples: Gatsby, Vuepress.
+
+### Full CSR.
+
+- Overview: A Single Page App. All logic, rendering and booting is done on the client. HTML is essentially just script and style tags.
+
+- Authoring: Client-Side.
+
+- Rendering: Entirely js/dom.
+
+- Sever Role: Delivers static html.
+
+- Pros: Flexible. Fast TTFB.
+
+- Cons: TTI >>> FCP. No streaming.
+
+- Scales via: js size.
+
+- Examples: Most Apps.
+
+We will explore each of these patterns in detail. Before that, however, let us talk about NextJs which is a React-based framework. Nextjs is relevant to our discussio because it can be used to implement all of the following patterns.
+
+- SSR.
+
+- Static SSR (experimental flag).
+
+- SSR with Rehydration.
+
+- CSR with Prerendering also known as Automatic Static Optimization.
+
+- Full CSR.
+
+```
+
+ Server-Side   -   SSR With    -   Static    -   Clien-Side
+  rendering        hydration   -  rendering  -   rendering
+
+```
+
+Depending on the type of the application or the page type, some of the patterns may be more suitable than the others.
+
+
