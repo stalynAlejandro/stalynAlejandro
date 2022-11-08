@@ -1,5 +1,3 @@
-[alis]
-	co = checkout
 [alias]
 	co = checkout
 	br = branch
@@ -18,3 +16,7 @@
 [core]
 	editor = vim
 	pager = cat
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false

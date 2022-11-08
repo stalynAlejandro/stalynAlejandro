@@ -28,6 +28,8 @@ else
   alias gadd="git add"
   alias gpull="git pull"
   alias gpush="git push"
+  alias gdiff="git-icdiff | less"
+  alias gdifftool="git difftool"
   alias gssh="ssh-add ~/.ssh/gitkey"
   alias nrdev="npm run dev"
   alias nrstart="npm run start"
