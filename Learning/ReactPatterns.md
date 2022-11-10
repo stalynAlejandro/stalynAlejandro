@@ -40,6 +40,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Client-side Rendering](#client-side-rendering)
 
+[Server-side Rendering](#server-side-rendering)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -2166,12 +2168,127 @@ Since performance for CSR is inversely proportional to the size of the js bundle
 <link rel="preload" as="script" href="critical.js" />
 ```
 
-This informs the browser to start loading the *critical.js* file before the page rendering mechanism starts. The script will be available earlier and will not block the page rendering mechanism thereby improving the performance. 
+This informs the browser to start loading the _critical.js_ file before the page rendering mechanism starts. The script will be available earlier and will not block the page rendering mechanism thereby improving the performance.
 
-- 3. **Lazy Loading**. With lazy loading, you can identify resources that are non-critical and load these only when needed. Initial page load times can be improved using this approach as the size of resources loaded initially is reduced. For example, a chat widget component would generally not be needed immediately on page load and can be lazy loaded. 
+- 3. **Lazy Loading**. With lazy loading, you can identify resources that are non-critical and load these only when needed. Initial page load times can be improved using this approach as the size of resources loaded initially is reduced. For example, a chat widget component would generally not be needed immediately on page load and can be lazy loaded.
 
-- 4. **Code Splitting**. To avoid a large bundle of js code, you could start splitting your bundles. Code-splitting is supported by bundlers like webpack where it can be used to create multiple bundles that can be dynamically loaded at runtime. Code splitting also enables you to lazy load js resources. 
+- 4. **Code Splitting**. To avoid a large bundle of js code, you could start splitting your bundles. Code-splitting is supported by bundlers like webpack where it can be used to create multiple bundles that can be dynamically loaded at runtime. Code splitting also enables you to lazy load js resources.
 
-- 5. **Application shell caching with service workers**. This technique involves caching the application shell which is the minimal HTML, CSS and js powering a user interface. Service workers can be used to cache the application shell offline. This can be useful in providing a native single-page app experience where the remaining content is loaded progressively as needed.  
+- 5. **Application shell caching with service workers**. This technique involves caching the application shell which is the minimal HTML, CSS and js powering a user interface. Service workers can be used to cache the application shell offline. This can be useful in providing a native single-page app experience where the remaining content is loaded progressively as needed.
 
 With these techniques, CSR can help to provide a faster Single-Page Application experience with a decent FCP and TTI. Next we will se what is available at the other end of the spectrum with Server-Side Rendering.
+
+# Server-Side Rendering
+
+Generate HTML to be rendered on the server in response to a user request.
+
+Server-Side Rendering (SSR) is one of the oldest methods of rendering web content. SSR generates the full HTML for the page content to be rendered in response to a user request. The content may include data from a datastore or external API.
+
+The content and fetch operations are handled on the server. HTML required to format the content is also generated on the server. Thus, with SSR we can avoid making additional round trips for data fetching and templating. As such, rendering code is not required on the client and the js corresponding to this need not be sent to the client.
+
+With SSR every request is treated independently and will be processed as a new request by the server. Even if the output of two consecutive request is not very different, the server will process and generate it from scratch. Since the server is common to multiple users, the processing capability is shared by all active users at a given time.
+
+## Classic SSR Implementation
+
+Let us see how you would create a page for displaying the current time using classic SSR and js.
+
+```js
+//index.html
+
+<html>
+  ...
+  <body>
+    <h1>It is <div id=currentTime></div></h1>
+  </body>
+</html>
+```
+
+```js
+//index.js
+
+function tick() {
+  var d = new Date();
+  var n = d.toLocalTimeString();
+  document.getElementById("currentTime").innerHTML = n;
+}
+```
+
+Note how this is different from the CSR code that provides the same output. Also note that, while the HTML is rendered by the server, the time displayed here is the local time on the client as populated by the js function `tick()`. If you want to display any other data that is server specific, e.g. server time, you will need to embed it in the HTML before it is rendered. This means it will not get refreshed automatically without a round trip to the server.
+
+## SSR - Pros and Cons
+
+Executing the rendering code on the server and reducing js offers the following advantges.
+
+- 1. **Lesser js leads to quicker FCP and TTI**. In cases where there are multiple UI elements and applications logic on the page, SSR has considerably less js when compared to CSR. The time required to load and process the script is thus lesser. FP, FCP and TTI are shorter and FCP = TTI. With SSR, users will not be left waiting for all the screen elements to appear and for it to become interactive.
+
+```js
+          |-- GET/top/1 --|
+network
+-------------------------------------------
+js                       |FCP| |TTI|
+                          SSR    js
+```
+
+- 2. **Provides additional budget for client-side js**
+
+Developments teams are required to work with a js budget that limits the amount of js on the page to achieve the desired performance. With SSR, since you are directly eliminating the js required to render the page, it creates additional space for any third party js that may be required by the application.
+
+- 3. **SEO Enabled**. Search engine crawlers are easily able to crawl the content of an SSR application thus ensuring higher search engine optimization on the page. SSR works great for static content due to the above advantages. However, it does have a few disadvantages because os which it is not perfect for all scenarios.
+
+- 4. **Slow TTFB**. Since all processing takes place on the server, the response from the server may be delayed in case of one or more of the following scenarios:
+
+  - Multiple simultaneous users causing excess load on the server.
+  - Slow network.
+  - Server code not optimized.
+
+- 5. **Full Page reloads required for some interactions**. Since all code is not available on the client, frequent round trips to the server are required for all key operations causing full page reloads. This could increase the time between interactions as users are required to wait longer between operations. A single-page applications is thus not possible with SSR.
+
+To address these drawbacks, modern frameworks and libraries allow rendering on both server and client for the same application. We will go into details of these in the following sections. First, let's look at a simpler form of SSR with Nextjs.
+
+### SSR with Nextjs
+
+The Nextjs framework also supports SSR. This pre-renders a page on the server on every request. It can be accomplished by exporting an async function called _getServerSideProps()_ from a page as follows.
+
+```js
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
+```
+
+The context object contains keys for HTTP request and response objects, routing parameters, querystring, locale, etc.
+
+### React for the Server
+
+React can be rendered isomorphically, which means that it can function both on the browser as well as other platforms like the server. Thus, UI elements may be rendered on the server using React.
+
+React can also be used with universal code which allow the same code to run in multiple environments. This is made by using Nodejs on the server or what is known as a Nodejs server. Thus, universal js may be used to fetch data on the server and then render it using isomorphic React.
+
+Let us take a look at the react functions that make this possible.
+
+```js
+ReactDOMServer.renderToString(element);
+```
+
+This function returns HTML string corresponding to the React element. The HTML can then be rendered to the client for a faster page load.
+
+The _renderToString()_ function may be used with _ReactDOM.hydrate()_. This will ensure that the rendered HTML is preserved as-is on the client and only the event handdlers attached after load.
+
+To implement this, we use `a.js` file on both client and server corresponding to every page. The `.js` file on the server will render HTML content, and the `.js` file on the client will hydrate it.
+
+Assume you have a React element called App which consists the HTML to be rendered defined in the universal `app.js`. Both the server and client-side React can recognize the App element.
+
+The `ipage.js` file on the server can have the code:
+
+```js
+app.get(`/`, (req, res) => {
+  const app = ReactDOMServer.renderToString(<App />);
+});
+```
+
+The constant App can now be used to generate the HTML to be rendered. The `ipage.js` on the client side will have the following to ensure that the element App is hydrated.
+
+```js
+ReactDOM.hydrate(<App />, document.getElementById("root"));
+```
