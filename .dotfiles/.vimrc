@@ -36,8 +36,7 @@ set ignorecase
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
 
-" Key Bindings REMAPS
-map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR> <C-w>20+
+map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR> <C-w>5+
 
 " NerdTree 
 autocmd VimEnter * NERDTree | wincmd p
@@ -91,13 +90,12 @@ nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
  
 "::::: PLUGINS :::: 
 call plug#begin('~/.vim/plugged')
-  " WelcomePage
   Plug 'mhinz/vim-startify'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
   Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
 
-  " GITHUB
+  " Github 
   Plug 'tpope/vim-fugitive'
 
   " Colors
@@ -132,17 +130,17 @@ hi tsxCloseTag guifg=#179af6
 hi tsxCloseTagName guifg=#179af6
 hi tsxAttributeBraces guifg=#179af6
 hi tsxEqual guifg=#179af6
-hi tsxAttrib guifg=#a7e22e cterm=italic
+hi tsxTypes guifg=#179af6 cterm=italic
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi Events ctermfg=204 guifg=#56B6C2
 hi tsxTypeBraces guifg=#e8296f
-hi tsxTypes guifg=#666666
 hi ReactProps guifg=#e8296f
 hi ApolloGraphQL guifg=#e8296f
-hi Events ctermfg=204 guifg=#56B6C2
+hi tsxAttrib guifg=#a7e22e cterm=italic
 hi ReactState guifg=#a7e22e
 hi ReduxKeywords ctermfg=204 guifg=#a7e22e
 hi ReduxHooksKeywords ctermfg=204 guifg=#a7e22e
-hi WebBrowser ctermfg=204 guifg=#56B6C2
 hi ReactLifeCycleMethods ctermfg=204 guifg=#a7e22e
-hi Normal guibg=NONE ctermbg=NONE
+"hi Normal guibg=NONE ctermbg=NONE
 
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))
