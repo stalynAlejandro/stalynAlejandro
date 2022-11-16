@@ -37,11 +37,9 @@ autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
 
 " Key Bindings REMAPS
-" Open terminal with current directory
 map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR> <C-w>20+
 
 " NerdTree 
-" Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
 
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -96,35 +94,55 @@ call plug#begin('~/.vim/plugged')
   " WelcomePage
   Plug 'mhinz/vim-startify'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-  "Plug 'elzr/vim-json'
   Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
+
   " GITHUB
   Plug 'tpope/vim-fugitive'
-  "Plug 'kristijanhusak/defx-git'
+
   " Colors
   Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
   " Search Files
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
   " Snippet and Additional Text Editing Support
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
   " NerdTree Plugins
   Plug 'preservim/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin' "showing git status flags
+
   " Themes
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
+  Plug 'patstockwell/vim-monokai-tasty'
 call plug#end()
 
-" Set ColorScheme
- let g:dracula_colorterm = 0
- colorscheme dracula 
+colorscheme molokai
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
-"let g:Hexokinase_highlighters = ['backgroundfull']
+hi tsxTagName guifg=#66d8ef
+hi tsxComponentName guifg=#66d8ef
+hi tsxCloseComponentName guifg=#66d8ef
+hi tsxCloseString guifg=#179af6
+hi tsxCloseTag guifg=#179af6
+hi tsxCloseTagName guifg=#179af6
+hi tsxAttributeBraces guifg=#179af6
+hi tsxEqual guifg=#179af6
+hi tsxAttrib guifg=#a7e22e cterm=italic
+hi tsxTypeBraces guifg=#e8296f
+hi tsxTypes guifg=#666666
+hi ReactProps guifg=#e8296f
+hi ApolloGraphQL guifg=#e8296f
+hi Events ctermfg=204 guifg=#56B6C2
+hi ReactState guifg=#a7e22e
+hi ReduxKeywords ctermfg=204 guifg=#a7e22e
+hi ReduxHooksKeywords ctermfg=204 guifg=#a7e22e
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi ReactLifeCycleMethods ctermfg=204 guifg=#a7e22e
+hi Normal guibg=NONE ctermbg=NONE
 
-"let g:startify_custom_header = startify#pad(split(system('fortune -s | figlet -w 100 -l -f slant'), '\n'))
-"let g:startify_custom_header = startify#pad(split(system('fortune -l'), '\n'))
-"let g:startify_custom_header = startify#pad(split(system('date'), '\n'))
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))

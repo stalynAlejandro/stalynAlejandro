@@ -42,6 +42,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Server-side Rendering](#server-side-rendering)
 
+[Static Rendering](#static-rendering)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -593,7 +595,7 @@ By using this hook, we no longer need the wrapping Container component to fetch 
 
 **We use this hook directly in our presentational component**.
 
-```javacript
+```js
 import {useState, useEffect} from 'react'
 
 export function useDogImages(){
@@ -614,7 +616,7 @@ export function useDogImages(){
 
 ```
 
-```javascript
+```js
 import { useDogImages } from "./useDogImages";
 
 export const DogImages = () => {
@@ -2292,3 +2294,133 @@ The constant App can now be used to generate the HTML to be rendered. The `ipage
 ```js
 ReactDOM.hydrate(<App />, document.getElementById("root"));
 ```
+
+# Static Rendering
+
+Deliver pre-rendered HTML content that was generated when the site was built
+
+Based on our discussion on SSR, we know that a high request processing time on the server negatively affects the TTFB. Similarly, with CSR, a large js bundle can be detrimental to the FCP, LCP and TTI of the application due to the time taken to download and process the script.
+
+Static Rendering or Static Generation (SSG) attemps to resolve these issues by delivering pre-rendered HTML content to the client that was generated when the site was built.
+
+A static HMTL file is generated ahead of time corresponding to each route that the user can access. These static HTML files may be available on a server or a CDN and fetched as and when requested by the client.
+
+Static files may also be cached thereby providing greater resiliency. Since the HMTL response is generated in advance, the processing time on the server is negligible thereby resulting in a faster TTFB and better performance. In an ideal scenario, client-side js should be minimal and static pages should become interactive soon after the response is received by the client. As a result, SSG helps to achieve a faster FCP/TTI.
+
+```js
+
+network   |-- GET --|
+---------------------------------------------
+js                  | render(app) |
+
+                              FCP | TTI
+```
+
+## Basic structure
+
+As the suggests, static rendering is ideal for static content, where the page need not be customized based on the logged-in user (e.g personalized recomendations). Thus static pages like 'About us', 'Contact us', Blog pages for websites or product pages for e-commerce apps, are ideal candidates for static rendering.
+
+Frameworks like Nextjs, Gatsby, and VuePress support static generation. Let us start with this simple Nextjs example of static content rendering without any data.
+
+```js
+export default function About() {
+  return (
+    <div>
+      <h1>About us</h1>
+    </div>
+  );
+}
+```
+
+When the site is built, this page will be pre-rendered into a HTML file `about.html` accessible at the route `/about`.
+
+### SSG with Data
+
+Static content like that in `About us` or `Contact us` pages may be rendered as-is without getting data from a data-store. However, for content like individual blog pages or product pages, the data from a data-store has to be merged with specific template and then rendered to HTML at build time.
+
+The number of HTML pages generated will depend on the number of blog posts or the number of products respectively. To get to these pages, you may also have listing pages which will be HTML pages that contain a categorized and formatted list of data items. These scenarios can be addressed using nextjs static rendering. We can generate listing pages or individual item pages based on the available items. Let us see how.
+
+## Listing Page - All Items
+
+Generation of a listing page is a scenario where the content to be displayed on the page depends on external data. This data will be fetched from the database at build time to construct the page. In Nextjs this can be achieved by exporting the function _getStaticProps()_ in the page component. The function is called at build time on the build server to fetch the data. The data can then be passed to the page's props to pre-render the page component.
+
+```js
+//  This function runs at build time on the build server
+export async function getStaticProps() {
+  return {
+    props: {
+      products: await getProductsFromDatabase(),
+    },
+  };
+}
+
+// The page component receives products prop from getStaticProps at build time
+export default function Products({ products }) {
+  return (
+    <>
+      <h1>Products</h1>
+      <ul>
+        {products.map((products) => (
+          <li key={product.id}> {product.name} </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+```
+
+The function will not be included in the client-side js bundle and hence can even be used to fetch the data directly from a database.
+
+### Individual Details Page - Per Item
+
+In the above example, we could have an individual detailed page for each of the products listed on the listing page. These pages could be accesse by clicking on the corresponding items on the listing page or directly through some other route.
+
+Assume we have products with ids 101, 102 and so on. We need their information to be available at routes `/products/101`, `/products/102`, etc.
+
+To achieve this at build time in Nextjs we can use the function _getStaticPaths()_ in combitaion with dynamic routes. We need to create a common page component `products/[id].js` for this and export the function _getStaticPaths()_ in it. The function will return all possible products ids which can be used to pre-render individual product pages at build time. The following Nextjs skeleton available here shows how to structure the code for this.
+
+```js
+//  In getStaticPaths(), you need to return the list of
+//  ids of product pages (/products/[id]) that you'd
+//  like to pre-render at build time. To do so,
+//  you can fetch all products from a database
+
+export async function getStaticPaths() {
+  const products = await getProductsFromDatabase();
+
+  const paths = products.map((products) => ({
+    {
+      params: {
+        id: product.id;
+      }
+    }
+  }));
+  return {paths, fallback: false}
+}
+
+export async function getStaticProps({params}){
+  return{
+    props:{
+      product: await getProductFromDatabase(params.id)
+    }
+  }
+}
+
+export default function Product({product}){
+  // Render product
+}
+```
+
+The details on the product page may be populated at build time by using the function *getStaticProps* for the specific product id. 
+
+Note the use of the fallback: false indicator here. It means that if the page is not available corresponding to a specific route or product id, the 404 error page will be shown. 
+Thus we can use SSG to pre-render many different types of pages. 
+
+## Key Considerations
+
+As discussed, SSG results in a great performance for websites as its cuts down the processing required both on the client and the server. The sites are also SEO friendly as the content is already there and be rendered by web crawlers with no extra effort. While performing and SEO make SSG a great rendering pattern, the following factors need to be considered when assessing the suitability of SSG for specific applications.
+
+
+- 1. **A large number of HTML files**. Individual HTML files need to be generated for every possible route that the user may access. For example, when using it for a blog, an HTML file will be generated for every blog post available in the data store. Subsequently, edits to any of the posts will require a rebuild for the update to be reflected in the static HTML files. Maintaining a large number of HTML files can be challenging. 
+
+
