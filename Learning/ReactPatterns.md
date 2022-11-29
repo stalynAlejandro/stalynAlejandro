@@ -44,6 +44,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Static Rendering](#static-rendering)
 
+[Incremental Static Generation](#incremental-static-generation)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -2411,16 +2413,107 @@ export default function Product({product}){
 }
 ```
 
-The details on the product page may be populated at build time by using the function *getStaticProps* for the specific product id. 
+The details on the product page may be populated at build time by using the function _getStaticProps_ for the specific product id.
 
-Note the use of the fallback: false indicator here. It means that if the page is not available corresponding to a specific route or product id, the 404 error page will be shown. 
-Thus we can use SSG to pre-render many different types of pages. 
+Note the use of the fallback: false indicator here. It means that if the page is not available corresponding to a specific route or product id, the 404 error page will be shown.
+Thus we can use SSG to pre-render many different types of pages.
 
 ## Key Considerations
 
 As discussed, SSG results in a great performance for websites as its cuts down the processing required both on the client and the server. The sites are also SEO friendly as the content is already there and be rendered by web crawlers with no extra effort. While performing and SEO make SSG a great rendering pattern, the following factors need to be considered when assessing the suitability of SSG for specific applications.
 
+- 1. **A large number of HTML files**. Individual HTML files need to be generated for every possible route that the user may access. For example, when using it for a blog, an HTML file will be generated for every blog post available in the data store. Subsequently, edits to any of the posts will require a rebuild for the update to be reflected in the static HTML files. Maintaining a large number of HTML files can be challenging.
 
-- 1. **A large number of HTML files**. Individual HTML files need to be generated for every possible route that the user may access. For example, when using it for a blog, an HTML file will be generated for every blog post available in the data store. Subsequently, edits to any of the posts will require a rebuild for the update to be reflected in the static HTML files. Maintaining a large number of HTML files can be challenging. 
+- 2. **Hosting Dependency**. For an SSG site to be super-fast and respond quickly, the hosting platform used to store and serve the HTML files should also be good. Superlative perfomance is possible if a well-tunned SSG website is hosted right on multiple CDNs to take advantage of edge-caching.
+- 3. **Dynamic Content**. An SSG site needs to be built and re-deployed every time the content changes. The content displayed may be stale if the sites has not been built + deployed after any content change. This makes SSG unsuitable for highly dynamic content.
 
+# Incremental Static Generation
 
+Update static content after your have built your site.
+
+Static Generation (SSG) addresses most of concerns of SSR and CSR but is suitable for rendering mostly static content. It poses limitations when the content to be rendered is dynamic or changing frequently.
+
+Think of a growing blog with multiple posts. You wouldn't possibly want to rebuild and replaced the site just because you want to correct a type in one of the posts.
+
+Similarly, one new blog post should also not require a rebuild for all the existing pages. Thus, SSG on its own is not enough for rendering large websites or applications.
+
+The incremental Static Generation (iSSG) pattern was introduced as an upgrade to SSG, to help solve the dynamic data problem and help static sites scale for large amounts of frequently changing data. iSSG allows you to update existing pages and add new ones by pre-rendering a subset of pages in the background even while fresh requests for pages are comming in.
+
+## Sample Code
+
+iSSG works on two fronts to incrementally introduce updates to an existing static site after it has been built.
+
+1. Allows addition of new pages.
+2. Allows updates to existing pages also known as Incremental Static Regeneration.
+
+## Adding new pages
+
+The lazy loading concept is used to include new pages on the website after the build. This means that the new page is generated immediately on the first request. While the generation takes place, a fallback page or a loading indicator can be shown to the user on the front-end.
+
+Compare this to the SSG scenario discussed earlier for individual details page per product. The 404 error page was shown here as a fallback for non-existent pages.
+
+Let us now look at the Nextjs code require for lazy-loading the non-existent page with iSSG.
+
+```js
+// In getStaticPaths(), you need to return the list of
+// ids of product pages (/products/[id]) that you'd
+// like to pre-render at build time. To do so,
+// you can fetch all products from a database
+
+export async function getStaticPaths() {
+  const products = await getProductsFromDatabase();
+
+  const path = products.map((product) => ({
+    params: { id: product.id },
+  }));
+
+  // fallback: true means that the missing pages
+  // will not 404, and instead can render a fallback
+  return { paths, fallback: true };
+}
+
+//params will contain the id for each generated page
+export async function getStaticProps({ params }) {
+  return {
+    props: {
+      product: await getProductFromDatabase(params.id),
+    },
+  };
+}
+
+export default function Product({ product }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading ... </div>;
+  }
+
+  // Render product
+}
+```
+
+Here, we have used _fallback: true_. Now if the page corresponding to a specific product is unavailable, we show a fallback version of the page, eg. a **loading** indicator as shown in the Product function above.
+
+Meanwhile, Nextjs will generate the page in the background. Once it is generated, it will be cached and shown instead of the fallback page. The cached version of the page will now be shown to any subsequent visitor immediately upon request. For both new and existing pages, we can set an expiration time for when Nextjs should revalidate and update it.
+
+This can be achieved by using the revalidate property as shown in the following section.
+
+## Update existing pages
+
+To re-render an existing page, a suitable timeout is defined for the page. This will ensure that the page is revalidate whenever the defined timeout period has elapsed. The timeout could be set to as low as 1 second. The user will continue to see the previous version of the page, till the page has finished revalidation.
+
+Thus, iSSG uses the stale-while-revalidate strategy where the user receives the cached or stale version while the revalidation takes place. The revalidation takes place completely in the background without the need for a full rebuild.
+
+Let us go back to the example for generating a static listing page for products based on the data in the database. To make it serve a relatively dynamic list of products, we will include the code to set the timeout for rebuilding the page. This is what the code will look like after including the timeout.
+
+```js
+// This function runs at build time on the build server
+export async function getStaticProps() {
+  return {
+    props: {
+      products: await getProductsFromDatabase(),
+      revalidate: 60, // This will force the page to revalidate after 60 seconds
+    },
+  };
+}
+```

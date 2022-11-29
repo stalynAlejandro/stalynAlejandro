@@ -119,7 +119,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'patstockwell/vim-monokai-tasty'
 call plug#end()
 
-colorscheme molokai
+colorscheme vim-monokai-tasty 
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescriptreact
 
 
