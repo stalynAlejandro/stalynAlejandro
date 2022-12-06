@@ -58,6 +58,7 @@ nnoremap <C-l> <C-w>l
 
 " Save and Exit
 noremap <leader>w :w<CR> 		
+noremap <leader>wa :wqa!<CR> 		
 noremap <leader>x :x<CR> 		
 noremap <leader>qq :q!<CR> 
 noremap <leader>qa :qa!<CR> 
@@ -65,6 +66,7 @@ noremap <leader>l :let @/=''<CR>
 
 inoremap jj <Esc>
 inoremap <leader>w <Esc>:w<CR> 
+inoremap <leader>wa <Esc>:wqa!<CR> 
 inoremap <leader>qq <Esc>:q!<CR>
 inoremap <leader>qa :qa!<CR> 
 
@@ -86,7 +88,7 @@ map <silent> <C-g>w :Gwrite<CR>
 map <silent> <C-g>r :Gread<CR>
 
 " Prettier
-nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
+"nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
  
 "::::: PLUGINS :::: 
 call plug#begin('~/.vim/plugged')
@@ -106,7 +108,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
   " Snippet and Additional Text Editing Support
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  "Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
   " NerdTree Plugins
   Plug 'preservim/nerdtree'
