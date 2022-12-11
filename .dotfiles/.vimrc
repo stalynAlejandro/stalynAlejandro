@@ -88,12 +88,12 @@ map <silent> <C-g>w :Gwrite<CR>
 map <silent> <C-g>r :Gread<CR>
 
 " Prettier
-"nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
+nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
  
 "::::: PLUGINS :::: 
 call plug#begin('~/.vim/plugged')
   Plug 'mhinz/vim-startify'
-  Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+  "Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
   Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
 
@@ -108,7 +108,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
   " Snippet and Additional Text Editing Support
-  "Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
   " NerdTree Plugins
   Plug 'preservim/nerdtree'
