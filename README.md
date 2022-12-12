@@ -43,6 +43,10 @@
 <!--   ![Framer](https://img.shields.io/badge/-Framer-0A1A2F?style=flat&logo=framer) -->
 <!--   ![Figma](https://img.shields.io/badge/-Figma-0A1A2F?style=flat&logo=figma) -->
 
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
+
+
 |   Commit type              | Emoji                                         |
 |:---------------------------|:----------------------------------------------|
 | New feature                | :sparkles: `:sparkles:`                       |
@@ -80,5 +84,5 @@ Here are some ideas to get you started:
 
 
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
+
 
