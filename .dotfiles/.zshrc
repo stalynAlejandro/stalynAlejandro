@@ -24,6 +24,7 @@ else
   alias gbr="git br"
   alias gll="git ll"
   alias glog="git log"
+  alias glogg="git logg"
   alias grst="git rst"
   alias gadd="git add"
   alias gpull="git pull"
