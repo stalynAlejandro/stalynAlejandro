@@ -79,7 +79,5 @@ Here are some ideas to get you started:
 -->
 
 
-### 📊 My GitHub Stats
-
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=stalynAlejandro&hide=jupyter%20notebook&langs_count=6&layout=compact" alt="stalynAlejandro" width="39%" /></p>
 
