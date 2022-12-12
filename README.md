@@ -80,4 +80,5 @@ Here are some ideas to get you started:
 
 
 
-<p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=stalynAlejandro&layout=compact" alt="stalynAlejandro" width="39%" /></p>
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact)](https://github.com/stalynAlejandro/github-readme-stats)
+
