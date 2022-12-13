@@ -46,6 +46,8 @@ Design patterns are a fundamental part of software development, as they provide 
 
 [Incremental Static Generation](#incremental-static-generation)
 
+[Vite](#vite)
+
 # Overview of ReactJs
 
 A UI library for building reusable user interface components. React provides an optimized and simplified way of expressing interfaces in these elements. It also helps build complex and tricky interfaces by organizing your interface into three key concepts - _compnents, props and state_.
@@ -2517,3 +2519,15 @@ export async function getStaticProps() {
   };
 }
 ```
+
+# Vite
+
+Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two parts:
+
+- A dev server that provides _rich feature enhancements_ over _native ES modules_, for example fast _host Module Replecement (HMR)_
+
+- A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.
+
+Vite is opinionated and comes with sensible defaults out of the box, but is also highly extensible via its Plugin API and Js API with full typing support.
+
+> npm create vite@latest vite-app --template react-ts
