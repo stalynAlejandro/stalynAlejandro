@@ -1,4 +1,4 @@
-> currently building https://github.com/TutoryOrg/JWTrivial
+> Currently building https://github.com/TutoryOrg/JWTrivial
 
 ### Hi there 👋
 
