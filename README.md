@@ -13,16 +13,16 @@
 <!--   ![Java](https://img.shields.io/badge/-Java-0A1A2F?style=flat&logo=Java&logoColor=FFF) -->
 <!--   ![Kotlin](https://img.shields.io/badge/-Kotlin-0A1A2F?style=flat&logo=Kotlin) -->
 <!--   ![Ionic](https://img.shields.io/badge/-Ionic-0A1A2F?style=flat&logo=Ionic) -->
-- 🗄 &nbsp;Backend:&nbsp;
-  ![Node.js](https://img.shields.io/badge/-Node.js-0A1A2F?style=flat&logo=node.js)
-  ![SpringBoot](https://img.shields.io/badge/-SpringBoot-brightgreen)
-<!--   ![Laravel](https://img.shields.io/badge/-Laravel-0A1A2F?style=flat&logo=laravel) -->
-<!--   ![Symfony](https://img.shields.io/badge/-Symfony-0A1A2F?style=flat&logo=symfony) -->
 - 🌐 &nbsp;Frontend:&nbsp;
   ![React](https://img.shields.io/badge/-React-0A1A2F?style=flat&logo=react)
   ![Next.js](https://img.shields.io/badge/-Next.js-0A1A2F?style=flat&logo=next.js)
 <!--   ![JavaScript](https://img.shields.io/badge/-JavaScript-0A1A2F?style=flat&logo=javascript) -->
 <!--   ![StyledComponents](https://img.shields.io/badge/-StyledComponents-0A1A2F?style=flat&logo=styled-components&logoColor=fff) -->
+- 🗄 &nbsp;Backend:&nbsp;
+  ![Node.js](https://img.shields.io/badge/-Node.js-0A1A2F?style=flat&logo=node.js)
+  ![SpringBoot](https://img.shields.io/badge/-SpringBoot-brightgreen)
+<!--   ![Laravel](https://img.shields.io/badge/-Laravel-0A1A2F?style=flat&logo=laravel) -->
+<!--   ![Symfony](https://img.shields.io/badge/-Symfony-0A1A2F?style=flat&logo=symfony) -->
 - 🛢 &nbsp;Database:&nbsp;
   ![MongoDB](https://img.shields.io/badge/-MongoDB-0A1A2F?style=flat&logo=mongodb)
   ![MySQL](https://img.shields.io/badge/-MySQL-0A1A2F?style=flat&logo=mysql&logoColor=00d8fd)
