@@ -1,4 +1,5 @@
-> Currently building https://github.com/TutoryOrg/JWTrivial
+> Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial)
+> [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf)
 
 ### Hi there 👋
 
