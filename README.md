@@ -1,5 +1,6 @@
-> Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial)
-> [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf)
+### Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
+
+### [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
 ### Hi there 👋
 
