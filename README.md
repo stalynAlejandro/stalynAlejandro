@@ -1,10 +1,11 @@
-### Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
 
+## Hi there 👋
 
-### Hi there 👋
+> [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
+> Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
 
-:octocat: This is my favorite stack. 🔥
+### :octocat: This is my favorite stack. 🔥
 
 - 📱 &nbsp;Mobile:&nbsp;
   ![React Native](https://img.shields.io/badge/-React%20Native-0A1A2F?style=flat&logo=React&logoColor=00d8fd)
@@ -48,7 +49,6 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
 
 
-### [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
 
 
