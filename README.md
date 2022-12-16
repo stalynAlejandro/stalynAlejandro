@@ -70,7 +70,7 @@
 | Package.json in JS         | :package: `:package:`                         |
 | Breaking changes           | :boom: `:boom:`                               |
 | Code review changes        | :ok_hand: `:ok_hand:`                         |
-| Other                      | [Be creative](http://www.emoji-cheat-sheet.com/)  |
+| Other                      | [Be creative](https://www.emoji-cheat-sheet.com/)  |
 
 
 <!--
