@@ -1,7 +1,7 @@
 
 ## Hi there 👋
 
-> [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
+> [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
 > Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
 
