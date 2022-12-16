@@ -1,6 +1,5 @@
 ### Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
 
-### [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
 ### Hi there 👋
 
@@ -47,6 +46,10 @@
 
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
+
+
+### [My CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
+
 
 
 |   Commit type              | Emoji                                         |
