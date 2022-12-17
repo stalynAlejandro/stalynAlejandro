@@ -1,9 +1,11 @@
-> currently building https://github.com/TutoryOrg/JWTrivial
 
-### Hi there 👋
+## Hi there 👋
 
+> [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
-:octocat: This is my favorite stack. 🔥
+> Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
+
+### :octocat: This is my favorite stack. 🔥
 
 - 📱 &nbsp;Mobile:&nbsp;
   ![React Native](https://img.shields.io/badge/-React%20Native-0A1A2F?style=flat&logo=React&logoColor=00d8fd)
@@ -11,16 +13,16 @@
 <!--   ![Java](https://img.shields.io/badge/-Java-0A1A2F?style=flat&logo=Java&logoColor=FFF) -->
 <!--   ![Kotlin](https://img.shields.io/badge/-Kotlin-0A1A2F?style=flat&logo=Kotlin) -->
 <!--   ![Ionic](https://img.shields.io/badge/-Ionic-0A1A2F?style=flat&logo=Ionic) -->
-- 🗄 &nbsp;Backend:&nbsp;
-  ![Node.js](https://img.shields.io/badge/-Node.js-0A1A2F?style=flat&logo=node.js)
-  ![SpringBoot](https://img.shields.io/badge/-SpringBoot-brightgreen)
-<!--   ![Laravel](https://img.shields.io/badge/-Laravel-0A1A2F?style=flat&logo=laravel) -->
-<!--   ![Symfony](https://img.shields.io/badge/-Symfony-0A1A2F?style=flat&logo=symfony) -->
 - 🌐 &nbsp;Frontend:&nbsp;
   ![React](https://img.shields.io/badge/-React-0A1A2F?style=flat&logo=react)
   ![Next.js](https://img.shields.io/badge/-Next.js-0A1A2F?style=flat&logo=next.js)
 <!--   ![JavaScript](https://img.shields.io/badge/-JavaScript-0A1A2F?style=flat&logo=javascript) -->
 <!--   ![StyledComponents](https://img.shields.io/badge/-StyledComponents-0A1A2F?style=flat&logo=styled-components&logoColor=fff) -->
+- 🗄 &nbsp;Backend:&nbsp;
+  ![Node.js](https://img.shields.io/badge/-Node.js-0A1A2F?style=flat&logo=node.js)
+  ![SpringBoot](https://img.shields.io/badge/-SpringBoot-brightgreen)
+<!--   ![Laravel](https://img.shields.io/badge/-Laravel-0A1A2F?style=flat&logo=laravel) -->
+<!--   ![Symfony](https://img.shields.io/badge/-Symfony-0A1A2F?style=flat&logo=symfony) -->
 - 🛢 &nbsp;Database:&nbsp;
   ![MongoDB](https://img.shields.io/badge/-MongoDB-0A1A2F?style=flat&logo=mongodb)
   ![MySQL](https://img.shields.io/badge/-MySQL-0A1A2F?style=flat&logo=mysql&logoColor=00d8fd)
@@ -47,6 +49,10 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
 
 
+### :bowtie: Emoji Cheat Sheet. :rocket:
+
+
+
 |   Commit type              | Emoji                                         |
 |:---------------------------|:----------------------------------------------|
 | New feature                | :sparkles: `:sparkles:`                       |
@@ -64,7 +70,7 @@
 | Package.json in JS         | :package: `:package:`                         |
 | Breaking changes           | :boom: `:boom:`                               |
 | Code review changes        | :ok_hand: `:ok_hand:`                         |
-| Other                      | [Be creative](http://www.emoji-cheat-sheet.com/)  |
+| Other                      | [Be creative](https://www.emoji-cheat-sheet.com/)  |
 
 
 <!--
