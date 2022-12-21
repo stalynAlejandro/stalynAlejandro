@@ -1,5 +1,7 @@
 let mapleader = "." 		"Mapleaderkey to .
 :syntax sync fromstart
+:set nowrap
+
 autocmd BufEnter * :syntax sync fromstart
 
 " Stop Recording (Temporary)
@@ -89,6 +91,8 @@ map <silent> <C-g>r :Gread<CR>
 
 " Prettier
 nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
+inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
  
 "::::: PLUGINS :::: 
 call plug#begin('~/.vim/plugged')
