@@ -2,6 +2,8 @@ let mapleader = "." 		"Mapleaderkey to .
 :syntax sync fromstart
 :set nowrap
 
+autocmd BufNewFile,BufRead *.md set wrap
+
 autocmd BufEnter * :syntax sync fromstart
 
 " Stop Recording (Temporary)
@@ -156,6 +158,6 @@ hi ReactState guifg=#a7e22e
 hi ReduxKeywords ctermfg=204 guifg=#a7e22e
 hi ReduxHooksKeywords ctermfg=204 guifg=#a7e22e
 hi ReactLifeCycleMethods ctermfg=204 guifg=#a7e22e
-"hi Normal guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))
