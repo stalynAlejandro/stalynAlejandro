@@ -75,8 +75,8 @@ inoremap <leader>qq <Esc>:q!<CR>
 inoremap <leader>qa :qa!<CR> 
 
 " Find Files 
-nnoremap <silent> <C-f> :Rg<CR>
-nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>ff :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
 nnoremap <silent> <Leader>' :Marks<CR>

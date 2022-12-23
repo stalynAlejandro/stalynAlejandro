@@ -10,6 +10,7 @@
 	logg = log --graph --oneline -n 15
 	up = !git co $1 && git pull origin $1
 	ll = log --pretty=format:\"%C(auto,yellow)%h %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(15,trunc)%aN %C(auto,reset)%<(20,trunc)%s%C(auto,red)% gD% D\" -n 15
+  psu = push --set-upstream origin
 [user]
 	email = saavalencia97@gmail.com
 	name = STAYN ALEJANDRO ALCOCER VALENCIA
