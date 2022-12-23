@@ -1,0 +1,112 @@
+# Deploy a Container Web App on EC2
+
+Build and deploy a container-based web application using Amazon Elastic Container Service. (ECS).
+
+ECS is a fully managed container orchestration service that helps you easily deploy, manage, and scale containerized applications. It deeply integrates with the rest of the AWS platform to provide a secure and easy-to-use solution for running container workloads in the cloud and now on your infraestructure.
+
+An orchestrator manages the lifecycle of your container, from deploying it, ensuring that it is healthy, replacing unhelthy nodes, and handling new deployments.
+
+## What are the components of ECS
+
+An ECS cluster is a logical construct that will group all the containers deployed into a cluster.
+
+_There is no cost for a cluster, only for the compute and other infraestructure you use to run your containers._
+
+To launch a container you provide **a task definition** which contain properties like the container image location, amount of CPU and memory, logging configuration and many more. This does not launch a container, it just provides all the configuration needed to be able to run it - **to launch it**, you will define a **service**.
+
+In **the service** you define how many copies of the container you want. To expose your services to the internet, you will need to set up an **Application Load Balancer** to forward requests to your service.
+
+Lastly, ECS can be configured to deploy accross multiple availability zones, and will automatically balance the deployment across the number of AZs available and update the load balancer with details of each deployment to allow traffic to be routed to it.
+
+## Compute capacity planning and options
+
+ECS is able to schedule services to run on an **EC2 host (virtual machine)**, or using **Amazon Fargate, a serverless compute engine for containers**.
+
+When running containers, you need to take capacity planning into account. As an example, if you have 2 hosts available in your cluster, each with 512MB of memory, the cluster will show a total of 1024MB of memory available, byt you won't be able to launch a new container that requires more than 512MB of memory as there is no single host with enough memory. _This can be mitigated by using capacity providers to autoscale the cluster_.
+
+Alternatively, you can use Fargate, which allows you to specify the CPU and memory requirements for each container, and then launches the required compute to run the container for you. The main difference between Fargate and EC2 hosts is that you do no need to set up, manage or maintain the operating system on the host when using Fargate, nor do you need to do capcaity as it will launch exactly the amount of capacity you need.
+
+# Create Infraestructure and Deploy Application
+
+### Boostrap your AWS account
+
+Bootstraping is the process of creating containers in the AWS account and region you are deploying to.
+
+Many of the AWS CDK stacks you deploy include assets and external files, such as AWS Lambda functions or Docker images.
+
+The CDK uploads these assets and files to the containers created during bootstrapping, so they can be available to AWS CloudFormation during deployment.
+
+To bootstrap your account you need your AWS account number and your region.
+
+```
+// To get your AWS account number , use the following AWS CLI command
+aws sts get-caller-identity
+
+╭─saav@csaav ~/stalynAlejandro ‹main●›
+╰─$ aws sts get-caller-identity | cat
+{
+    "UserId": "AXXXXXXXXXXXXXXXXXXX4",
+    "Account": "1XXXXXXXXXX9",
+    "Arn": "arn:aws:iam::1XXXXXXXXXX9:user/sXXXXXXXXXXXXXo"
+}
+```
+
+```
+// To display the default region for your account, use:
+
+aws configure get region
+
+╭─saav@csaav ~/stalynAlejandro ‹main●›
+╰─$ aws configure get region
+eXXXXXXXX2
+
+```
+
+```
+// Now you can boostrap the account with the following command
+
+cdk bootstrap aws://ACCOUNT-NUMBER/REGION
+
+cdk bootstrap aws://1XXXXXXXXXX9/eXXXXXXXX2
+```
+
+This should take care of everything you need to start working with AWS CDK. Once you have the CLI installed and the AWS account and region combination bootstrapped, you can start writing and deploying some infraestructure.
+
+```
+╭─saav@csaav ~/stalynAlejandro ‹main●›
+╰─$ cdk bootstrap aws://1XXXXXXXXXX9/eXXXXXXXX2
+ ⏳  Bootstrapping environment aws://1XXXXXXXXXX9/eXXXXXXXX2...
+Trusted accounts for deployment: (none)
+Trusted accounts for lookup: (none)
+Using default execution policy of 'arn:aws:iam::aws:policy/AdministratorAccess'. Pass '--cloudformation-execution-policies' to customize.
+CDKToolkit: creating CloudFormation changeset...
+ ✅  Environment aws://1XXXXXXXXXX9/eXXXXXXXX2 bootstrapped.
+```
+
+### Create First AWS CDK Project
+
+We use the **AWS CDK CLI** to create a new infraestructure project using TypeScript. We also learn how to write a simple resource and how to synthesize and deploy your **CDK** code.
+
+Synthesizing is how CDK turns your infraestructure code into **AWS CloudFormation Templates**.
+
+```
+// To get started, we create an empty directory using the *mkdir*
+// command and change the working directory using the *cd* command:
+
+mkdir cdk-demo
+cd cdk-demo
+
+
+// We use the *cdk init* command and specify that we want to create
+// a new TypeScript CDK project:
+
+cdk init ---language typescript
+```
+
+The **cdk init** command creates the folder structure and installs some of the necessary modules required for a TypeScript CDK project. The output looks somethings like this:
+
+```
+Apply project template app for tpyescript
+
+
+```
