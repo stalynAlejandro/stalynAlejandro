@@ -31,7 +31,7 @@ else
   alias gpush="git push"
   alias gpsu="git psu"
   alias gdiff="git-icdiff | less"
-  alias gdifftool="git difftool"
+  alias gdifft="git difftool"
   alias gssh="ssh-add ~/.ssh/gitkey"
   alias nrdev="npm run dev"
   alias nrstart="npm run start"
