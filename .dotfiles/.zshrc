@@ -37,6 +37,8 @@ else
   alias nrstart="npm run start"
   alias nrtest="npm run test"
   alias nrstory="npm run storybook"
+  alias aws:identity='aws sts get-caller-identity | cat'
+  alias aws:region='aws configure get region'
 fi
 
 export FZF_DEFAULT_COMMAND='rg'

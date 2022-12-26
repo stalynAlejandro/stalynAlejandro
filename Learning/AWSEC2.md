@@ -107,6 +107,115 @@ The **cdk init** command creates the folder structure and installs some of the n
 
 ```
 Apply project template app for tpyescript
+...
+// Now let's review the files that the cdk init commands created:
+
+- bin
+  - cdk-demo.ts
+- lib
+  - cdk-demo-stack.ts
+- node_modules
+  - //list of modules
+- test
+  - cdk-demo.test.ts
+- .gitignore
+- .npmignore
+- cdk.json
+- jest.config.js
+- package.json
+- package-lock.json
+- README.md
+- tsconfig.json
+
+```
+
+Here are some of the important files and what they are used for:
+
+- **bin/cdk-demo.ts** This is the entry point to your CDK application. This will load/create all the stack we define under \*lib/\*\*
+
+- **lib/cdk-demo-stack.ts** This is where your main CDK application stack is defined. Your resources and its properties can go here.
+
+- **package.json** This is where you define your project dependencies, as well as some additional information, and build scripts (npm build, npm test, npm watch).
+
+- **cdk.json** This file tells the toolkit how to run your application and also contains some additional settings and parameters related to CDK and your project.
+
+For this tutorial, we will be focusing on **lib/cdk-demo-stack.ts** and **bin/cdk-demo.ts** files to create our infraestructure. Let's add some code.
+
+### Create the infraestructure
+
+To start building out a project, a common starting point is to create a logically isolated virtual network that you define, **called an Amazon Virtual Private Cloud (Amazon VPC)**.
+
+Before we define our VPC in the main stack, we need to ensure we deploy to the correct account and region. While the CDK pulls this information from your local AWS CLI configuration, it is best to configure this manually in your CDK code to avoid incorrect values when that configuration changes.
+
+This step is required, due to settings we will be defining in our VPC. If you do not specify this, the stack will be environment-agnostic, but some features and context looksups will not work.
+
+Modify your **bin/cdk-demot.ts** stack to look something like this:
+
+```
+#!/usr/bin/env  node
+import 'source-map-support/register';
+import * as cdk from 'aws-cdk-lib';
+import {CdkDemoStack} from '../lib/cdk-demo-stack';
+
+const app = new cdk.App();
+new CdkDemoStack(app, 'CdkDemoStack', {
+  env: {account:'ACCOUNT-NUMBER', region:"us-east-1"}
+})
+
+```
+
+We will create a VPC with two public-facing subnets, spread across two availability zones.
+
+Before we can dive into writting the code, we need to explain and install **AWS CDK construct library modules**.
+
+A construct can represent a single AWS resource, such as an **Amazon Simple Storage Service (Amazon S3) bucket**, or it can be a higher-level abstraction consisting of multiple AWS related resources.
+
+We need the Amazon EC2 module, which also includes support for Amazon VPCs.
+
+To install the Amazon EC2 module, we will use npm. Run the following command while in your project directory:
+
+```
+npm install @aws-cdk/aws-ec2
+```
+
+This command install all the necessary modules. If you look in your package.json file, you will see that it was also added there.
+
+Now, we are ready to create our VPC. Open up your stack definition in **lib/cdk-demo-stack.ts**. When first opening up the file, you should see someting like this:
+
+```
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+// import * as sqs from 'aws-cdk-lib/aws-sqs';
+
+export class CdkDemoStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    // The code that defines your stack goes here
+
+  }
+}
+
+```
+
+This is the skeleton of our project. If you ran CDK now, no resources would be created as we don't have any defined yet.
+
+To get started with the VPC, we need to import the EC2 module we just installed:
+
+```
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+// import * as sqs from 'aws-cdk-lib/aws-sqs';
+
+export class CdkDemoStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    // The code that defines your stack goes here
+
+  }
+}
+
 
 
 ```
