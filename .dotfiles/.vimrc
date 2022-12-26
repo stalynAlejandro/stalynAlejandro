@@ -1,19 +1,16 @@
-let mapleader = "." 		"Mapleaderkey to .
+let mapleader = "."
 :syntax sync fromstart
 :set nowrap
+"Not record
+map q <Nop>  
 
-autocmd BufNewFile,BufRead *.md set wrap
+"autocmd BufNewFile,BufRead *.md set wrap
+"autocmd BufEnter * :syntax sync fromstart
+"filetype off        			  "Helps force plugins to load  
+"filetype plugin indent on	"For plugins to load correctly
 
-autocmd BufEnter * :syntax sync fromstart
-
-" Stop Recording (Temporary)
-map q <Nop>
-
-filetype off			"Helps force plugins to load  
-filetype plugin indent on	"For plugins to load correctly
-
-" Basic Settings
-set nocompatible " Not compatible wiht vi
+set nocompatible
+set showcmd
 set number	
 set ruler
 set hidden
@@ -25,43 +22,28 @@ set shiftwidth=2
 set encoding=UTF-8
 set expandtab
 set termguicolors
-set showcmd " extra info at end of command line
-
-" Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-    
-" Search Bindings
-set hlsearch			
+set hlsearch
 set incsearch
 set ignorecase
 
-" Cursor In InsertMode
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
-
-map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR> <C-w>5+
-
-" NerdTree 
 autocmd VimEnter * NERDTree | wincmd p
 
+map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR> <C-w>5+
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>r :NERDTree<CR>
 
-" Copy And Paste
-noremap <leader>Y "+y
-noremap <leader>P "+p
-
-" Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Save and Exit
-noremap <leader>w :w<CR> 		
+noremap <leader>w :w<CR>
 noremap <leader>wa :wqa!<CR> 		
 noremap <leader>x :x<CR> 		
 noremap <leader>qq :q!<CR> 
@@ -74,7 +56,6 @@ inoremap <leader>wa <Esc>:wqa!<CR>
 inoremap <leader>qq <Esc>:q!<CR>
 inoremap <leader>qa :qa!<CR> 
 
-" Find Files 
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>ff :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -86,17 +67,14 @@ nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR> 
 
-" Git
 map <silent> <C-g>s :Gdiffsplit<CR>
 map <silent> <C-g>w :Gwrite<CR>
 map <silent> <C-g>r :Gread<CR>
 
-" COC - Prettier
 nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 
-" GoTo code navigation
 let g:coc_user_config = {}
 let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsplit'
 nmap <silent> gd <Plug>(coc-definition)
@@ -104,32 +82,18 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-"::::: PLUGINS :::: 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged') 
   Plug 'mhinz/vim-startify'
-  "Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
   Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
-
-  " Github 
-  Plug 'tpope/vim-fugitive'
-
-  " Colors
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-
-  " Search Files
-  Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-fugitive'                                     "Github
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     "Colors
+  Plug 'junegunn/fzf.vim'                                       "Search Files
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-  " Snippet and Additional Text Editing Support
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
-  " NerdTree Plugins
-  Plug 'preservim/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin' "showing git status flags
-
-  " Themes
-  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }             "Snippet and Additional Text Editing Support
+  Plug 'preservim/nerdtree'                                     "NerdTree Plugins
+  Plug 'Xuyuanp/nerdtree-git-plugin'                            "Showing git status flags
+  Plug 'dracula/vim', { 'as': 'dracula' }                       "Themes
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'patstockwell/vim-monokai-tasty'
@@ -137,7 +101,6 @@ call plug#end()
 
 colorscheme vim-monokai-tasty 
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescriptreact
-
 
 hi tsxTagName guifg=#66d8ef
 hi tsxComponentName guifg=#66d8ef
