@@ -1,12 +1,7 @@
 let mapleader = "."
+map q <Nop>  
 :syntax sync fromstart
 :set nowrap
-"Not record
-map q <Nop>  
-"autocmd BufNewFile,BufRead *.md set wrap
-"autocmd BufEnter * :syntax sync fromstart
-"filetype off        			  "Helps force plugins to load  
-"filetype plugin indent on	"For plugins to load correctly
 
 set nocompatible
 set showcmd
@@ -42,8 +37,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-noremap <leader>y "+y
-noremap <leader>pp "+p
+noremap <leader>y "+y<CR>
+noremap <leader>pp "+p<CR>
 
 noremap <leader>w :w<CR>
 noremap <leader>wa :wqa!<CR> 		
@@ -88,14 +83,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
-  Plug 'tpope/vim-fugitive'                                     "Github
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     "Colors
-  Plug 'junegunn/fzf.vim'                                       "Search Files
+  "Plug 'tpope/vim-fugitive'                                     
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     
+  Plug 'junegunn/fzf.vim'                                       
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }             "Snippet and Additional Text Editing Support
-  Plug 'preservim/nerdtree'                                     "NerdTree Plugins
-  Plug 'Xuyuanp/nerdtree-git-plugin'                            "Showing git status flags
-  Plug 'dracula/vim', { 'as': 'dracula' }                       "Themes
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }             
+  Plug 'preservim/nerdtree'                                     
+  "Plug 'Xuyuanp/nerdtree-git-plugin'                            
+  "Plug 'dracula/vim', { 'as': 'dracula' }                       
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'patstockwell/vim-monokai-tasty'
@@ -107,14 +102,14 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescriptreact
 hi tsxTagName guifg=#66d8ef
 hi tsxComponentName guifg=#66d8ef
 hi tsxCloseComponentName guifg=#66d8ef
+hi tsxCloseTagName guifg=#66d8ef
+hi tsxCloseTag guifg=#66d8ef
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi Events ctermfg=204 guifg=#56B6C2
 hi tsxCloseString guifg=#179af6
-hi tsxCloseTag guifg=#179af6
-hi tsxCloseTagName guifg=#179af6
 hi tsxAttributeBraces guifg=#179af6
 hi tsxEqual guifg=#179af6
 hi tsxTypes guifg=#179af6 cterm=italic
-hi WebBrowser ctermfg=204 guifg=#56B6C2
-hi Events ctermfg=204 guifg=#56B6C2
 hi tsxTypeBraces guifg=#e8296f
 hi ReactProps guifg=#e8296f
 hi ApolloGraphQL guifg=#e8296f
