@@ -34,8 +34,9 @@ else
   alias gdifft="git difftool"
   alias gssh="ssh-add ~/.ssh/gitkey"
   alias nrdev="npm run dev"
-  alias nrstart="npm run start"
   alias nrtest="npm run test"
+  alias nrstart="npm run start"
+  alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
   alias aws:identity='aws sts get-caller-identity | cat'
   alias aws:region='aws configure get region'

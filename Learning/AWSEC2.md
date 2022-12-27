@@ -205,7 +205,7 @@ To get started with the VPC, we need to import the EC2 module we just installed:
 ```
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 
 export class CdkDemoStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -216,6 +216,55 @@ export class CdkDemoStack extends cdk.Stack {
   }
 }
 
+```
 
+When creating a VPC, we can set a number of properties to tailor it to our needs. By default, it creates a VPC acorss three availability zones (AZs), with public and private subnets (with a single Internet gateway and three NAT gateways).
 
+For this tutorial, we want to create a very simple setup spanning two AZs, and with public subnet for each.
+
+To create our VPC, we will specify two AZs and the details to create a public subnet, as shown in the following code:
+
+```js
+import * as cdk from "aws-cdk-lib";
+import { Construct } from "constructs";
+import * as ec2 from "aws-cdk-lib/aws-ec2";
+
+export class CdkDemoStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
+
+    // The code that defines your stack goes here
+    // We have created the VPC object from the VPC class
+    new ec2.Vpc(this, "mainVPC", {
+      // This is where you can define how many AZs you want to use
+      maxAZs: 2,
+      // This is where you can define the subnet configuration per AZ
+      subnetConfiguration: [
+        {
+          cidrMask: 24,
+          name: "public-subnet",
+          subnetType: ec2.SubnetType.PUBLIC,
+        },
+      ],
+    });
+  }
+}
+```
+
+Now we are ready to deploy this infraestructure change to our account.
+
+### Deploy your code
+
+Now its time to test and deploy your code.
+
+To see if your code is valid, you can run _npm build_ which will compile TypeScript to JavaScript.
+
+```
+npm run build
+```
+
+If you don't get any errors, you can run the **cdk deploy** command:
+
+```
+cdk deploy
 ```

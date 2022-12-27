@@ -3,7 +3,6 @@ let mapleader = "."
 :set nowrap
 "Not record
 map q <Nop>  
-
 "autocmd BufNewFile,BufRead *.md set wrap
 "autocmd BufEnter * :syntax sync fromstart
 "filetype off        			  "Helps force plugins to load  
@@ -42,6 +41,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+noremap <leader>y "+y
+noremap <leader>pp "+p
 
 noremap <leader>w :w<CR>
 noremap <leader>wa :wqa!<CR> 		
@@ -124,3 +126,8 @@ hi ReactLifeCycleMethods ctermfg=204 guifg=#a7e22e
 hi Normal guibg=NONE ctermbg=NONE
 
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))
+
+
+:iab ife if err != nil {<CR><tab>return err<CR>}<CR> 
+:iab _html <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><meta name="viewport" content="width=device-width, initial-scale=1"><CR><title>Document</title><CR></head><CR><body><CR></body><CR></html>
+
