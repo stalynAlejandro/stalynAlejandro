@@ -25,8 +25,8 @@ set ignorecase
 
 augroup remember_folds
   autocmd!
-  au BufWinLeave ?* mkview 1
-  au BufWinEnter ?* silent! loadview 1
+  au BufWinLeave *.ts,*.tsx,*.jsx,*.js mkview 1
+  au BufWinEnter *.ts,*.tsx,*.jsx,*.js silent! loadview 1
 augroup END
 
 nnoremap <leader>rr :so ~/.vimrc<CR>
@@ -35,11 +35,19 @@ autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
 autocmd VimEnter * NERDTree | wincmd p
 
-map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR>clear<CR> <C-w>5+
+map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR>clear<CR><C-w>L<CR>
+
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>r :NERDTree<CR>
+:let g:NERDTreeWinSize=25
+
+nnoremap <silent> <Leader>` <C-w>=<CR>
+nnoremap <silent> <Leader>1 5<C-w>+<CR>
+nnoremap <silent> <Leader>2 5<C-w>-<CR>
+nnoremap <silent> <Leader>3 5<C-w>><CR>
+nnoremap <silent> <Leader>4 5<C-w><<CR>
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -129,6 +137,6 @@ hi Normal guibg=NONE ctermbg=NONE
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))
 
 
-:iab ife if err != nil {<CR><tab>return err<CR>}<CR> 
+:iab _ife if err != nil {<CR><tab>return err<CR>}<CR> 
 :iab _html <!DOCTYPE html><CR><html lang="en"><CR><head><CR><meta charset="UTF-8"><CR><meta name="viewport" content="width=device-width, initial-scale=1"><CR><title>Document</title><CR></head><CR><body><CR></body><CR></html>
 
