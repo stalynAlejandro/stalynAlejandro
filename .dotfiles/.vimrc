@@ -2,6 +2,7 @@ let mapleader = "."
 map q <Nop>  
 :syntax sync fromstart
 :set nowrap
+:set foldmethod=indent
 
 set nocompatible
 set showcmd
@@ -21,6 +22,12 @@ set splitright
 set hlsearch
 set incsearch
 set ignorecase
+
+augroup remember_folds
+  autocmd!
+  au BufWinLeave ?* mkview 1
+  au BufWinEnter ?* silent! loadview 1
+augroup END
 
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
@@ -83,14 +90,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
-  "Plug 'tpope/vim-fugitive'                                     
   Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     
   Plug 'junegunn/fzf.vim'                                       
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }             
   Plug 'preservim/nerdtree'                                     
-  "Plug 'Xuyuanp/nerdtree-git-plugin'                            
-  "Plug 'dracula/vim', { 'as': 'dracula' }                       
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'patstockwell/vim-monokai-tasty'
