@@ -14,12 +14,10 @@ else
   alias fo="xdg-open ."
   alias to="gnome-terminal"
   alias ch="google-chrome"
-
   alias rb="reboot"
   alias pw="poweroff"
   alias srb="sudo reboot"
   alias spw="sudo poweroff"
-
   alias gst="git st"
   alias gci="git ci"
   alias gco="git co"
@@ -35,17 +33,19 @@ else
   alias gdiff="git-icdiff | less"
   alias gdifft="git difftool"
   alias gssh="ssh-add ~/.ssh/gitkey"
-
   alias nrdev="npm run dev"
   alias nrtest="npm run test"
   alias nrstart="npm run start"
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
-
+  alias aws:configure="aws configure"
   alias aws:config="cat ~/.aws/config"
   alias aws:credentials="cat ~/.aws/credentials"
-  alias aws:region='aws configure get region'
-  alias aws:identity='aws sts get-caller-identity | cat'
+  alias aws:region="aws configure get region"
+  alias aws:identity="aws sts get-caller-identity | cat"
+  alias aws:ec2="aws ec2 describe-vpcs | cat"
+  alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
+  alias cdk:init="echo cdk init --language typescript"
 fi
 
 export FZF_DEFAULT_COMMAND='rg'
