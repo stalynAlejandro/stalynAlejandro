@@ -33,6 +33,7 @@ else
   alias gdiff="git-icdiff | less"
   alias gdifft="git difftool"
   alias gssh="ssh-add ~/.ssh/gitkey"
+  alias nr='npm run'
   alias nrdev="npm run dev"
   alias nrtest="npm run test"
   alias nrstart="npm run start"
