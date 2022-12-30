@@ -18,6 +18,7 @@ else
   alias pw="poweroff"
   alias srb="sudo reboot"
   alias spw="sudo poweroff"
+
   alias gst="git st"
   alias gci="git ci"
   alias gco="git co"
@@ -33,12 +34,14 @@ else
   alias gdiff="git-icdiff | less"
   alias gdifft="git difftool"
   alias gssh="ssh-add ~/.ssh/gitkey"
+
   alias nr='npm run'
   alias nrdev="npm run dev"
   alias nrtest="npm run test"
   alias nrstart="npm run start"
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
+
   alias aws:configure="aws configure"
   alias aws:config="cat ~/.aws/config"
   alias aws:credentials="cat ~/.aws/credentials"
