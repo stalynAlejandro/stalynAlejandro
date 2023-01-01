@@ -24,15 +24,15 @@ else
   alias gco="git co"
   alias gbr="git br"
   alias gll="git ll"
-  alias glog="git log"
-  alias glogg="git logg"
   alias grst="git rst"
+  alias gpsu="git psu"
   alias gadd="git add"
   alias gpull="git pull"
   alias gpush="git push"
-  alias gpsu="git psu"
-  alias gdiff="git-icdiff | less"
+  alias glog="git log"
+  alias glogg="git logg"
   alias gdifft="git difftool"
+  alias gdiff="git-icdiff | less"
   alias gssh="ssh-add ~/.ssh/gitkey"
 
   alias nr='npm run'
@@ -44,12 +44,12 @@ else
 
   alias aws:configure="aws configure"
   alias aws:config="cat ~/.aws/config"
-  alias aws:credentials="cat ~/.aws/credentials"
   alias aws:region="aws configure get region"
-  alias aws:identity="aws sts get-caller-identity | cat"
   alias aws:ec2="aws ec2 describe-vpcs | cat"
-  alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
+  alias aws:credentials="cat ~/.aws/credentials"
   alias cdk:init="echo cdk init --language typescript"
+  alias aws:identity="aws sts get-caller-identity | cat"
+  alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
 fi
 
 export FZF_DEFAULT_COMMAND='rg'
