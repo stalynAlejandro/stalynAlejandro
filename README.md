@@ -46,7 +46,7 @@
 <!--   ![Figma](https://img.shields.io/badge/-Figma-0A1A2F?style=flat&logo=figma) -->
 
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
+
 
 
 ### :bowtie: Emoji Cheat Sheet. :rocket:
