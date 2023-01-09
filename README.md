@@ -49,7 +49,7 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
 
 
-
+<!--
 ### :bowtie: Emoji Cheat Sheet. :rocket:
 
 
@@ -72,7 +72,7 @@
 | Breaking changes           | :boom: `:boom:`                               |
 | Code review changes        | :ok_hand: `:ok_hand:`                         |
 | Other                      | [Be creative](https://www.emoji-cheat-sheet.com/)  |
-
+-->
 
 <!--
 **stalynAlejandro/stalynAlejandro** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
