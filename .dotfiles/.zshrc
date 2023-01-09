@@ -52,6 +52,23 @@ else
   alias cdk:init="echo cdk init --language typescript"
   alias aws:identity="aws sts get-caller-identity | cat"
   alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
+alias se="echo '\n|   Commit type         | Emoji              |  
+|-----------------------|-------------------|  
+| New feature           | :sparkles:         | 
+| Bugfix                | :bug:              |  
+| Documentation         | :books:            |  
+| Tests                 | :rotating_light:   |  
+| Adding a test         | :white_check_mark: |  
+| Refactor code         | :hammer:           |  
+| Removing code/files   | :fire:             |  
+| Security              | :lock:             |  
+| Upgrading dependencies| :arrow_up:         |  
+| Translation           | :alien:            |  
+| Text                  | :pencil:           |  
+| Deploying stuff       | :rocket:           |  
+| Package.json in JS    | :package:          |  
+| Breaking changes      | :boom:             |  
+| Code review changes   | :ok_hand:          |'" 
 fi
 
 export FZF_DEFAULT_COMMAND='rg'

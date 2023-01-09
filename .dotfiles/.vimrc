@@ -58,15 +58,15 @@ noremap <leader>y "+y<CR>
 noremap <leader>pp "+p<CR>
 
 noremap <leader>w :w<CR>
-noremap <leader>wa :wqa!<CR> 		
-noremap <leader>x :x<CR> 		
+"noremap <leader>wa :wqa!<CR> 		
+"noremap <leader>x :x<CR> 		
 noremap <leader>qq :q!<CR> 
 noremap <leader>qa :qa!<CR> 
 noremap <leader>l :let @/=''<CR>
 
 inoremap jj <Esc>
 inoremap <leader>w <Esc>:w<CR> 
-inoremap <leader>wa <Esc>:wqa!<CR> 
+"inoremap <leader>wa <Esc>:wqa!<CR> 
 inoremap <leader>qq <Esc>:q!<CR>
 inoremap <leader>qa :qa!<CR> 
 
