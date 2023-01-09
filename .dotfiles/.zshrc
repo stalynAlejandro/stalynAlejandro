@@ -52,7 +52,7 @@ else
   alias cdk:init="echo cdk init --language typescript"
   alias aws:identity="aws sts get-caller-identity | cat"
   alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
-alias se="echo '\n|   Commit type         | Emoji              |  
+alias se="echo '|   Commit type         | Emoji              |  
 |-----------------------|-------------------|  
 | New feature           | :sparkles:         | 
 | Bugfix                | :bug:              |  
