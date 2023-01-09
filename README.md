@@ -3,7 +3,7 @@
 
 > [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
-> Currently building [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
+> [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone:
 
 ### :octocat: This is my favorite stack. 🔥
 
