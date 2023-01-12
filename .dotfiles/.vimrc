@@ -35,7 +35,7 @@ autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
 autocmd VimEnter * NERDTree | wincmd p
 
-map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR>clear<CR><C-w>L<CR>
+map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR>clear<CR><C-w>J<CR>
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
