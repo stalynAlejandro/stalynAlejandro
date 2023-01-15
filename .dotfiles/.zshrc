@@ -44,6 +44,9 @@ else
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
 
+  alias adb:list='emulator -list-avds'
+  alias adb:debug='adb shell input keyevent 82'
+
   alias aws:configure="aws configure"
   alias aws:config="cat ~/.aws/config"
   alias aws:region="aws configure get region"
