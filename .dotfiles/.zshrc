@@ -36,6 +36,7 @@ else
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
   alias gssh="ssh-add ~/.ssh/gitkey"
+  alias glab:ssh="ssh-add ~/.ssh/id_ed25519"
 
   alias nr='npm run'
   alias nrdev="npm run dev"
