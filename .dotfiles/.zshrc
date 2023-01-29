@@ -13,7 +13,7 @@ else
   alias ht="htop"
   alias fo="xdg-open ."
   alias to="gnome-terminal"
-  alias ch="google-chrome --new-window --app"
+  alias ch="google-chrome www.google.com --new-window --app"
   alias rb="reboot"
   alias pw="poweroff"
   alias srb="sudo reboot"
@@ -35,8 +35,10 @@ else
   alias gprn="git prn"
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
-  alias gssh="ssh-add ~/.ssh/gitkey"
-  alias glab:ssh="ssh-add ~/.ssh/id_ed25519"
+  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey"
+  alias glab:ssh="git config --global user.email alejandro.alcocer@mimacom.com && ssh-add ~/.ssh/id_ed25519"
+  alias gemail="git config user.email"
+  alias gname="git config user.name"
 
   alias nr='npm run'
   alias nrdev="npm run dev"
@@ -56,7 +58,7 @@ else
   alias cdk:init="echo cdk init --language typescript"
   alias aws:identity="aws sts get-caller-identity | cat"
   alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
-alias se="echo '|   Commit type         | Emoji              |  
+  alias se="echo '|   Commit type         | Emoji              |  
 |-----------------------|--------------------|  
 | New feature           | :sparkles:         | 
 | Bugfix                | :bug:              |  
@@ -96,8 +98,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export HOSTALIASES=~/.hosts
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -189,3 +191,4 @@ DISABLE_AUTO_TITLE="true"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+gemail
