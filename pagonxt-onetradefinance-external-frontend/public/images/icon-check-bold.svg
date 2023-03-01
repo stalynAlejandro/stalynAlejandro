@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <defs>
+        <path d="M16.287801,10.276875 L11.2405063,14.780625 C10.9594765,15.073125 10.5098289,15.073125 10.2287991,14.780625 L7.71077233,12.136875 C7.42974256,11.844375 7.42974256,11.371875 7.71077233,11.079375 C7.9918021,10.786875 8.44144974,10.786875 8.72247951,11.079375 L10.7458939,13.194375 L15.287335,9.219375 C15.5683648,8.926875 16.0180124,8.926875 16.2990422,9.219375 C16.5688308,9.511875 16.5688308,9.984375 16.287801,10.276875 Z" id="path-1"></path>
+    </defs>
+    <g id="↳-Checkbox" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="shape" fill="#EC0000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
