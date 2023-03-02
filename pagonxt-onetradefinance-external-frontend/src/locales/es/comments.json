@@ -1,0 +1,8 @@
+{
+  "comments": "Comentarios",
+  "commentAuthorInTask": "<span class=\"bold\">{{author}}</span> en <span class=\"bold\">\"{{task}}\"</span>",
+  "errors": {
+    "couldNotRetrieveComments": "No se han podido recuperar los comentarios para esta tarea."
+  },
+  "publishedAt": "Publicado el {{date}}"
+}

@@ -1,13 +1,11 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# Path to your oh-my-zsh installation.
-
 stty -ixon
 
 if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
-  export ZSH="/home/saav/.oh-my-zsh"
+  export ZSH="/home/alejandroalcocer/.oh-my-zsh"
+  alias c:pago="~/mimacom/one-trade-finance/pagonxt-onetradefinance-external-frontend/"
+  alias c:reg="~/tsystems/registro-electronico/"
   alias lvim="sh ~/.local/bin/lvim"
   alias nf="neofetch"
   alias ht="htop"
@@ -18,7 +16,8 @@ else
   alias pw="poweroff"
   alias srb="sudo reboot"
   alias spw="sudo poweroff"
-
+  alias hh="history -n | tail -70  > h.txt && less h.txt; rm -rf h.txt"
+  alias gs="git st"
   alias gst="git st"
   alias gci="git ci"
   alias gco="git co"
@@ -35,19 +34,19 @@ else
   alias gprn="git prn"
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
-  alias gssh="ssh-add ~/.ssh/gitkey"
-  alias glab:ssh="ssh-add ~/.ssh/id_ed25519"
-
+  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey && gemail"
+  alias glab:ssh="git config --global user.email alejandro.alcocer@mimacom.com && ssh-add ~/.ssh/id_ed25519 && gemail"
+  alias gemail="git config user.email"
+  alias gname="git config user.name"
   alias nr='npm run'
   alias nrdev="npm run dev"
   alias nrtest="npm run test"
   alias nrstart="npm run start"
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
-
+  alias nrtest:coverage="npm run test-coverage"
   alias adb:list='emulator -list-avds'
   alias adb:debug='adb shell input keyevent 82'
-
   alias aws:configure="aws configure"
   alias aws:config="cat ~/.aws/config"
   alias aws:region="aws configure get region"
@@ -56,7 +55,7 @@ else
   alias cdk:init="echo cdk init --language typescript"
   alias aws:identity="aws sts get-caller-identity | cat"
   alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
-alias se="echo '|   Commit type         | Emoji              |  
+  alias se="echo '|   Commit type         | Emoji              |  
 |-----------------------|--------------------|  
 | New feature           | :sparkles:         | 
 | Bugfix                | :bug:              |  
@@ -96,42 +95,12 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export HOSTALIASES=~/.hosts
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export JAVA_HOME
+export JRE_HOME
+export PATH
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -190,3 +159,4 @@ DISABLE_AUTO_TITLE="true"
 M2_HOME='/opt/apache-maven-3.6.3'
 PATH="$M2_HOME/bin:$PATH"
 export PATH
+gemail

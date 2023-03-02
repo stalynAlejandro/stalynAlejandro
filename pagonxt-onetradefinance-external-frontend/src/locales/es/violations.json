@@ -1,0 +1,48 @@
+{
+  "fieldInParent": "{{field}} en {{parent}}",
+  "fields": {
+    "accountId": "ID cuenta",
+    "advanceAmount": "Importe de anticipo",
+    "advanceCurrency": "Divisa de anticipo",
+    "amount": "Importe",
+    "clientReference": "Ref. cliente",
+    "collectionType": "Tipo de remesa",
+    "comment": "Comentario",
+    "currency": "Divisa",
+    "customer": "Cliente",
+    "customerId": "ID cliente",
+    "debtorBank": "Banco deudor",
+    "debtorName": "Nombre deudor",
+    "documents": "Documentación",
+    "expiration": "Vencimiento",
+    "exportCollection": "Remesa de exportación",
+    "iban": "IBAN",
+    "name": "Nombre",
+    "office": "Oficina",
+    "personNumber": "Nº de persona",
+    "priority": "Prioridad",
+    "riskLine": "Línea de riesgo",
+    "segment": "Segmento",
+    "taxId": "CIF"
+  },
+  "parentFields": {
+    "commissionAccount": "Cuenta comisión",
+    "customer": "Cliente",
+    "customerSearch": "Búsqueda cliente",
+    "exchangeInsurance": "Seguro de cambio",
+    "nominalAccount": "Cuenta nominal"
+  },
+  "violations": {
+    "incorrect": "El campo {{field}} es incorrecto.",
+    "isNull": "El campo {{field}} debe estar cumplimentado.",
+    "maxDate": "El campo {{field}} no puede ser posterior a {{limit}}.",
+    "maxField": "El campo {{field}} no puede ser superior al campo {{limit}}.",
+    "maxNumber": "El campo {{field}} no puede ser mayor de {{limit}}.",
+    "maxSize": "El campo {{field}} no puede tener más de {{limit}} caracteres.",
+    "minDate": "El campo {{field}} tiene que ser posterior a {{limit}}.",
+    "minNumber": "El campo {{field}} no puede ser menor de {{limit}}.",
+    "notAllowedValue": "El valor del campo {{field}} no está permitido.",
+    "notANumber": "El campo {{field}} debe ser numérico.",
+    "wrongExtension": "El campo {{field}} tiene documentación con extensión errónea."
+  }
+}

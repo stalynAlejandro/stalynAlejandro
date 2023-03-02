@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'SantanderHeadline-Bold';
+  src: local('SantanderHeadline-Bold'),
+    url('./fonts/SantanderHeadline-Bold.woff') format('woff'),
+    url('./fonts/SantanderHeadline-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SantanderHeadline-Regular';
+  src: local('SantanderHeadline-Regular'),
+    url('./fonts/SantanderHeadline-Regular.woff') format('woff'),
+    url('./fonts/SantanderHeadline-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SantanderHeadline-Light';
+  src: local('SantanderHeadline-Light'),
+    url('./fonts/SantanderHeadline-Light.woff') format('woff'),
+    url('./fonts/SantanderHeadline-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SantanderText-Bd';
+  src: local('SantanderMicroText-Bd'),
+    url('./fonts/SantanderMicroText-Bd.woff') format('woff'),
+    url('./fonts/SantanderMicroText-Bd.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SantanderText-Lt';
+  src: local('SantanderMicroText-Lt'),
+    url('./fonts/SantanderMicroText-Lt.woff') format('woff'),
+    url('./fonts/SantanderMicroText-Lt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'SantanderText';
+  src: local('SantanderMicroText'),
+    url('./fonts/SantanderMicroText.woff') format('woff'),
+    url('./fonts/SantanderMicroText.woff2') format('woff2');
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 16px;
+  border: 2px solid white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'SantanderText', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.25;
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'SantanderHeadline-Regular';
+  font-weight: normal;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+img,
+span {
+  vertical-align: middle;
+}
+
+button {
+  color: inherit;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+button:not([disabled]):hover {
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea,
+input,
+select,
+.input-like {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
