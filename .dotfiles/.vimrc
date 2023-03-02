@@ -3,6 +3,7 @@ map q <Nop>
 :syntax sync fromstart
 :set nowrap
 :set foldmethod=indent
+set clipboard=unnamedplus
 
 set nocompatible
 set showcmd
@@ -54,8 +55,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-noremap <leader>y "+y<CR>
-noremap <leader>pp "+p<CR>
+inoremap <leader>y "+y<CR>
+inoremap <leader>pp "+p<CR>
 
 noremap <leader>w :w<CR>
 "noremap <leader>wa :wqa!<CR> 		
@@ -135,7 +136,7 @@ hi ReactLifeCycleMethods ctermfg=204 guifg=#a7e22e
 hi Normal guibg=NONE ctermbg=NONE
 "hi Normal guibg=#262C3A ctermbg=NONE
 
-let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant VIM21'), '\n'))
+let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
 
 
 :iab _ife if err != nil {<CR><tab>return err<CR>}<CR> 

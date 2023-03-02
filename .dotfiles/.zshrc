@@ -1,24 +1,23 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# Path to your oh-my-zsh installation.
-
 stty -ixon
 
 if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
-  export ZSH="/home/saav/.oh-my-zsh"
+  export ZSH="/home/alejandroalcocer/.oh-my-zsh"
+  alias c:pago="~/mimacom/one-trade-finance/pagonxt-onetradefinance-external-frontend/"
+  alias c:reg="~/tsystems/registro-electronico/"
   alias lvim="sh ~/.local/bin/lvim"
   alias nf="neofetch"
   alias ht="htop"
   alias fo="xdg-open ."
   alias to="gnome-terminal"
-  alias ch="google-chrome www.google.com --new-window --app"
+  alias ch="google-chrome --new-window --app"
   alias rb="reboot"
   alias pw="poweroff"
   alias srb="sudo reboot"
   alias spw="sudo poweroff"
-
+  alias hh="history -n | tail -70  > h.txt && less h.txt; rm -rf h.txt"
+  alias gs="git st"
   alias gst="git st"
   alias gci="git ci"
   alias gco="git co"
@@ -35,21 +34,19 @@ else
   alias gprn="git prn"
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
-  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey"
-  alias glab:ssh="git config --global user.email alejandro.alcocer@mimacom.com && ssh-add ~/.ssh/id_ed25519"
+  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey && gemail"
+  alias glab:ssh="git config --global user.email alejandro.alcocer@mimacom.com && ssh-add ~/.ssh/id_ed25519 && gemail"
   alias gemail="git config user.email"
   alias gname="git config user.name"
-
   alias nr='npm run'
   alias nrdev="npm run dev"
   alias nrtest="npm run test"
   alias nrstart="npm run start"
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
-
+  alias nrtest:coverage="npm run test-coverage"
   alias adb:list='emulator -list-avds'
   alias adb:debug='adb shell input keyevent 82'
-
   alias aws:configure="aws configure"
   alias aws:config="cat ~/.aws/config"
   alias aws:region="aws configure get region"
@@ -98,97 +95,11 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export HOSTALIASES=~/.hosts
 
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export JAVA_HOME
+export JRE_HOME
+export PATH
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 gemail
