@@ -19,6 +19,7 @@ else
   alias gs="git st"
   alias gst="git st"
   alias gci="git ci"
+  alias gcim="git ci -m"
   alias gco="git co"
   alias gbr="git br"
   alias gll="git ll"
