@@ -4,9 +4,7 @@ if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
-  alias c:pago="~/mimacom/one-trade-finance/pagonxt-onetradefinance-external-frontend/"
   alias c:reg="~/tsystems/registro-electronico/"
-  alias lvim="sh ~/.local/bin/lvim"
   alias nf="neofetch"
   alias ht="htop"
   alias fo="xdg-open ."
@@ -35,7 +33,6 @@ else
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
   alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey && gemail"
-  alias glab:ssh="git config --global user.email alejandro.alcocer@mimacom.com && ssh-add ~/.ssh/id_ed25519 && gemail"
   alias gemail="git config user.email"
   alias gname="git config user.name"
   alias nr='npm run'
@@ -102,4 +99,4 @@ export JAVA_HOME
 export JRE_HOME
 export PATH
 
-gemail
+#gemail
