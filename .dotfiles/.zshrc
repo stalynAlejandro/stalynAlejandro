@@ -3,7 +3,7 @@ stty -ixon
 if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
-  export ZSH="/home/alejandroalcocer/.oh-my-zsh"
+  export ZSH="/home/saav/.oh-my-zsh"
   alias c:pago="~/mimacom/one-trade-finance/pagonxt-onetradefinance-external-frontend/"
   alias c:reg="~/tsystems/registro-electronico/"
   alias lvim="sh ~/.local/bin/lvim"
