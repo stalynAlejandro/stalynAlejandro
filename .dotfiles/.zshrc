@@ -5,6 +5,7 @@ if [[ `uname` == "Darwin" ]]; then
 else
   export ZSH="/home/saav/.oh-my-zsh"
   alias c:reg="~/tsystems/registro-electronico/"
+  alias c:jw="~/Projects/JWTrivial/jwgame"
   alias nf="neofetch"
   alias ht="htop"
   alias fo="xdg-open ."
@@ -32,6 +33,7 @@ else
   alias gprn="git prn"
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
+  alias gdiffc="git-icdiff | cat"
   alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey && gemail"
   alias gemail="git config user.email"
   alias gname="git config user.name"
