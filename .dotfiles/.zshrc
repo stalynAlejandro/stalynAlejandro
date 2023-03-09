@@ -5,6 +5,7 @@ if [[ `uname` == "Darwin" ]]; then
 else
   export ZSH="/home/saav/.oh-my-zsh"
   alias gunzip="tar xzvf"
+  alias cm="cmatrix -s -b -C green"
   alias c:reg="~/tsystems/registro-electronico/"
   alias c:jw="~/Projects/JWTrivial/jwgame"
   alias run:android="cd ~/android-studio/bin && ./studio.sh"
