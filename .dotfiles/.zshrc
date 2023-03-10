@@ -7,7 +7,7 @@ else
   alias gunzip="tar xzvf"
   alias cm="cmatrix -s -b -C green"
   alias c:reg="~/tsystems/registro-electronico/"
-  alias c:jw="~/Projects/JWTrivial/jwgame"
+  alias c:jw="~/Projects/JWTrivial"
   alias run:android="cd ~/android-studio/bin && ./studio.sh"
   alias nf="neofetch"
   alias ht="htop"
