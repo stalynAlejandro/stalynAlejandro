@@ -1,5 +1,5 @@
 
-## Hi there 👋
+## Hi 👋
 
 *Life is magic, code is art*
 
