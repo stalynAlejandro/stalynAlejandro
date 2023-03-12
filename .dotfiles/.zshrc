@@ -4,6 +4,7 @@ if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
+  alias rm:swp="find . -type f -name "*.swp" -exec rm -f {} \;"
   alias gunzip="tar xzvf"
   alias cm="cmatrix -s -b -C yellow"
   alias c:regts="~/tsystems/registro-electronico/"
