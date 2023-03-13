@@ -6,7 +6,7 @@ else
   export ZSH="/home/saav/.oh-my-zsh"
   alias rmswp="find . -type f -name '*.swp' -exec rm -f {} \;"
   alias gunzip="tar xzvf"
-  alias cm="cmatrix -s -b -C yellow"
+  alias cm="cmatrix -r -s -B"
   alias c:regts="~/tsystems/registro-electronico/"
   alias c:regpro="~/Projects/registro-electronico/"
   alias c:jw="~/Projects/JWTrivial"
