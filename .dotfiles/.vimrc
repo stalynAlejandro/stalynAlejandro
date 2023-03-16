@@ -1,5 +1,8 @@
 let mapleader = "."
+
 map q <Nop>  
+nnoremap <c-z> <nop>
+
 :syntax sync fromstart
 :set nowrap
 :set foldmethod=indent
