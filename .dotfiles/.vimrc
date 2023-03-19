@@ -37,7 +37,7 @@ nnoremap <leader>rr :so ~/.vimrc<CR>
 
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
-autocmd VimEnter * NERDTree | wincmd p
+"autocmd VimEnter * NERDTree | wincmd p
 
 map <C-t> :let $VIM_DIR=expand('%:p:h')<CR>:bel terminal<CR>cd $VIM_DIR<CR>clear<CR><C-w>J<CR>
 
