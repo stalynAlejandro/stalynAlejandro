@@ -9,7 +9,7 @@ else
   alias openports="netstat -tulpn | grep LISTEN"
   alias cm="cmatrix -r -s -B"
   alias c:regts="~/tsystems/registro-electronico/"
-  alias c:regpro="~/Projects/registro-electronico/"
+  alias c:regpro="~/Projects/registro-electronico-2.0/"
   alias c:jw="~/Projects/JWTrivial"
   alias c:jwgame="~/Projects/JWTrivial/jwgame/"
   alias c:jwback="~/Projects/JWTrivial/jwback/"
