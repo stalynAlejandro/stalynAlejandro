@@ -93,7 +93,6 @@ fi
 ZSH_THEME="bira"
 source $ZSH/oh-my-zsh.sh
 
-
 export EDITOR=/usr/bin/vim  
 export VISUAL=/usr/bin/vim
 export ANDROID_HOME=$HOME/Android/Sdk
