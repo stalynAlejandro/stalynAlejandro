@@ -1,5 +1,7 @@
 stty -ixon
 
+plugins=(sudo zsh-autosuggestions git)
+
 if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
@@ -91,7 +93,6 @@ fi
 ZSH_THEME="bira"
 source $ZSH/oh-my-zsh.sh
 
-plugins=(git)
 
 export EDITOR=/usr/bin/vim  
 export VISUAL=/usr/bin/vim
