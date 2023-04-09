@@ -6,6 +6,8 @@ if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
+  alias mongostatus="sudo systemctl status mongod"
+  alias mongostart="sudo systemctl start mongod"
   alias rmswp="find . -type f -name '*.swp' -exec rm -f {} \;"
   alias gunzip="tar xzvf"
   alias openports="netstat -tulpn | grep LISTEN"
