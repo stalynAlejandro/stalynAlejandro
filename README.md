@@ -26,8 +26,8 @@
 <!--
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
 -->
-<!-- 
-<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=stalynAlejandro&show_icons=true&locale=en&layout=compact" alt="stalynAlejandro" /></p> -->
+
+<p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=stalynAlejandro&show_icons=true&locale=en&layout=compact" alt="stalynAlejandro" /></p>
 
 
 <!--
