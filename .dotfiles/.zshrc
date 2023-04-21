@@ -36,7 +36,7 @@ else
   alias gbr="git br"
   alias gll="git ll"
   alias gup="git up"
-  alias grst="git rst"
+  alias grst.="git rst ."
   alias gpsu="git psu"
   alias gadd="git add"
   alias gpull="git pull"
