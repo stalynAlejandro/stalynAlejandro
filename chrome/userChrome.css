@@ -36,7 +36,7 @@
   > .tab-background[selected="true"] {
   background-image: none !important;
   background-color: transparent !important;
-  border-bottom: 2px solid rgb(255, 0, 238) !important;
+  border-bottom: 3px solid rgb(255, 0, 238) !important;
 }
 
 #identity-icon-label {
