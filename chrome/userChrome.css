@@ -111,7 +111,7 @@
   background-image: none !important;
   background-color: #000000 !important;
   color: rgb(255, 255, 255) !important;
-  height: 32px !important;
+  /* height: 32px !important; */
   width: 100% !important;
 }
 
@@ -120,7 +120,7 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important; */
   position: absolute !important;
-  bottom: 15px !important;
+  bottom: 28px !important;
   width: 100% !important; 
 }
 
