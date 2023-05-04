@@ -17,6 +17,7 @@ else
   alias c:jw="~/Projects/JWTrivial"
   alias c:jwgame="~/Projects/JWTrivial/jwgame/"
   alias c:jwback="~/Projects/JWTrivial/jwback/"
+
   alias run:android="cd ~/android-studio/bin && ./studio.sh"
   alias nf="neofetch"
   alias ht="htop"
@@ -28,6 +29,7 @@ else
   alias srb="sudo reboot"
   alias spw="sudo poweroff"
   alias hh="history -n | tail -70  > h.txt && less h.txt; rm -rf h.txt"
+
   alias gs="git st"
   alias gst="git st"
   alias gci="git ci"
@@ -50,6 +52,7 @@ else
   alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey && gemail"
   alias gemail="git config user.email"
   alias gname="git config user.name"
+
   alias nr='npm run'
   alias nrdev="npm run dev"
   alias nrtest="npm run test"
@@ -57,6 +60,7 @@ else
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
   alias nrtest:coverage="npm run test-coverage"
+
   alias adb:list='emulator -list-avds'
   alias adb:debug='adb shell input keyevent 82'
   alias aws:configure="aws configure"
