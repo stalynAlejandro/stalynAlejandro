@@ -6,6 +6,7 @@ if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
+  alias fontlist="fc-list : family | tr ',' '\n' | sort -u"
   alias mongostatus="sudo systemctl status mongod"
   alias mongostart="sudo systemctl start mongod"
   alias rmswp="find . -type f -name '*.swp' -exec rm -f {} \;"
@@ -115,6 +116,7 @@ PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export JRE_HOME
 export PATH
+export PAGER=cat
 
 #gemail
 
