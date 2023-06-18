@@ -118,7 +118,6 @@ export JRE_HOME
 export PATH
 export PAGER=cat
 
-#gemail
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
