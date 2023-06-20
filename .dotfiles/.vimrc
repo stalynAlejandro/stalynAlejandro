@@ -138,6 +138,7 @@ hi ReduxHooksKeywords ctermfg=204 guifg=#a7e22e
 hi ReactLifeCycleMethods ctermfg=204 guifg=#a7e22e
 hi Normal guibg=NONE ctermbg=NONE
 "hi Normal guibg=#262C3A ctermbg=NONE
+hi Normal guibg=#07080b ctermbg=NONE
 
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
 
