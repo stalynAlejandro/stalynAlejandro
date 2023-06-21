@@ -1,7 +1,7 @@
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 local user_host="%B%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%} "
 local user_symbol='%(!.#.$)'
-local current_dir="%B%{$fg[blue]%}%(4~|../%3~|%~) %{$reset_color%}"
+local current_dir="%B%{$fg[blue]%}%(3~|../%2~|%~) %{$reset_color%}"
 
 local vcs_branch='$(git_prompt_info)$(hg_prompt_info)'
 local rvm_ruby='$(ruby_prompt_info)'
