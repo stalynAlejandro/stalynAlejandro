@@ -33,6 +33,7 @@ else
 
   alias gs="git st"
   alias gst="git st"
+  alias grst="git restore"
   alias gci="git ci"
   alias gcim="git ci -m"
   alias gco="git co"
