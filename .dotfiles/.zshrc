@@ -33,7 +33,6 @@ else
 
   alias gs="git st"
   alias gst="git st"
-  alias grst="git restore"
   alias gci="git ci"
   alias gcim="git ci -m"
   alias gco="git co"
@@ -41,6 +40,7 @@ else
   alias gll="git ll"
   alias gup="git up"
   alias grst.="git rst ."
+  alias grst="git restore"
   alias gpsu="git psu"
   alias gadd="git add"
   alias gpull="git pull"
