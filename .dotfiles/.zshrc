@@ -12,7 +12,7 @@ else
   alias rmswp="find . -type f -name '*.swp' -exec rm -f {} \;"
   alias gunzip="tar xzvf"
   alias openports="netstat -tulpn | grep LISTEN"
-  alias cm="cmatrix -r -s -B"
+  alias cm="cmatrix -r -s"
   alias c:regts="~/tsystems/registro-electronico/"
   alias c:regpro="~/Projects/registro-electronico-2.0/"
   alias c:jw="~/Projects/JWTrivial"
@@ -23,7 +23,11 @@ else
   alias nf="neofetch"
   alias ht="htop"
   alias fo="xdg-open ."
+  alias foc="xdg-open . && exit"
+  alias vo="code ."
+  alias voc="code . && exit"
   alias to="gnome-terminal"
+  alias toc="gnome-terminal && exit"
   alias ch="google-chrome --disable-features=InfiniteSessionRestore --new-window --app"
   alias rb="reboot"
   alias pw="poweroff"
@@ -108,7 +112,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 export HOSTALIASES=~/.hosts
 
 DISABLE_AUTO_TITLE="true"
@@ -118,7 +121,6 @@ export JAVA_HOME
 export JRE_HOME
 export PATH
 export PAGER=cat
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
