@@ -112,6 +112,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'patstockwell/vim-monokai-tasty'
+  Plug 'prettier/vim-prettier', {
+      \ 'do': 'npm install --frozen-lockfile --production',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
 colorscheme vim-monokai-tasty 
@@ -140,6 +143,7 @@ hi Normal guibg=NONE ctermbg=NONE
 "hi Normal guibg=#262C3A ctermbg=NONE
 "hi Normal guibg=#2E2E2E ctermbg=NONE
 hi Normal guibg=#2e2e2e ctermbg=NONE
+"hi Normal guibg=#07080b ctermbg=NONE
 
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
 
