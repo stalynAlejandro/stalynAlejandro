@@ -6,7 +6,7 @@
 <!-- > [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
 > [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone: -->
-
+<!--
 ### :octocat: My favorite stack. 🔥
 
 - 📱 &nbsp;Mobile:&nbsp;
@@ -23,7 +23,7 @@
 - 🖥 &nbsp;Design:&nbsp;
 ![Figma](https://img.shields.io/badge/-Figma-0A1A2F?style=flat&logo=figma)
 
-<!--
+
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=stalynAlejandro&layout=compact&&theme=radical)](https://github.com/stalynAlejandro/github-readme-stats)
 -->
 
