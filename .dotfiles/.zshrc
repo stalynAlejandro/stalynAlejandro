@@ -5,19 +5,21 @@ plugins=(sudo zsh-autosuggestions git)
 if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
-  export ZSH="/home/saav/.oh-my-zsh"
+  export ZSH="/home/sa/.oh-my-zsh"
+  alias nv="nvim"
   alias fontlist="fc-list : family | tr ',' '\n' | sort -u"
   alias mongostatus="sudo systemctl status mongod"
   alias mongostart="sudo systemctl start mongod"
   alias rmswp="find . -type f -name '*.swp' -exec rm -f {} \;"
   alias gunzip="tar xzvf"
   alias openports="netstat -tulpn | grep LISTEN"
-  alias cm="cmatrix -r -s"
+  alias cm="cmatrix"
   alias c:regts="~/tsystems/registro-electronico/"
   alias c:regpro="~/Projects/registro-electronico-2.0/"
   alias c:jw="~/Projects/JWTrivial"
   alias c:jwgame="~/Projects/JWTrivial/jwgame/"
   alias c:jwback="~/Projects/JWTrivial/jwback/"
+  alias c:sst="~/Projects/AWS-Projects/sst-app/"
 
   alias run:android="cd ~/android-studio/bin && ./studio.sh"
   alias nf="neofetch"
@@ -77,6 +79,7 @@ else
   alias cdk:init="echo cdk init --language typescript"
   alias aws:identity="aws sts get-caller-identity | cat"
   alias aws:bootstrap="echo cdk bootstrap aws://ACCOUNT-NUMBER/REGION"
+
   alias se="echo '|   Commit type         | Emoji              |  
 |-----------------------|--------------------|  
 | New feature           | :sparkles:         | 
@@ -102,7 +105,8 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
-ZSH_THEME="bira"
+#ZSH_THEME="gallois"
+ZSH_THEME="zhann"
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=/usr/bin/vim  
@@ -112,10 +116,12 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:/home/sa/.config/lsp/lua-language-server/bin
 export HOSTALIASES=~/.hosts
 
+
 DISABLE_AUTO_TITLE="true"
-JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+JAVA_HOME=/opt/android-studio-2022.2.1/android-studio/jre
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export JRE_HOME

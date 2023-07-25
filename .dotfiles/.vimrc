@@ -26,6 +26,7 @@ set splitright
 set hlsearch
 set incsearch
 set ignorecase
+set cursorline
 
 augroup remember_folds
   autocmd!
@@ -45,6 +46,13 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>r :NERDTree<CR>
+
+map <C-n> :tabnew<CR>
+map <C-u> :tabp<CR>
+map <C-i> :tabn<CR>
+nnoremap <c-s-pageup> :tabmove -1<cr>
+nnoremap <c-s-pagedown> :tabmove +1<cr>
+
 :let g:NERDTreeWinSize=25
 
 nnoremap <silent> <Leader>` <C-w>=<CR>
@@ -142,7 +150,7 @@ hi ReactLifeCycleMethods ctermfg=204 guifg=#a7e22e
 hi Normal guibg=NONE ctermbg=NONE
 "hi Normal guibg=#262C3A ctermbg=NONE
 "hi Normal guibg=#2E2E2E ctermbg=NONE
-hi Normal guibg=#2e2e2e ctermbg=NONE
+"hi Normal guibg=#2e2e2e ctermbg=NONE
 "hi Normal guibg=#07080b ctermbg=NONE
 
 let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
