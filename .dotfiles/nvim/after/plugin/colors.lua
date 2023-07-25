@@ -1,6 +1,6 @@
 
 function ColorMyPencils(colors, transparent)
-    local color = colors or 'vim-monokai-tasty'
+    local color = colors or 'bluloco-dark'
     vim.cmd.colorscheme(color)
 
     if transparent == true then
