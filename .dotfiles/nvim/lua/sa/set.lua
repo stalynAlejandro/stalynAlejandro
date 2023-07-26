@@ -14,3 +14,4 @@ vim.opt.cursorline = true
 vim.opt.smartindent = true
 vim.opt.termguicolors = true
 vim.opt.termguicolors = true
+vim.opt.signcolumn = 'number'

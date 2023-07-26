@@ -59,9 +59,11 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lsp'               -- nvim-cmp source for neovim's built-in LSP
 
     -- Theming
+    use("tanvirtin/monokai.nvim")
     use("patstockwell/vim-monokai-tasty")
     use("folke/tokyonight.nvim")
     use("jacoborus/tender.vim")
+    use('maxmx03/dracula.nvim')
     use {
         'uloco/bluloco.nvim',
         requires = { 'rktjmp/lush.nvim' }

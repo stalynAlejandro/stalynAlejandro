@@ -1,12 +1,33 @@
-
 function ColorMyPencils(colors, transparent)
-    local color = colors or 'bluloco-dark'
-    vim.cmd.colorscheme(color)
+    if colors == 'monokai' then
+        require('monokai').setup {}
+    elseif colors == 'monokaiPro' then
+        require('monokai').setup { palette = require('monokai').pro }
+    elseif colors == 'monokaiSoda' then
+        require('monokai').setup { palette = require('monokai').soda }
+    elseif colors == 'monokaiRis' then
+        require('monokai').setup { palette = require('monokai').ristretto }
+    else
+        local color = colors or 'dracula'
+        vim.cmd.colorscheme(color)
+    end
 
     if transparent == true then
-        vim.api.nvim_set_hl(0, "Normal", { bg = 'none' })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#3B4252" })
+        local highlights = {
+            "Normal",
+            "LineNr",
+            "Folded",
+            "NonText",
+            "SpecialKey",
+            "VertSplit",
+            "SignColumn",
+            "EndOfBuffer",
+            "TablineFill"
+        }
+        for _, name in pairs(highlights) do
+            vim.cmd.highlight(name .. ' guibg=none ctermbg=none')
+        end
     end
 end
 
-ColorMyPencils()
+ColorMyPencils('monokaiSoda', true)
