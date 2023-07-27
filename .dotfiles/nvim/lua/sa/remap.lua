@@ -8,6 +8,8 @@ vim.keymap.set("n", "<Esc>", ":noh <CR>")
 vim.keymap.set("x", "p", [[p:let @+=@0<CR>:let @"=@0<CR>]], { silent = true })
 vim.keymap.set('v', '<leader>f', [[y<Esc>/<C-r>"<CR>]])
 vim.keymap.set('n', '<leader>gt', [[<C-w><C-]><C-w>T]])
+vim.keymap.set("v", "y", "\"+y")
+vim.keymap.set("n", "y", "\"+y")
 
 -- Basic
 vim.keymap.set("n", "<leader>w", ":w<CR>")
@@ -50,7 +52,7 @@ vim.keymap.set("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
 vim.keymap.set("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>")
 vim.keymap.set("n", "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>")
 
--- Telescope || Git
+-- Telescope || Git + Fugitive
 vim.keymap.set("n", "<leader>ci", "<cmd> Telescope git_commits <CR>")
 vim.keymap.set("n", "<leader>st", "<cmd> Telescope git_status <CR>")
 vim.keymap.set("n", "<leader>ma", "<cmd> Telescope marks <CR>")

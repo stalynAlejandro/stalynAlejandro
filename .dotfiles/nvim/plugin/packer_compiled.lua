@@ -196,6 +196,11 @@ _G.packer_plugins = {
     path = "/home/sa/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/sa/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-monokai-tasty"] = {
     loaded = true,
     path = "/home/sa/.local/share/nvim/site/pack/packer/start/vim-monokai-tasty",

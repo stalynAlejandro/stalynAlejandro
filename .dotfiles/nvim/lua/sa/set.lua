@@ -15,3 +15,6 @@ vim.opt.smartindent = true
 vim.opt.termguicolors = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = 'number'
+
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.clipboard:append { 'unnamedplus' }

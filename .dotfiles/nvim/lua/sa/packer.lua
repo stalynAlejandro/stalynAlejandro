@@ -3,6 +3,9 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
+    -- Github
+    use "tpope/vim-fugitive"
+
     -- Terminal
     use {
         "NvChad/nvterm",
@@ -34,7 +37,7 @@ return require('packer').startup(function(use)
     }
 
     -- Harpoon
-    use('theprimeagen/harpoon')
+    use 'theprimeagen/harpoon'
 
     -- Treesitter || Code Sintax
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
