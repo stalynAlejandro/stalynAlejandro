@@ -8,8 +8,8 @@ vim.keymap.set("n", "<Esc>", ":noh <CR>")
 vim.keymap.set("x", "p", [[p:let @+=@0<CR>:let @"=@0<CR>]], { silent = true })
 vim.keymap.set('v', '<leader>f', [[y<Esc>/<C-r>"<CR>]])
 vim.keymap.set('n', '<leader>gt', [[<C-w><C-]><C-w>T]])
-vim.keymap.set("v", "y", "\"+y")
-vim.keymap.set("n", "y", "\"+y")
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>p", [["_dp]])
 
 -- Basic
 vim.keymap.set("n", "<leader>w", ":w<CR>")
