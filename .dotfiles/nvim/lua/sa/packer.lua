@@ -48,8 +48,8 @@ return require('packer').startup(function(use)
     -- LSPSaga || Preview
     use "glepnir/lspsaga.nvim"
 
-    -- -- LSP Config
-    use "neovim/nvim-lspconfig"           -- LSP
+    -- -- LSP Confi g
+    use "neovim/nvim-lspconfig" -- LSP
     use "jose-elias-alvarez/null-ls.nvim" -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
