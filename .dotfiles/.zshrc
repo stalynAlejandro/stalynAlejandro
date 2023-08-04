@@ -117,6 +117,7 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/home/sa/.config/lsp/lua-language-server/bin
+export PATH=$PATH:$HOME/Programs/aseprite/build/bin
 export HOSTALIASES=~/.hosts
 
 

@@ -44,7 +44,7 @@ vim.keymap.set("n", "<A-h>", function() require("nvterm.terminal").toggle "horiz
 vim.keymap.set("n", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
 
 -- Telescope || Search
-vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>")
+vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files hidden=true <CR>")
 vim.keymap.set("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>")
 vim.keymap.set("n", "<leader>fw", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<leader>fb", "<cmd> Telescope buffers <CR>")
