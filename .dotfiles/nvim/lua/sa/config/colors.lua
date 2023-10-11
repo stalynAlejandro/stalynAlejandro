@@ -30,4 +30,4 @@ function ColorMyPencils(colors, transparent)
     end
 end
 
-ColorMyPencils('monokaiSoda', true)
+ColorMyPencils('monokaiSoda', false)
