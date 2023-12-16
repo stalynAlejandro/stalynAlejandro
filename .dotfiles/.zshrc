@@ -5,7 +5,7 @@ plugins=(sudo zsh-autosuggestions git)
 if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
-  export ZSH="/home/sa/.oh-my-zsh"
+  export ZSH="/home/saav/.oh-my-zsh"
   alias nv="nvim"
   alias fontlist="fc-list : family | tr ',' '\n' | sort -u"
   alias mongostatus="sudo systemctl status mongod"
@@ -106,7 +106,7 @@ if type rg &> /dev/null; then
 fi
 
 #ZSH_THEME="gallois"
-ZSH_THEME="zhann"
+ZSH_THEME="bira"
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR=/usr/bin/vim  
