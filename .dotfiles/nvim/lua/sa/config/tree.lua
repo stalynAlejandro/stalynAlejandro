@@ -170,4 +170,12 @@ require("nvim-tree").setup({
         width = 30,
         preserve_window_proportions = true,
     },
+    filesystem_watchers = {
+        enable = true,
+    },
+    actions = {
+        open_file = {
+            resize_window = true,
+        },
+    },
 })
