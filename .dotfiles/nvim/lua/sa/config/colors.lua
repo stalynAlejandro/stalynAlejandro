@@ -30,4 +30,4 @@ function Theme(colors, transparent)
     end
 end
 
-Theme('monokai', false)
+Theme('vim-monokai-tasty', false)

@@ -61,11 +61,11 @@ return require('packer').startup(function(use)
     use "rafamadriz/friendly-snippets"
 
     -- Theming
-    use "tanvirtin/monokai.nvim"
+    -- use "tanvirtin/monokai.nvim"
     use "patstockwell/vim-monokai-tasty"
-    use "folke/tokyonight.nvim"
+    -- use "folke/tokyonight.nvim"
     use "jacoborus/tender.vim"
-    use 'maxmx03/dracula.nvim'
+    -- use 'maxmx03/dracula.nvim'
     use {
         'uloco/bluloco.nvim',
         requires = { 'rktjmp/lush.nvim' }
