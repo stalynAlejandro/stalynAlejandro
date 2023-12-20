@@ -29,11 +29,11 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    -- NVTree || File Explorer
+    -- Tree Explorer
     use {
         'nvim-tree/nvim-tree.lua',
-        'nvim-tree/nvim-web-devicons', -- optional
         requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
         },
     }
 

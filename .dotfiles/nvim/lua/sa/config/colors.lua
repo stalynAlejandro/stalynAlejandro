@@ -1,4 +1,4 @@
-function ColorMyPencils(colors, transparent)
+function Theme(colors, transparent)
     if colors == 'monokai' then
         require('monokai').setup {}
     elseif colors == 'monokaiPro' then
@@ -30,4 +30,4 @@ function ColorMyPencils(colors, transparent)
     end
 end
 
-ColorMyPencils('monokaiSoda', true)
+Theme('monokai', false)
