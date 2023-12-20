@@ -49,8 +49,7 @@ require("nvim-tree").setup({
         ignore = false,
     },
     filters = {
-        dotfiles = true,
-        exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
+        dotfiles = false,
     },
     disable_netrw = true,
     hijack_netrw = true,

@@ -109,20 +109,22 @@ fi
 ZSH_THEME="bira"
 source $ZSH/oh-my-zsh.sh
 
+DISABLE_AUTO_TITLE="true"
+
 export EDITOR=/usr/bin/vim  
 export VISUAL=/usr/bin/vim
+
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:/home/sa/.config/lsp/lua-language-server/bin
-export PATH=$PATH:$HOME/Programs/aseprite/build/bin
 export HOSTALIASES=~/.hosts
+#export PATH=$PATH:$HOME/Programs/aseprite/build/bin
 
+export PATH=$PATH:/usr/local/go/bin
 
-DISABLE_AUTO_TITLE="true"
-JAVA_HOME=/opt/android-studio-2022.2.1/android-studio/jre
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export JRE_HOME
