@@ -63,7 +63,7 @@ vim.keymap.set("n", "<leader>ma", "<cmd> Telescope marks <CR>")
 
 -- NVimTree || File Explorer
 vim.keymap.set("n", "<leader>n", "<cmd> NvimTreeToggle <CR>")
-vim.keymap.set("n", "<leader>nc", "<cmd> NvimTreeClose <CR>")
+vim.keymap.set("n", "<leader>c", "<cmd> NvimTreeClose <CR>")
 
 -- Comments
 vim.keymap.set("n", "<C-_>", function() require("Comment.api").toggle.linewise.current() end)
