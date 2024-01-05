@@ -1,6 +1,5 @@
 
-## Hi 👋
-
+<!-- ## Hi 👋 -->
 *Life is magic, code is art*
 
 <!-- > [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
