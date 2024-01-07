@@ -1,6 +1,6 @@
 
 <!-- ## Hi 👋 -->
-*Life is magic, code is art* (📑)[https://saav.super.site/]
+*Life is magic, code is art*  [📑](https://saav.super.site/)
 
 <!-- > [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
