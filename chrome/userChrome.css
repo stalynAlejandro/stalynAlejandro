@@ -47,7 +47,7 @@
 #navigator-toolbox {
   background-image: none !important;
   background-color: rgba(0, 0, 0) !important;
-  height: 35px !important;
+  height: 36px !important;
 }
 
 /* Window colors  */
@@ -84,8 +84,8 @@
 }
 
 .tab-stack {
-  height: 0px !important;
-  font-size: 14px !important;
+  height: 30px !important;
+  font-size: 15px !important;
 }
 
 .tab-background {
@@ -111,13 +111,14 @@
   background-image: none !important;
   background-color: #000000 !important;
   color: rgb(255, 255, 255) !important;
-  height: 32px !important;
+  height: 36px !important;
   width: 100% !important;
 }
 
 #urlbar-container {
   position: absolute !important;
-  bottom: 15px !important;
+  bottom: 13px !important;
+  font-size: 15px !important;
   width: 100% !important;
 }
 

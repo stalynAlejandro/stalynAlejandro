@@ -112,17 +112,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     
   Plug 'junegunn/fzf.vim'                                       
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }             
   Plug 'preservim/nerdtree'                                     
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
   Plug 'patstockwell/vim-monokai-tasty'
-  Plug 'prettier/vim-prettier', {
-      \ 'do': 'npm install --frozen-lockfile --production',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }             
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'prettier/vim-prettier', {
+"     \ 'do': 'npm install --frozen-lockfile --production',
+"     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
 colorscheme vim-monokai-tasty 
