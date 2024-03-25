@@ -57,7 +57,7 @@ else
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
   alias gdiffc="git-icdiff | cat"
-  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey && gemail"
+  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/githubkey && gemail"
   alias gemail="git config user.email"
   alias gname="git config user.name"
 

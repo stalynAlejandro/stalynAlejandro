@@ -97,16 +97,16 @@ map <silent> <C-g>s :Gdiffsplit<CR>
 map <silent> <C-g>w :Gwrite<CR>
 map <silent> <C-g>r :Gread<CR>
 
-nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
-inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+"nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
+"inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 
-let g:coc_user_config = {}
-let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsplit'
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"let g:coc_user_config = {}
+"let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsplit'
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 
 call plug#begin('~/.vim/plugged') 
   Plug 'mhinz/vim-startify'
