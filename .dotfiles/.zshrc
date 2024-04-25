@@ -6,6 +6,7 @@ if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
+  alias py="python3"
   alias nv="nvim"
   alias fontlist="fc-list : family | tr ',' '\n' | sort -u"
   alias mongostatus="sudo systemctl status mongod"
