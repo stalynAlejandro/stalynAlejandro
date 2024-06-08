@@ -25,6 +25,7 @@ else
   alias run:android="cd ~/android-studio/bin && ./studio.sh"
   alias nf="neofetch"
   alias ht="htop"
+  alias hb="btop"
   alias fo="xdg-open ."
   alias foc="xdg-open . && exit"
   alias vo="code ."
@@ -69,6 +70,9 @@ else
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
   alias nrtest:coverage="npm run test-coverage"
+
+  alias llama="ollama run llama2"
+  alias llcode="ollama run codellama"
 
   alias adb:list='emulator -list-avds'
   alias adb:debug='adb shell input keyevent 82'
