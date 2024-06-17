@@ -109,13 +109,13 @@ inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 "nmap <silent> gr <Plug>(coc-references)
 
 call plug#begin('~/.vim/plugged') 
-  Plug 'mhinz/vim-startify'
-  Plug 'itchyny/lightline.vim'
-  Plug 'vim-airline/vim-airline'
-  Plug 'junegunn/fzf.vim'                                       
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'preservim/nerdtree'                                     
-  Plug 'patstockwell/vim-monokai-tasty'
+"  Plug 'mhinz/vim-startify'
+"  Plug 'itchyny/lightline.vim'
+"  Plug 'vim-airline/vim-airline'
+"  Plug 'junegunn/fzf.vim'                                       
+"  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"  Plug 'preservim/nerdtree'                                     
+"  Plug 'patstockwell/vim-monokai-tasty'
 " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     
 " Plug 'neoclide/coc.nvim', { 'branch': 'release' }             
 " Plug 'leafgarland/typescript-vim'
@@ -125,7 +125,7 @@ call plug#begin('~/.vim/plugged')
 "     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
-colorscheme vim-monokai-tasty 
+"colorscheme vim-monokai-tasty 
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescriptreact
 
 hi tsxTagName guifg=#66d8ef
@@ -153,7 +153,7 @@ hi Normal guibg=NONE ctermbg=NONE
 "hi Normal guibg=#2e2e2e ctermbg=NONE
 "hi Normal guibg=#07080b ctermbg=NONE
 
-let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
+"let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
 
 
 :iab _ife if err != nil {<CR><tab>return err<CR>}<CR> 
