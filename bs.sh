@@ -9,6 +9,7 @@ sudo apt-get install icdiff -y
 sudo apt-get install gnome-shell-extension-manager -y
 sudo apt-get install netstat -y
 sudo apt-get install openjdk-17-jdk -y
+sudo apt install gnome-tweaks -y
 
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
 && sudo mkdir -p -m 755 /etc/apt/keyrings \
@@ -42,5 +43,14 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 gsettings set org.gnome.Terminal.Legacy.Settings headerbar false
 gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar false
+
+git clone https://github.com/cilynx/rtl88x2bu.git
+cd rtl88x2bu
+VER=$(sed -n 's/\PACKAGE_VERSION="\(.*\)"/\1/p' dkms.conf)
+sudo rsync -rvhP ./ /usr/src/rtl88x2bu-${VER}
+sudo dkms add -m rtl88x2bu -v ${VER}
+sudo dkms build -m rtl88x2bu -v ${VER}
+sudo dkms install -m rtl88x2bu -v ${VER}
+sudo modprobe 88x2bu
 
 sudo apt autoremove
