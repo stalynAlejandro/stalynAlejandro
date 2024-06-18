@@ -1,0 +1,1 @@
+stalynAlejandro/.dotfiles/.zshrc

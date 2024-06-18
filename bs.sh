@@ -6,7 +6,9 @@ sudo apt-get install vim -y
 sudo apt-get install neovim -y
 sudo apt-get install dconf-editor -y
 sudo apt-get install icdiff -y
-sudo apt install gnome-shell-extension-manager -y
+sudo apt-get install gnome-shell-extension-manager -y
+sudo apt-get install netstat -y
+sudo apt-get install openjdk-17-jdk -y
 
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
 && sudo mkdir -p -m 755 /etc/apt/keyrings \
