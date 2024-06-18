@@ -35,13 +35,17 @@ vim.keymap.set("n", "si", ":vsplit<Return><C-w>w<CR>")
 vim.keymap.set("n", "sv", ":split<Return><C-w>w<CR>")
 
 -- Terminal
+vim.keymap.set("t", "<A-i>", "<cmd> Lspsaga term_toggle <CR>")
+vim.keymap.set("n", "<A-i>", "<cmd> Lspsaga term_toggle <CR>")
 vim.keymap.set("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true))
-vim.keymap.set("t", "<A-i>", function() require("nvterm.terminal").toggle "float" end)
-vim.keymap.set("t", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
-vim.keymap.set("t", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
-vim.keymap.set("n", "<A-i>", function() require("nvterm.terminal").toggle "float" end)
-vim.keymap.set("n", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
-vim.keymap.set("n", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
+--vim.keymap.set("t", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
+--vim.keymap.set("t", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
+--vim.keymap.set("n", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
+--vim.keymap.set("n", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
+-- vim.keymap.set("t", "<A-i>", function() require("nvterm.terminal").toggle "float" end)
+-- vim.keymap.set("n", "<A-i>", function() require("nvterm.terminal").toggle "float" end)
+
+
 
 -- Telescope || Search
 vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files hidden=true <CR>")
@@ -59,6 +63,7 @@ vim.keymap.set("n", "<leader>ma", "<cmd> Telescope marks <CR>")
 
 -- NVimTree || File Explorer
 vim.keymap.set("n", "<leader>n", "<cmd> NvimTreeToggle <CR>")
+vim.keymap.set("n", "<leader>c", "<cmd> NvimTreeClose <CR>")
 
 -- Comments
 vim.keymap.set("n", "<C-_>", function() require("Comment.api").toggle.linewise.current() end)

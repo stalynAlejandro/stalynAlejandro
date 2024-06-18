@@ -24,16 +24,16 @@ return require('packer').startup(function(use)
 
     -- Telescope || Search
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.3',
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    -- NVTree || File Explorer
+    -- Tree Explorer
     use {
         'nvim-tree/nvim-tree.lua',
-        'nvim-tree/nvim-web-devicons', -- optional
         requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
         },
     }
 
@@ -54,7 +54,6 @@ return require('packer').startup(function(use)
     use "jose-elias-alvarez/null-ls.nvim" -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
-    -- use "hrsh7th/cmp-buffer"   -- nvim-cmp source for buffer words
     use "hrsh7th/nvim-cmp"     -- Completion
     use "hrsh7th/cmp-nvim-lsp" -- nvim-cmp source for neovim's built-in LSP
     use 'L3MON4D3/LuaSnip'
@@ -62,11 +61,11 @@ return require('packer').startup(function(use)
     use "rafamadriz/friendly-snippets"
 
     -- Theming
-    use "tanvirtin/monokai.nvim"
+    -- use "tanvirtin/monokai.nvim"
     use "patstockwell/vim-monokai-tasty"
-    use "folke/tokyonight.nvim"
+    -- use "folke/tokyonight.nvim"
     use "jacoborus/tender.vim"
-    use 'maxmx03/dracula.nvim'
+    -- use 'maxmx03/dracula.nvim'
     use {
         'uloco/bluloco.nvim',
         requires = { 'rktjmp/lush.nvim' }

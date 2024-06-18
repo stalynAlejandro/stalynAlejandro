@@ -97,35 +97,35 @@ map <silent> <C-g>s :Gdiffsplit<CR>
 map <silent> <C-g>w :Gwrite<CR>
 map <silent> <C-g>r :Gread<CR>
 
-nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
-inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+"nnoremap <leader>p :call CocAction('runCommand','prettier.formatFile')<CR>
+"inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 
-let g:coc_user_config = {}
-let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsplit'
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"let g:coc_user_config = {}
+"let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsplit'
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 
 call plug#begin('~/.vim/plugged') 
-  Plug 'mhinz/vim-startify'
-  Plug 'itchyny/lightline.vim'
-  Plug 'vim-airline/vim-airline'
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     
-  Plug 'junegunn/fzf.vim'                                       
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }             
-  Plug 'preservim/nerdtree'                                     
-  Plug 'leafgarland/typescript-vim'
-  Plug 'peitalin/vim-jsx-typescript'
-  Plug 'patstockwell/vim-monokai-tasty'
-  Plug 'prettier/vim-prettier', {
-      \ 'do': 'npm install --frozen-lockfile --production',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+"  Plug 'mhinz/vim-startify'
+"  Plug 'itchyny/lightline.vim'
+"  Plug 'vim-airline/vim-airline'
+"  Plug 'junegunn/fzf.vim'                                       
+"  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"  Plug 'preservim/nerdtree'                                     
+"  Plug 'patstockwell/vim-monokai-tasty'
+" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }     
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }             
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'prettier/vim-prettier', {
+"     \ 'do': 'npm install --frozen-lockfile --production',
+"     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 call plug#end()
 
-colorscheme vim-monokai-tasty 
+"colorscheme vim-monokai-tasty 
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*.ts set filetype=typescriptreact
 
 hi tsxTagName guifg=#66d8ef
@@ -153,7 +153,7 @@ hi Normal guibg=NONE ctermbg=NONE
 "hi Normal guibg=#2e2e2e ctermbg=NONE
 "hi Normal guibg=#07080b ctermbg=NONE
 
-let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
+"let g:startify_custom_header = startify#pad(split(system('figlet -w 100 -l -f slant - VIM21 -'), '\n'))
 
 
 :iab _ife if err != nil {<CR><tab>return err<CR>}<CR> 

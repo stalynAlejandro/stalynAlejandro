@@ -5,7 +5,8 @@ plugins=(sudo zsh-autosuggestions git)
 if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
-  export ZSH="/home/sa/.oh-my-zsh"
+  export ZSH="/home/saav/.oh-my-zsh"
+  alias py="python3"
   alias nv="nvim"
   alias fontlist="fc-list : family | tr ',' '\n' | sort -u"
   alias mongostatus="sudo systemctl status mongod"
@@ -24,6 +25,7 @@ else
   alias run:android="cd ~/android-studio/bin && ./studio.sh"
   alias nf="neofetch"
   alias ht="htop"
+  alias hb="btop"
   alias fo="xdg-open ."
   alias foc="xdg-open . && exit"
   alias vo="code ."
@@ -57,7 +59,7 @@ else
   alias gdifft="git difftool"
   alias gdiff="git-icdiff | less"
   alias gdiffc="git-icdiff | cat"
-  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/gitkey && gemail"
+  alias gssh="git config --global user.email saavalencia97@gmail.com && ssh-add ~/.ssh/githubkey && gemail"
   alias gemail="git config user.email"
   alias gname="git config user.name"
 
@@ -68,6 +70,9 @@ else
   alias nrbuild="npm run build"
   alias nrstory="npm run storybook"
   alias nrtest:coverage="npm run test-coverage"
+
+  alias llama="ollama run llama2"
+  alias llcode="ollama run codellama"
 
   alias adb:list='emulator -list-avds'
   alias adb:debug='adb shell input keyevent 82'
@@ -106,23 +111,25 @@ if type rg &> /dev/null; then
 fi
 
 #ZSH_THEME="gallois"
-ZSH_THEME="zhann"
+ZSH_THEME="bira"
 source $ZSH/oh-my-zsh.sh
+
+DISABLE_AUTO_TITLE="true"
 
 export EDITOR=/usr/bin/vim  
 export VISUAL=/usr/bin/vim
+
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:/home/sa/.config/lsp/lua-language-server/bin
-export PATH=$PATH:$HOME/Programs/aseprite/build/bin
 export HOSTALIASES=~/.hosts
+#export PATH=$PATH:$HOME/Programs/aseprite/build/bin
 
+export PATH=$PATH:/usr/local/go/bin
 
-DISABLE_AUTO_TITLE="true"
-JAVA_HOME=/opt/android-studio-2022.2.1/android-studio/jre
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export JRE_HOME

@@ -1,7 +1,6 @@
 
-## Hi 👋
-
-*Life is magic, code is art*
+<!-- ## Hi 👋 -->
+*Life is magic, code is art*  [📑](https://saav.super.site/)
 
 <!-- > [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
@@ -68,8 +67,11 @@ Here are some ideas to get you started:
 - 📫 How to reach me: ...
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
--->
 
+
+sudo apt install xclip 
+
+-->
 
 
 

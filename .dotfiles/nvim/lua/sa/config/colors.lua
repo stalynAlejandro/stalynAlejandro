@@ -1,5 +1,9 @@
-function ColorMyPencils(colors, transparent)
-    if colors == 'monokai' then
+function Theme(colors, transparent)
+    if colors == 'light' then
+        vim.cmd.colorscheme('bluloco-light')
+    elseif colors == 'tasty' then
+        vim.cmd.colorscheme('vim-monokai-tasty')
+    elseif colors == 'monokai' then
         require('monokai').setup {}
     elseif colors == 'monokaiPro' then
         require('monokai').setup { palette = require('monokai').pro }
@@ -30,4 +34,5 @@ function ColorMyPencils(colors, transparent)
     end
 end
 
-ColorMyPencils('monokaiSoda', false)
+-- Theme('vim-monokai-tasty', true)
+Theme('light', false)
