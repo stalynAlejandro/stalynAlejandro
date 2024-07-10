@@ -6,6 +6,7 @@ if [[ `uname` == "Darwin" ]]; then
   export ZSH="/Users/csaav/.oh-my-zsh"
 else
   export ZSH="/home/saav/.oh-my-zsh"
+fi
   alias py="python3"
   alias nv="nvim"
   alias fontlist="fc-list : family | tr ',' '\n' | sort -u"
@@ -102,7 +103,6 @@ else
 | Package.json in JS    | :package:          |  
 | Breaking changes      | :boom:             |  
 | Code review changes   | :ok_hand:          |'" 
-fi
 
 export FZF_DEFAULT_COMMAND='rg'
 if type rg &> /dev/null; then
