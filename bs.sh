@@ -10,6 +10,8 @@ sudo apt-get install gnome-shell-extension-manager -y
 sudo apt-get install netstat -y
 sudo apt-get install openjdk-17-jdk -y
 sudo apt install gnome-tweaks -y
+sudo apt install vim-gtk -y
+sudo apt install ripgrep -y
 
 (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
 && sudo mkdir -p -m 755 /etc/apt/keyrings \

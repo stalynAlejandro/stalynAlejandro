@@ -101,7 +101,8 @@ else
 | Deploying stuff       | :rocket:           |  
 | Package.json in JS    | :package:          |  
 | Breaking changes      | :boom:             |  
-| Code review changes   | :ok_hand:          |'" 
+| Code review changes   | :ok_hand:          | 
+| Show Large files      $ du -h . | sort -rh | head -n 10 '" 
 fi
 
 export FZF_DEFAULT_COMMAND='rg'

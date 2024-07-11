@@ -8,11 +8,11 @@ vim.keymap.set("n", "<Esc>", ":noh <CR>")
 vim.keymap.set("x", "p", [[p:let @+=@0<CR>:let @"=@0<CR>]], { silent = true })
 vim.keymap.set('v', '<leader>f', [[y<Esc>/<C-r>"<CR>]])
 vim.keymap.set('n', '<leader>gt', [[<C-w><C-]><C-w>T]])
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set({ "n", "v" }, "<leader>p", [["_dp]])
+-- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+-- vim.keymap.set({ "n", "v" }, "<leader>p", [["_dp]])
 
 -- Basic
-vim.keymap.set("n", "<leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>w",":w<CR>")
 vim.keymap.set("n", "<leader>ww", ":w!<CR>")
 vim.keymap.set("n", "<leader>qq", ":q!<CR>")
 vim.keymap.set("n", "<leader>qa", ":qa!<CR>")
@@ -35,17 +35,15 @@ vim.keymap.set("n", "si", ":vsplit<Return><C-w>w<CR>")
 vim.keymap.set("n", "sv", ":split<Return><C-w>w<CR>")
 
 -- Terminal
+vim.keymap.set("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true))
+vim.keymap.set("t", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
+vim.keymap.set("n", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
+vim.keymap.set("t", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
+vim.keymap.set("n", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
 vim.keymap.set("t", "<A-i>", "<cmd> Lspsaga term_toggle <CR>")
 vim.keymap.set("n", "<A-i>", "<cmd> Lspsaga term_toggle <CR>")
-vim.keymap.set("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true))
---vim.keymap.set("t", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
---vim.keymap.set("t", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
---vim.keymap.set("n", "<A-h>", function() require("nvterm.terminal").toggle "horizontal" end)
---vim.keymap.set("n", "<A-v>", function() require("nvterm.terminal").toggle "vertical" end)
 -- vim.keymap.set("t", "<A-i>", function() require("nvterm.terminal").toggle "float" end)
 -- vim.keymap.set("n", "<A-i>", function() require("nvterm.terminal").toggle "float" end)
-
-
 
 -- Telescope || Search
 vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files hidden=true <CR>")
@@ -71,13 +69,16 @@ vim.keymap.set("v", "<C-_>", "<ESC><cmd>lua require('Comment.api').toggle.linewi
 
 -- LSPSaga || Preview
 local opts = { noremap = true, silent = true }
+-- vim.keymap.set('n', 'gp', '<cmd>Lspsaga peek_definition<CR>', opts)
+-- vim.keymap.set('n', 'gP', '<Cmd>Lspsaga goto_definition<CR>', opts)
+-- vim.keymap.set('n', 'gP', '<Cmd>Lspsaga goto_definition<CR>', opts)
+vim.keymap.set('n', 'gi', '<Cmd>Lspsaga goto_definition<CR>', opts)
 vim.keymap.set('n', 'gp', '<cmd>Lspsaga peek_definition<CR>', opts)
-vim.keymap.set('n', 'gP', '<Cmd>Lspsaga goto_definition<CR>', opts)
-vim.keymap.set('n', 'gl', '<Cmd>Lspsaga show_line_diagnostics<CR>', opts)
-vim.keymap.set('n', 'gJ', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+vim.keymap.set('n', 'gl', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+vim.keymap.set('n', 'gJ', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
 vim.keymap.set('n', 'gk', '<cmd>Lspsaga hover_doc<CR>', opts)
 vim.keymap.set('n', 'gr', '<cmd>Lspsaga rename<CR>', opts)
 
 -- LSP
-vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation { async = true } end)
 vim.keymap.set("n", "<leader>fm", function() vim.lsp.buf.format { async = true } end)
+-- vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation { async = true } end)

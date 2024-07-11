@@ -18,4 +18,4 @@ vim.opt.signcolumn = 'number'
 vim.opt.foldmethod = 'indent'
 
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.clipboard = "unnamedplus"
