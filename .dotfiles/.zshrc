@@ -34,7 +34,7 @@ fi
   alias to="gnome-terminal"
   alias toc="gnome-terminal && exit"
   alias ch="google-chrome --disable-features=InfiniteSessionRestore --new-window --app"
-  alias rb="reboot"
+  alias rb="systemctl reboot -i"
   alias pw="poweroff"
   alias srb="sudo reboot"
   alias spw="sudo poweroff"

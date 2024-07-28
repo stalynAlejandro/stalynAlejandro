@@ -54,11 +54,11 @@ return require('packer').startup(function(use)
     -- use "jose-elias-alvarez/null-ls.nvim" -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
-    -- use "hrsh7th/nvim-cmp"     -- Completion
-    -- use "hrsh7th/cmp-nvim-lsp" -- nvim-cmp source for neovim's built-in LSP
-    -- use 'L3MON4D3/LuaSnip'
-    -- use 'saadparwaiz1/cmp_luasnip'
-    -- use "rafamadriz/friendly-snippets"
+    use "hrsh7th/nvim-cmp"     -- Completion
+    use "hrsh7th/cmp-nvim-lsp" -- nvim-cmp source for neovim's built-in LSP
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use "rafamadriz/friendly-snippets"
 
     -- Theming
     -- use "tanvirtin/monokai.nvim"
