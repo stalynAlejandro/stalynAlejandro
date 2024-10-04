@@ -7,6 +7,8 @@ if [[ `uname` == "Darwin" ]]; then
 else
   export ZSH="/home/saav/.oh-my-zsh"
 fi
+  alias pip="~/.local/bin/pip"
+  alias gdown="~/.local/bin/gdown"
   alias py="python3"
   alias nv="nvim"
   alias fontlist="fc-list : family | tr ',' '\n' | sort -u"
