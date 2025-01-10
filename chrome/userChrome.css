@@ -8,7 +8,7 @@
 }
 
 .urlbarView {
-  display: none !important;
+  /* display: none !important; */
 }
 
 #unified-extensions-button,
@@ -47,7 +47,7 @@
 #navigator-toolbox {
   background-image: none !important;
   background-color: rgba(0, 0, 0) !important;
-  height: 36px !important;
+  /* height: 50px !important; */
 }
 
 /* Window colors  */
@@ -84,8 +84,8 @@
 }
 
 .tab-stack {
-  height: 30px !important;
-  font-size: 15px !important;
+  /* height: 30px !important; */
+  /* font-size: 15px !important; */
 }
 
 .tab-background {
@@ -111,15 +111,15 @@
   background-image: none !important;
   background-color: #000000 !important;
   color: rgb(255, 255, 255) !important;
-  height: 30px !important;
-  width: 100% !important;
+  /* height: 80px !important; */
+  /* width: 100% !important; */
 }
 
 #urlbar-container {
-  position: absolute !important;
-  bottom: 16px !important;
-  font-size: 15px !important;
-  width: 100% !important;
+  /* position: absolute !important; */
+  /* bottom: 5px !important; */
+  /* font-size: 15px !important; */
+  /* width: 100% !important; */
 }
 
 #urlbar[focused="true"] > #urlbar-background {
