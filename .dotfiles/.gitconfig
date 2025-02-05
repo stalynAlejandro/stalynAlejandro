@@ -14,7 +14,7 @@
 	prn = remote prune origin
 [user]
 	email = saavalencia97@gmail.com
-	name = STAYN ALEJANDRO ALCOCER VALENCIA
+	name = Alejandro Alcocer
 [core]
 	editor = vim
 	pager = cat
