@@ -1,8 +1,6 @@
 
 <!-- ## Hi 👋 -->
 
-Click here! -> [📑](https://saav-super.onrender.com/)
-
 <!-- > [CV](https://github.com/stalynAlejandro/stalynAlejandro/blob/main/StalynAlejandro.pdf) :clipboard:
 
 > [MobileApp](https://github.com/TutoryOrg/JWTrivial) :iphone: -->
